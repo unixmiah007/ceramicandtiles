@@ -17,10 +17,20 @@ export interface ApiError {
   errors?: string[];
 }
 
+export interface ContentSection {
+  heading: string;
+  body: string;
+}
+
 export interface Service {
   id: string;
   title: string;
   description: string;
+  tagline: string;
+  intro: string;
+  sections: ContentSection[];
+  highlights: string[];
+  idealFor: string[];
 }
 
 export interface Project {
@@ -34,6 +44,10 @@ export interface ValueProposition {
   id: string;
   title: string;
   description: string;
+  tagline: string;
+  intro: string;
+  sections: ContentSection[];
+  highlights: string[];
 }
 
 export interface ContactInfo {

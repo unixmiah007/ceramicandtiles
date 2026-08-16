@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
-import { services } from '../data/content';
+import { services } from '../data/services';
 import { pageHeroImages, sectionImages, serviceImages } from '../data/images';
 
 export default function ServicesPage() {
@@ -20,7 +21,7 @@ export default function ServicesPage() {
             <p>
               Whether you&apos;re upgrading a bathroom, creating a new shower, replacing
               outdated tile, or renovating a commercial facility, we focus on doing the job
-              correctly from start to finish.
+              correctly from start to finish. Select any service below to learn more.
             </p>
           </div>
 
@@ -34,7 +35,17 @@ export default function ServicesPage() {
                 />
                 <div className="service-card-body">
                   <h3>{service.title}</h3>
+                  <p className="value-card-tagline">{service.tagline}</p>
                   <p>{service.description}</p>
+                  <p className="value-card-preview">{service.intro}</p>
+                  <ul className="value-card-highlights">
+                    {service.highlights.slice(0, 2).map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <Link to={`/services/${service.id}`} className="btn btn-secondary value-card-link">
+                    View Service Details
+                  </Link>
                 </div>
               </article>
             ))}
@@ -75,6 +86,16 @@ export default function ServicesPage() {
                 <li>Professional facility upgrades</li>
               </ul>
             </div>
+          </div>
+
+          <div className="value-links-grid service-links-grid">
+            {services.map((service) => (
+              <Link key={service.id} to={`/services/${service.id}`} className="value-link-card">
+                <h3>{service.title}</h3>
+                <p>{service.tagline}</p>
+                <span className="value-link-card-action">Read Full Details</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

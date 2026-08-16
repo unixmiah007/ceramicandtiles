@@ -285,6 +285,201 @@ export const valueIcons: Record<string, StockImage> = {
   },
 };
 
+export interface ValueDetailImages {
+  hero: StockImage;
+  featured: StockImage;
+  gallery: StockImage[];
+}
+
+export const serviceDetailImages: Record<string, ValueDetailImages> = {
+  'bathroom-renovations': {
+    hero: { src: pexels(p.bathroomRemodel, 1600), alt: 'Complete bathroom renovation with ceramic tile' },
+    featured: { src: pexels(p.warmBath, 900), alt: 'Renovated residential bathroom tile finishes' },
+    gallery: [
+      { src: pexels(p.cleanBath, 800), alt: 'Modern bathroom floor and wall tile' },
+      { src: unsplash(u.bathroomModern, 800), alt: 'Updated bathroom with porcelain tile surfaces' },
+      { src: pexels(p.bathroomSpa, 800), alt: 'Spa-style bathroom renovation tile work' },
+    ],
+  },
+  'shower-installation': {
+    hero: { src: pexels(p.showerLuxury, 1600), alt: 'Custom walk-in shower tile installation' },
+    featured: { src: pexels(p.showerModern, 900), alt: 'Shower renovation with wall and floor tile' },
+    gallery: [
+      { src: pexels(p.showerTile, 800), alt: 'Shower wall tile with clean grout lines' },
+      { src: unsplash(u.bathroomLuxury, 800), alt: 'Luxury shower enclosure with ceramic tile' },
+      { src: pexels(p.luxuryFinish, 800), alt: 'Finished shower tile with glass enclosure' },
+    ],
+  },
+  'ceramic-porcelain': {
+    hero: { src: pexels(p.tileSamples, 1600), alt: 'Ceramic and porcelain tile samples for installation' },
+    featured: { src: pexels(p.tileWall, 900), alt: 'Porcelain wall tile installation in progress' },
+    gallery: [
+      { src: pexels(p.tileFloor, 800), alt: 'Porcelain floor tile in a bright interior' },
+      { src: pexels(p.tilePattern, 800), alt: 'Patterned ceramic tile layout' },
+      { src: pexels(p.tileDetail, 800), alt: 'Detailed ceramic tile on a bathroom wall' },
+    ],
+  },
+  'shower-waterproofing': {
+    hero: { src: pexels(p.showerTile, 1600), alt: 'Shower waterproofing and tile preparation' },
+    featured: { src: pexels(p.showerModern, 900), alt: 'Wet-area shower tile backing and waterproofing' },
+    gallery: [
+      { src: pexels(p.renovationDemo, 800), alt: 'Shower area prepared for waterproof tile install' },
+      { src: pexels(p.tileInstall, 800), alt: 'Professional shower substrate preparation' },
+      { src: unsplash(u.bathroomBright, 800), alt: 'Waterproofed shower space ready for tile' },
+    ],
+  },
+  'floor-wall-tile': {
+    hero: { src: pexels(p.tileFloor, 1600), alt: 'Professional floor tile installation' },
+    featured: { src: pexels(p.bathroomTiles, 900), alt: 'Coordinated floor and wall tile in a bathroom' },
+    gallery: [
+      { src: pexels(p.tileWall, 800), alt: 'Wall tile installation with even spacing' },
+      { src: pexels(p.tilePattern, 800), alt: 'Floor tile layout in an open interior' },
+      { src: unsplash(u.bathroomTile, 800), alt: 'Bathroom floor and wall tile combination' },
+    ],
+  },
+  'commercial-tile': {
+    hero: { src: pexels(p.commercialLobby, 1600), alt: 'Commercial tile installation in a professional building' },
+    featured: { src: pexels(p.commercialSpace, 900), alt: 'Commercial interior with durable tile flooring' },
+    gallery: [
+      { src: pexels(p.officeRestroom, 800), alt: 'Commercial restroom tile surfaces' },
+      { src: unsplash(u.commercialOffice, 800), alt: 'Office facility with professional tile work' },
+      { src: pexels(p.facilityFloor, 800), alt: 'High-traffic commercial floor tile' },
+    ],
+  },
+  'locker-rooms': {
+    hero: { src: pexels(p.lockerRoom, 1600), alt: 'Locker room tile built for high-traffic use' },
+    featured: { src: pexels(p.gymFacility, 900), alt: 'Athletic facility locker room tile installation' },
+    gallery: [
+      { src: pexels(p.lockerRoom, 800), alt: 'Fitness locker room ceramic tile floors' },
+      { src: pexels(p.gymFacility, 800), alt: 'Sports facility tile in wet areas' },
+      { src: pexels(p.facilityFloor, 800), alt: 'Durable locker room floor tile' },
+    ],
+  },
+  'backsplashes': {
+    hero: { src: pexels(p.kitchenBacksplash, 1600), alt: 'Kitchen backsplash ceramic tile installation' },
+    featured: { src: pexels(p.kitchenModern, 900), alt: 'Modern kitchen with decorative backsplash tile' },
+    gallery: [
+      { src: unsplash(u.kitchenTile, 800), alt: 'Kitchen wall tile backsplash detail' },
+      { src: pexels(p.customPattern, 800), alt: 'Decorative backsplash tile pattern' },
+      { src: pexels(p.bathroomDetail, 800), alt: 'Bathroom vanity backsplash tile' },
+    ],
+  },
+  'tile-replacement': {
+    hero: { src: unsplash(u.designerBath, 1600), alt: 'Bathroom after complete tile replacement' },
+    featured: { src: pexels(p.bathroomRenovation, 900), alt: 'Fresh tile surfaces replacing outdated materials' },
+    gallery: [
+      { src: pexels(p.cleanBath, 800), alt: 'Updated bathroom tile replacement result' },
+      { src: pexels(p.warmBath, 800), alt: 'Replaced floor and wall tile in a bathroom' },
+      { src: unsplash(u.bathroomModern, 800), alt: 'Modern tile replacement in a residential bath' },
+    ],
+  },
+  'tile-repair': {
+    hero: { src: pexels(p.groutFinish, 1600), alt: 'Tile and grout repair work on a ceramic surface' },
+    featured: { src: pexels(p.mosaicDetail, 900), alt: 'Detailed tile repair with restored grout lines' },
+    gallery: [
+      { src: pexels(p.tileDetail, 800), alt: 'Close-up ceramic tile repair' },
+      { src: pexels(p.tileDesign, 800), alt: 'Restored tile surface after repair work' },
+      { src: pexels(p.customPattern, 800), alt: 'Repaired patterned tile section' },
+    ],
+  },
+  'demolition-removal': {
+    hero: { src: pexels(p.constructionSite, 1600), alt: 'Interior demolition before new tile installation' },
+    featured: { src: pexels(p.renovationDemo, 900), alt: 'Tile removal and renovation preparation' },
+    gallery: [
+      { src: unsplash(u.constructionPlan, 800), alt: 'Renovation planning before tile installation' },
+      { src: pexels(p.toolWork, 800), alt: 'Tools and materials for demolition and prep work' },
+      { src: pexels(p.projectSite, 800), alt: 'Prepared interior space after tile removal' },
+    ],
+  },
+  'custom-designs': {
+    hero: { src: pexels(p.customPattern, 1600), alt: 'Custom geometric tile design on a shower wall' },
+    featured: { src: pexels(p.luxuryFinish, 900), alt: 'Designer tile pattern with precise installation' },
+    gallery: [
+      { src: pexels(p.mosaicDetail, 800), alt: 'Mosaic accent tile custom design' },
+      { src: pexels(p.tileDesign, 800), alt: 'Decorative floor tile pattern layout' },
+      { src: unsplash(u.designerBath, 800), alt: 'Custom tile design in a designer bathroom' },
+    ],
+  },
+};
+
+export const valueDetailImages: Record<string, ValueDetailImages> = {
+  'family-owned': {
+    hero: {
+      src: pexels(p.warmBath, 1600),
+      alt: 'Warm residential bathroom with quality ceramic tile finishes',
+    },
+    featured: {
+      src: pexels(p.bathroomRemodel, 900),
+      alt: 'Family-crafted bathroom renovation with ceramic tile',
+    },
+    gallery: [
+      { src: pexels(p.cleanBath, 800), alt: 'Clean residential bathroom tile installation' },
+      { src: unsplash(u.bathroomModern, 800), alt: 'Modern home bathroom with ceramic tile' },
+      { src: pexels(p.bathroomSpa, 800), alt: 'Spa-style shower with porcelain tile walls' },
+    ],
+  },
+  'professional-experience': {
+    hero: {
+      src: pexels(p.commercialSpace, 1600),
+      alt: 'Commercial interior with professional tile installation',
+    },
+    featured: {
+      src: pexels(p.gymFacility, 900),
+      alt: 'Professional locker room tile work in a sports facility',
+    },
+    gallery: [
+      { src: pexels(p.lockerRoom, 800), alt: 'Locker room ceramic tile built for high traffic' },
+      { src: pexels(p.officeRestroom, 800), alt: 'Commercial restroom with durable tile surfaces' },
+      { src: unsplash(u.commercialOffice, 800), alt: 'Professional facility interior with tile flooring' },
+    ],
+  },
+  'attention-to-detail': {
+    hero: {
+      src: pexels(p.mosaicDetail, 1600),
+      alt: 'Detailed mosaic tile pattern with precise grout lines',
+    },
+    featured: {
+      src: pexels(p.groutFinish, 900),
+      alt: 'Close-up of finished grout lines and tile edges',
+    },
+    gallery: [
+      { src: pexels(p.customPattern, 800), alt: 'Custom geometric tile layout with clean cuts' },
+      { src: pexels(p.luxuryFinish, 800), alt: 'Designer shower tile with precise finishing' },
+      { src: pexels(p.tileDetail, 800), alt: 'Detailed ceramic tile installation on a wall surface' },
+    ],
+  },
+  'quality-without-shortcuts': {
+    hero: {
+      src: pexels(p.craftsmanWork, 1600),
+      alt: 'Tile craftsman carefully preparing a ceramic installation',
+    },
+    featured: {
+      src: pexels(p.tileInstall, 900),
+      alt: 'Professional tile installation during construction',
+    },
+    gallery: [
+      { src: pexels(p.showerTile, 800), alt: 'Shower waterproofing and tile backing preparation' },
+      { src: pexels(p.renovationDemo, 800), alt: 'Interior renovation preparation before tile installation' },
+      { src: pexels(p.toolWork, 800), alt: 'Tile tools and materials prepared for quality installation' },
+    ],
+  },
+  'built-to-last': {
+    hero: {
+      src: pexels(p.tileFloor, 1600),
+      alt: 'Durable floor tile installed in a high-use interior space',
+    },
+    featured: {
+      src: pexels(p.facilityFloor, 900),
+      alt: 'Commercial-grade floor tile built for everyday traffic',
+    },
+    gallery: [
+      { src: pexels(p.showerLuxury, 800), alt: 'Long-lasting shower tile installation' },
+      { src: unsplash(u.bathroomTile, 800), alt: 'Finished bathroom tile built for daily use' },
+      { src: pexels(p.tilePattern, 800), alt: 'Large-format porcelain tile in a durable floor layout' },
+    ],
+  },
+};
+
 export const FALLBACK_IMAGE: StockImage = {
   src: pexels(p.bathroomSpa, 800),
   alt: 'Professional ceramic and tile installation',

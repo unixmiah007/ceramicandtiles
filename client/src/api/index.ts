@@ -19,4 +19,6 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
   return handleResponse<ContactResponse>(response);
 }
 
-export { services, projects, valuePropositions, contactInfo } from '../data/content';
+export { services, projects, contactInfo } from '../data/content';
+export { getServiceById } from '../data/services';
+export { valuePropositions, getValueById } from '../data/values';

@@ -3,7 +3,8 @@ import HeroCarousel from '../components/HeroCarousel';
 import GallerySection from '../components/GallerySection';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
-import { services, valuePropositions } from '../data/content';
+import { services } from '../data/services';
+import { valuePropositions } from '../data/values';
 import { processStepImages, serviceImages, valueIcons } from '../data/images';
 
 const processSteps = [
@@ -81,6 +82,9 @@ export default function HomePage() {
                 <div className="service-card-body">
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
+                  <Link to={`/services/${service.id}`} className="inline-link">
+                    View service details
+                  </Link>
                 </div>
               </div>
             ))}
@@ -109,6 +113,9 @@ export default function HomePage() {
                 <div className="value-card-body">
                   <h3>{value.title}</h3>
                   <p>{value.description}</p>
+                  <Link to={`/why-portillo/${value.id}`} className="inline-link">
+                    Learn more
+                  </Link>
                 </div>
               </div>
             ))}

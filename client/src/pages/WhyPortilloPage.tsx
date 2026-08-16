@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
-import { valuePropositions } from '../data/content';
+import { valuePropositions } from '../data/values';
 import { pageHeroImages, sectionImages, valueIcons } from '../data/images';
 
 export default function WhyPortilloPage() {
@@ -27,6 +28,11 @@ export default function WhyPortilloPage() {
                 transform a space. Our name is on every project—we treat every customer and
                 every home with respect.
               </p>
+              <p>
+                These are the qualities that guide every bathroom renovation, shower
+                installation, and commercial tile project we take on. Select any topic below
+                to learn more about what sets our work apart.
+              </p>
             </div>
           </div>
 
@@ -41,7 +47,17 @@ export default function WhyPortilloPage() {
                 <div className="value-card-body">
                   <span className="value-number">{String(index + 1).padStart(2, '0')}</span>
                   <h2>{value.title}</h2>
+                  <p className="value-card-tagline">{value.tagline}</p>
                   <p>{value.description}</p>
+                  <p className="value-card-preview">{value.intro}</p>
+                  <ul className="value-card-highlights">
+                    {value.highlights.slice(0, 2).map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <Link to={`/why-portillo/${value.id}`} className="btn btn-secondary value-card-link">
+                    Learn More About {value.title}
+                  </Link>
                 </div>
               </article>
             ))}
@@ -59,43 +75,14 @@ export default function WhyPortilloPage() {
             <p className="quote-attribution">— Portillo Ceramic and Tile</p>
           </div>
 
-          <div className="principles-grid">
-            <div className="principle principle--image">
-              <StockImage
-                image={valueIcons['quality-without-shortcuts']}
-                aspectRatio="16 / 10"
-                className="principle-image"
-              />
-              <h3>We Do Things Correctly</h3>
-              <p>
-                We believe in doing things correctly—not simply getting the job finished
-                quickly. Quality without shortcuts is our standard.
-              </p>
-            </div>
-            <div className="principle principle--image">
-              <StockImage
-                image={valueIcons['built-to-last']}
-                aspectRatio="16 / 10"
-                className="principle-image"
-              />
-              <h3>Built to Last</h3>
-              <p>
-                We focus on proper preparation and installation so your investment can stand
-                up to everyday use for years to come.
-              </p>
-            </div>
-            <div className="principle principle--image">
-              <StockImage
-                image={valueIcons['professional-experience']}
-                aspectRatio="16 / 10"
-                className="principle-image"
-              />
-              <h3>Professional &amp; Personal</h3>
-              <p>
-                Our work spans residential projects and professional commercial facilities,
-                bringing the same level of care to every job.
-              </p>
-            </div>
+          <div className="value-links-grid">
+            {valuePropositions.map((value) => (
+              <Link key={value.id} to={`/why-portillo/${value.id}`} className="value-link-card">
+                <h3>{value.title}</h3>
+                <p>{value.tagline}</p>
+                <span className="value-link-card-action">Read Full Details</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
