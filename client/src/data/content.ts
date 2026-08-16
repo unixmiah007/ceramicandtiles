@@ -34,11 +34,3 @@ export const contactInfo: ContactInfo = {
   email: 'PortilloCeramicTile@gmail.com',
 };
 
-export const projectTypes = [
-  'Bathroom Renovation',
-  'Shower Installation',
-  'Tile Replacement',
-  'Commercial Project',
-  'Tile Repair',
-  'Other',
-];

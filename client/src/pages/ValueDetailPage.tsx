@@ -2,27 +2,26 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import { getValueImage, getValueSectionImage } from '../data/images';
 import { getValueById, valuePropositions } from '../data/values';
-import { valueDetailImages } from '../data/images';
 
 export default function ValueDetailPage() {
   const { valueId } = useParams<{ valueId: string }>();
   const value = valueId ? getValueById(valueId) : undefined;
-  const images = valueId ? valueDetailImages[valueId] : undefined;
 
-  if (!value || !images) {
+  if (!value) {
     return <Navigate to="/why-portillo" replace />;
   }
 
   const otherValues = valuePropositions.filter((item) => item.id !== value.id);
+  const heroImage = getValueImage(value.id, value.title);
+  const sectionImages = value.sections.map((section) =>
+    getValueSectionImage(value.id, section.heading)
+  );
 
   return (
     <>
-      <PageHero
-        title={value.title}
-        subtitle={value.tagline}
-        backgroundImage={images.hero}
-      />
+      <PageHero title={value.title} subtitle={value.tagline} backgroundImage={heroImage} />
 
       <section className="section">
         <div className="container">
@@ -32,7 +31,7 @@ export default function ValueDetailPage() {
               <p>{value.description}</p>
             </div>
             <StockImage
-              image={images.featured}
+              image={heroImage}
               aspectRatio="4 / 3"
               className="rounded-image value-detail-featured"
             />
@@ -58,7 +57,7 @@ export default function ValueDetailPage() {
                 className={`value-detail-section ${index % 2 === 1 ? 'value-detail-section--reverse' : ''}`}
               >
                 <StockImage
-                  image={images.gallery[index % images.gallery.length]}
+                  image={sectionImages[index]}
                   aspectRatio="16 / 11"
                   className="value-detail-section-image rounded-image"
                 />
@@ -79,7 +78,7 @@ export default function ValueDetailPage() {
             <p>Examples of the craftsmanship and quality behind every Portillo Ceramic and Tile project.</p>
           </div>
           <div className="value-detail-gallery">
-            {images.gallery.map((image) => (
+            {sectionImages.map((image) => (
               <StockImage
                 key={image.src}
                 image={image}

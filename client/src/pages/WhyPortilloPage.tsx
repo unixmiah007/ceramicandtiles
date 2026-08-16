@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
 import { valuePropositions } from '../data/values';
-import { pageHeroImages, sectionImages, valueIcons } from '../data/images';
+import { pageHeroImages, sectionImages, getValueImage } from '../data/images';
 
 export default function WhyPortilloPage() {
   return (
@@ -40,7 +40,7 @@ export default function WhyPortilloPage() {
             {valuePropositions.map((value, index) => (
               <article key={value.id} className="value-card value-card-large value-card--image">
                 <StockImage
-                  image={valueIcons[value.id]}
+                  image={getValueImage(value.id, value.title)}
                   aspectRatio="16 / 9"
                   className="value-card-image"
                 />

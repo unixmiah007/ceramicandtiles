@@ -2,7 +2,8 @@ import { FormEvent, useState } from 'react';
 import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
 import { submitContactForm } from '../api';
-import { contactInfo, projectTypes } from '../data/content';
+import { contactInfo } from '../data/content';
+import { services } from '../data/services';
 import { pageHeroImages, sectionImages } from '../data/images';
 import { ApiError } from '../types';
 
@@ -171,12 +172,13 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Select a project type</option>
-                    {projectTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
+                    <option value="">Select a service</option>
+                    {services.map((service) => (
+                      <option key={service.id} value={service.title}>
+                        {service.title}
                       </option>
                     ))}
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 

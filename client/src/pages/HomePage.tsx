@@ -5,7 +5,7 @@ import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
 import { services } from '../data/services';
 import { valuePropositions } from '../data/values';
-import { processStepImages, serviceImages, valueIcons } from '../data/images';
+import { processStepImages, sectionImages, getServiceImage, getValueImage } from '../data/images';
 
 const processSteps = [
   { key: 'demolition', number: '01', title: 'Demolition & Preparation', description: 'Careful removal and surface preparation for lasting results.' },
@@ -35,7 +35,7 @@ export default function HomePage() {
               </p>
             </div>
             <StockImage
-              image={processStepImages.finishing}
+              image={sectionImages.yourSpaceDeservesTheBest}
               aspectRatio="4 / 3"
               className="split-feature-image rounded-image"
             />
@@ -75,7 +75,7 @@ export default function HomePage() {
             {services.slice(0, 6).map((service) => (
               <div key={service.id} className="service-card service-card--image">
                 <StockImage
-                  image={serviceImages[service.id]}
+                  image={getServiceImage(service.id, service.title)}
                   aspectRatio="16 / 10"
                   className="service-card-image"
                 />
@@ -106,7 +106,7 @@ export default function HomePage() {
             {valuePropositions.map((value) => (
               <div key={value.id} className="value-card value-card--image">
                 <StockImage
-                  image={valueIcons[value.id]}
+                  image={getValueImage(value.id, value.title)}
                   aspectRatio="16 / 9"
                   className="value-card-image"
                 />

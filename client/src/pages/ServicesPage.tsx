@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
 import { services } from '../data/services';
-import { pageHeroImages, sectionImages, serviceImages } from '../data/images';
+import { pageHeroImages, sectionImages, getServiceImage } from '../data/images';
 
 export default function ServicesPage() {
   return (
@@ -29,7 +29,7 @@ export default function ServicesPage() {
             {services.map((service) => (
               <article key={service.id} className="service-card service-card--image">
                 <StockImage
-                  image={serviceImages[service.id]}
+                  image={getServiceImage(service.id, service.title)}
                   aspectRatio="16 / 10"
                   className="service-card-image"
                 />

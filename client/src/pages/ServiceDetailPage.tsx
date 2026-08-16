@@ -2,27 +2,26 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import { getServiceImage, getServiceSectionImage } from '../data/images';
 import { getServiceById, services } from '../data/services';
-import { serviceDetailImages } from '../data/images';
 
 export default function ServiceDetailPage() {
   const { serviceId } = useParams<{ serviceId: string }>();
   const service = serviceId ? getServiceById(serviceId) : undefined;
-  const images = serviceId ? serviceDetailImages[serviceId] : undefined;
 
-  if (!service || !images) {
+  if (!service) {
     return <Navigate to="/services" replace />;
   }
 
   const otherServices = services.filter((item) => item.id !== service.id).slice(0, 6);
+  const heroImage = getServiceImage(service.id, service.title);
+  const sectionImages = service.sections.map((section) =>
+    getServiceSectionImage(service.id, section.heading)
+  );
 
   return (
     <>
-      <PageHero
-        title={service.title}
-        subtitle={service.tagline}
-        backgroundImage={images.hero}
-      />
+      <PageHero title={service.title} subtitle={service.tagline} backgroundImage={heroImage} />
 
       <section className="section">
         <div className="container">
@@ -32,7 +31,7 @@ export default function ServiceDetailPage() {
               <p>{service.description}</p>
             </div>
             <StockImage
-              image={images.featured}
+              image={heroImage}
               aspectRatio="4 / 3"
               className="rounded-image value-detail-featured"
             />
@@ -68,7 +67,7 @@ export default function ServiceDetailPage() {
                 className={`value-detail-section ${index % 2 === 1 ? 'value-detail-section--reverse' : ''}`}
               >
                 <StockImage
-                  image={images.gallery[index % images.gallery.length]}
+                  image={sectionImages[index]}
                   aspectRatio="16 / 11"
                   className="value-detail-section-image rounded-image"
                 />
@@ -89,7 +88,7 @@ export default function ServiceDetailPage() {
             <p>Tile and ceramic work that reflects the quality behind every Portillo Ceramic and Tile service.</p>
           </div>
           <div className="value-detail-gallery">
-            {images.gallery.map((image) => (
+            {sectionImages.map((image) => (
               <StockImage
                 key={image.src}
                 image={image}
