@@ -1,0 +1,131 @@
+import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { heroSlides, FALLBACK_IMAGE } from '../data/images';
+
+const AUTOPLAY_MS = 6000;
+
+export default function HeroCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goTo = useCallback((index: number) => {
+    setActiveIndex((index + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo]);
+  const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo]);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = window.setInterval(goNext, AUTOPLAY_MS);
+    return () => window.clearInterval(timer);
+  }, [goNext, isPaused]);
+
+  const activeSlide = heroSlides[activeIndex];
+
+  return (
+    <section
+      className="hero-carousel"
+      aria-roledescription="carousel"
+      aria-label="Featured projects"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
+      <div className="hero-carousel-slides" aria-live="polite">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`hero-carousel-slide ${index === activeIndex ? 'is-active' : ''}`}
+            aria-hidden={index !== activeIndex}
+          >
+            <img
+              src={slide.image.src}
+              alt=""
+              className="hero-carousel-bg"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (img.src !== FALLBACK_IMAGE.src) {
+                  img.src = FALLBACK_IMAGE.src;
+                }
+              }}
+            />
+            <div className="hero-carousel-overlay" />
+          </div>
+        ))}
+      </div>
+
+      <div className="container hero-carousel-content">
+        <p className="hero-eyebrow">Portillo Ceramic and Tile</p>
+
+        <div className="hero-carousel-text">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`hero-carousel-caption ${index === activeIndex ? 'is-active' : ''}`}
+              aria-hidden={index !== activeIndex}
+            >
+              <h1>{slide.headline}</h1>
+              <p className="hero-subtitle">{slide.subtitle}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="hero-description">
+          Family-Owned Craftsmanship. Professional Results. From residential bathrooms and
+          custom showers to commercial locker rooms and professional facilities, our family
+          brings experience, precision, and pride to every project.
+        </p>
+
+        <div className="hero-actions">
+          <Link to="/contact" className="btn btn-primary btn-lg">
+            Request a Quote
+          </Link>
+          <Link to="/services" className="btn btn-outline btn-lg">
+            View Our Services
+          </Link>
+        </div>
+
+        <div className="hero-carousel-controls">
+          <button
+            type="button"
+            className="hero-carousel-arrow hero-carousel-arrow--prev"
+            onClick={goPrev}
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
+
+          <div className="hero-carousel-dots" role="tablist" aria-label="Hero slides">
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide.id}
+                type="button"
+                role="tab"
+                className={`hero-carousel-dot ${index === activeIndex ? 'is-active' : ''}`}
+                aria-label={`Go to slide ${index + 1}: ${slide.headline}`}
+                aria-selected={index === activeIndex}
+                onClick={() => goTo(index)}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            className="hero-carousel-arrow hero-carousel-arrow--next"
+            onClick={goNext}
+            aria-label="Next slide"
+          >
+            ›
+          </button>
+        </div>
+
+        <p className="sr-only">{activeSlide.image.alt}</p>
+      </div>
+    </section>
+  );
+}
