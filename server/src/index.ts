@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import path from 'path';
 import contactRoutes from './routes/contact';
 import contentRoutes from './routes/content';
+import chatRoutes from './routes/chat';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,6 +20,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api', contactRoutes);
 app.use('/api', contentRoutes);
+app.use('/api', chatRoutes);
 
 const clientBuildPath = path.join(__dirname, '../../client/dist');
 app.use(express.static(clientBuildPath));

@@ -8,6 +8,8 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import WhyPortilloPage from './pages/WhyPortilloPage';
 import ValueDetailPage from './pages/ValueDetailPage';
 import ContactPage from './pages/ContactPage';
+import BackToTop from './components/BackToTop';
+import LiveChat from './components/LiveChat';
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <BackToTop />
+      <LiveChat />
     </div>
   );
 }

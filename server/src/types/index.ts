@@ -17,6 +17,28 @@ export interface ApiError {
   errors?: string[];
 }
 
+export type ChatRole = 'user' | 'assistant';
+
+export interface ChatMessage {
+  role: ChatRole;
+  content: string;
+}
+
+export interface ChatRequest {
+  messages: ChatMessage[];
+}
+
+export interface ChatResponse {
+  success: boolean;
+  reply: string;
+  mode: 'ai' | 'local';
+}
+
+export interface ChatStatusResponse {
+  available: boolean;
+  mode: 'ai' | 'local';
+}
+
 export interface Service {
   id: string;
   title: string;

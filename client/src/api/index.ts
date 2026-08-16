@@ -1,4 +1,4 @@
-import { ContactFormData, ContactResponse, ApiError } from '../types';
+import { ContactFormData, ContactResponse, ApiError, ChatMessage, ChatResponse, ChatStatusResponse } from '../types';
 
 const API_BASE = '/api';
 
@@ -17,6 +17,20 @@ export async function submitContactForm(formData: ContactFormData): Promise<Cont
     body: JSON.stringify(formData),
   });
   return handleResponse<ContactResponse>(response);
+}
+
+export async function fetchChatStatus(): Promise<ChatStatusResponse> {
+  const response = await fetch(`${API_BASE}/chat/status`);
+  return handleResponse<ChatStatusResponse>(response);
+}
+
+export async function sendChatMessage(messages: Pick<ChatMessage, 'role' | 'content'>[]): Promise<ChatResponse> {
+  const response = await fetch(`${API_BASE}/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages }),
+  });
+  return handleResponse<ChatResponse>(response);
 }
 
 export { services, projects, contactInfo } from '../data/content';
