@@ -1,16 +1,16 @@
 import { galleryImages } from '../data/images';
+import { useLanguage } from '../context/LanguageContext';
 import StockImage from './StockImage';
 
 export default function GallerySection() {
+  const { t } = useLanguage();
+
   return (
     <section className="section gallery-section">
       <div className="container">
         <div className="section-header">
-          <h2>Craftsmanship You Can See</h2>
-          <p>
-            Every project reflects our commitment to precision layouts, clean cuts, and
-            finishes built to stand up to everyday use.
-          </p>
+          <h2>{t.home.galleryTitle}</h2>
+          <p>{t.home.galleryDescription}</p>
         </div>
 
         <div className="gallery-grid">

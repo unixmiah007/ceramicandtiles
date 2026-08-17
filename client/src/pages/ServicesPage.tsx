@@ -2,53 +2,54 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
-import { services } from '../data/services';
+import { useLanguage } from '../context/LanguageContext';
 import { pageHeroImages, sectionImages, getServiceImage } from '../data/images';
 
 export default function ServicesPage() {
+  const { t, services, getEnglishServiceById } = useLanguage();
+
   return (
     <>
       <PageHero
-        title="Our Services"
-        subtitle="From demolition and preparation to waterproofing, installation, grout, and finishing touches—we take pride in every step."
+        title={t.services.heroTitle}
+        subtitle={t.services.heroSubtitle}
         backgroundImage={pageHeroImages.services}
       />
 
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>Complete Tile Solutions</h2>
-            <p>
-              Whether you&apos;re upgrading a bathroom, creating a new shower, replacing
-              outdated tile, or renovating a commercial facility, we focus on doing the job
-              correctly from start to finish. Select any service below to learn more.
-            </p>
+            <h2>{t.services.completeTitle}</h2>
+            <p>{t.services.completeDescription}</p>
           </div>
 
           <div className="service-grid">
-            {services.map((service) => (
-              <article key={service.id} className="service-card service-card--image">
-                <StockImage
-                  image={getServiceImage(service.id, service.title)}
-                  aspectRatio="16 / 10"
-                  className="service-card-image"
-                />
-                <div className="service-card-body">
-                  <h3>{service.title}</h3>
-                  <p className="value-card-tagline">{service.tagline}</p>
-                  <p>{service.description}</p>
-                  <p className="value-card-preview">{service.intro}</p>
-                  <ul className="value-card-highlights">
-                    {service.highlights.slice(0, 2).map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                  <Link to={`/services/${service.id}`} className="btn btn-secondary value-card-link">
-                    View Service Details
-                  </Link>
-                </div>
-              </article>
-            ))}
+            {services.map((service) => {
+              const englishService = getEnglishServiceById(service.id)!;
+              return (
+                <article key={service.id} className="service-card service-card--image">
+                  <StockImage
+                    image={getServiceImage(englishService.id, englishService.title)}
+                    aspectRatio="16 / 10"
+                    className="service-card-image"
+                  />
+                  <div className="service-card-body">
+                    <h3>{service.title}</h3>
+                    <p className="value-card-tagline">{service.tagline}</p>
+                    <p>{service.description}</p>
+                    <p className="value-card-preview">{service.intro}</p>
+                    <ul className="value-card-highlights">
+                      {service.highlights.slice(0, 2).map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                    <Link to={`/services/${service.id}`} className="btn btn-secondary value-card-link">
+                      {t.common.viewServiceDetails}
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -62,13 +63,11 @@ export default function ServicesPage() {
                 aspectRatio="16 / 10"
                 className="feature-panel-image"
               />
-              <h2>Residential Projects</h2>
+              <h2>{t.services.residentialTitle}</h2>
               <ul className="feature-list">
-                <li>Bathroom renovations and upgrades</li>
-                <li>Custom shower installation</li>
-                <li>Floor and wall tile</li>
-                <li>Kitchen backsplashes</li>
-                <li>Tile replacement and repair</li>
+                {t.services.residentialItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
             <div className="feature-panel">
@@ -77,13 +76,11 @@ export default function ServicesPage() {
                 aspectRatio="16 / 10"
                 className="feature-panel-image"
               />
-              <h2>Commercial Projects</h2>
+              <h2>{t.services.commercialTitle}</h2>
               <ul className="feature-list">
-                <li>Commercial tile installation</li>
-                <li>Locker room facilities</li>
-                <li>Restroom renovations</li>
-                <li>High-traffic facility spaces</li>
-                <li>Professional facility upgrades</li>
+                {t.services.commercialItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -93,7 +90,7 @@ export default function ServicesPage() {
               <Link key={service.id} to={`/services/${service.id}`} className="value-link-card">
                 <h3>{service.title}</h3>
                 <p>{service.tagline}</p>
-                <span className="value-link-card-action">Read Full Details</span>
+                <span className="value-link-card-action">{t.common.readFullDetails}</span>
               </Link>
             ))}
           </div>

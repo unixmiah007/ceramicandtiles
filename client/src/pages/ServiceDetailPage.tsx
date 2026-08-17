@@ -2,21 +2,23 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import { useLanguage } from '../context/LanguageContext';
 import { getServiceImage, getServiceSectionImage } from '../data/images';
-import { getServiceById, services } from '../data/services';
 
 export default function ServiceDetailPage() {
   const { serviceId } = useParams<{ serviceId: string }>();
+  const { t, services, getServiceById, getEnglishServiceById } = useLanguage();
   const service = serviceId ? getServiceById(serviceId) : undefined;
+  const englishService = serviceId ? getEnglishServiceById(serviceId) : undefined;
 
-  if (!service) {
+  if (!service || !englishService) {
     return <Navigate to="/services" replace />;
   }
 
   const otherServices = services.filter((item) => item.id !== service.id).slice(0, 6);
-  const heroImage = getServiceImage(service.id, service.title);
-  const sectionImages = service.sections.map((section) =>
-    getServiceSectionImage(service.id, section.heading)
+  const heroImage = getServiceImage(englishService.id, englishService.title);
+  const sectionImages = englishService.sections.map((section) =>
+    getServiceSectionImage(englishService.id, section.heading)
   );
 
   return (
@@ -39,7 +41,7 @@ export default function ServiceDetailPage() {
 
           <div className="detail-panels">
             <div className="value-highlights">
-              <h2>What We Provide</h2>
+              <h2>{t.serviceDetail.whatWeProvide}</h2>
               <ul className="feature-list">
                 {service.highlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
@@ -47,7 +49,7 @@ export default function ServiceDetailPage() {
               </ul>
             </div>
             <div className="value-highlights">
-              <h2>Ideal For</h2>
+              <h2>{t.serviceDetail.idealFor}</h2>
               <ul className="feature-list">
                 {service.idealFor.map((item) => (
                   <li key={item}>{item}</li>
@@ -84,8 +86,8 @@ export default function ServiceDetailPage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>Project Examples</h2>
-            <p>Tile and ceramic work that reflects the quality behind every Portillo Ceramic and Tile service.</p>
+            <h2>{t.serviceDetail.projectExamples}</h2>
+            <p>{t.serviceDetail.projectExamplesDescription}</p>
           </div>
           <div className="value-detail-gallery">
             {sectionImages.map((image) => (
@@ -103,28 +105,28 @@ export default function ServiceDetailPage() {
       <section className="section section-alt">
         <div className="container">
           <div className="section-header">
-            <h2>Explore More Services</h2>
+            <h2>{t.serviceDetail.exploreMore}</h2>
           </div>
           <div className="value-links-grid">
             {otherServices.map((item) => (
               <Link key={item.id} to={`/services/${item.id}`} className="value-link-card">
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <span className="value-link-card-action">View Service Details</span>
+                <span className="value-link-card-action">{t.common.viewServiceDetails}</span>
               </Link>
             ))}
           </div>
           <div className="section-cta">
             <Link to="/services" className="btn btn-secondary">
-              Back to All Services
+              {t.common.backToAllServices}
             </Link>
           </div>
         </div>
       </section>
 
       <CTASection
-        title={`Request a Quote for ${service.title}`}
-        description="Contact Portillo Ceramic and Tile today to discuss your project and get a personalized quote."
+        title={`${t.serviceDetail.quoteTitle} ${service.title}`}
+        description={t.serviceDetail.quoteDescription}
       />
     </>
   );

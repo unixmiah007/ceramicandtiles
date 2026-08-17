@@ -2,16 +2,8 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchChatStatus, sendChatMessage } from '../api';
 import { contactInfo } from '../data/content';
+import { useLanguage } from '../context/LanguageContext';
 import { ApiError, ChatMessage } from '../types';
-
-const QUICK_PROMPTS = [
-  'What services do you offer?',
-  'How do I request a quote?',
-  'Do you work in Northern Virginia?',
-];
-
-const WELCOME_MESSAGE =
-  "Hi! I'm the Portillo Ceramic and Tile live assistant. Ask about our services, experience, or how to get a quote.";
 
 function createMessage(role: ChatMessage['role'], content: string): ChatMessage {
   return {
@@ -23,14 +15,19 @@ function createMessage(role: ChatMessage['role'], content: string): ChatMessage 
 }
 
 export default function LiveChat() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([createMessage('assistant', WELCOME_MESSAGE)]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState('');
   const [isOnline, setIsOnline] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    setMessages([createMessage('assistant', t.liveChat.welcome)]);
+  }, [t.liveChat.welcome]);
 
   useEffect(() => {
     fetchChatStatus()
@@ -70,7 +67,7 @@ export default function LiveChat() {
       setMessages((current) => [...current, createMessage('assistant', response.reply)]);
     } catch (err) {
       const apiError = err as ApiError;
-      setError(apiError.message || 'Unable to reach the assistant right now.');
+      setError(apiError.message || t.contact.genericError);
     } finally {
       setIsSending(false);
     }
@@ -88,23 +85,23 @@ export default function LiveChat() {
   return (
     <div className={`live-chat${isOpen ? ' live-chat--open' : ''}`}>
       {isOpen && (
-        <section className="live-chat-panel" id="live-chat-panel" aria-label="Live chat with Portillo assistant">
+        <section className="live-chat-panel" id="live-chat-panel" aria-label={t.liveChat.title}>
           <header className="live-chat-header">
             <div className="live-chat-header-copy">
-              <h2>Portillo Assistant</h2>
+              <h2>{t.liveChat.title}</h2>
               <p className="live-chat-status">
                 <span
                   className={`live-chat-status-dot${isOnline ? ' live-chat-status-dot--online' : ''}`}
                   aria-hidden="true"
                 />
-                {isOnline ? 'Live now' : 'Offline'}
+                {isOnline ? t.liveChat.liveNow : t.liveChat.offline}
               </p>
             </div>
             <button
               type="button"
               className="live-chat-close"
               onClick={() => setIsOpen(false)}
-              aria-label="Close chat"
+              aria-label={t.liveChat.close}
             >
               ×
             </button>
@@ -122,7 +119,7 @@ export default function LiveChat() {
 
             {isSending && (
               <div className="live-chat-message live-chat-message--assistant">
-                <div className="live-chat-bubble live-chat-bubble--typing" aria-label="Assistant is typing">
+                <div className="live-chat-bubble live-chat-bubble--typing" aria-label={t.liveChat.typing}>
                   <span />
                   <span />
                   <span />
@@ -135,7 +132,7 @@ export default function LiveChat() {
 
           {messages.length === 1 && !isSending && (
             <div className="live-chat-quick-prompts">
-              {QUICK_PROMPTS.map((prompt) => (
+              {t.liveChat.prompts.map((prompt) => (
                 <button
                   key={prompt}
                   type="button"
@@ -153,7 +150,7 @@ export default function LiveChat() {
           <footer className="live-chat-footer">
             <form className="live-chat-form" onSubmit={handleSubmit}>
               <label htmlFor="live-chat-input" className="sr-only">
-                Message the Portillo assistant
+                {t.liveChat.inputLabel}
               </label>
               <textarea
                 id="live-chat-input"
@@ -162,7 +159,7 @@ export default function LiveChat() {
                 rows={2}
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
-                placeholder="Ask about services, quotes, or projects..."
+                placeholder={t.liveChat.placeholder}
                 disabled={isSending}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' && !event.shiftKey) {
@@ -172,13 +169,14 @@ export default function LiveChat() {
                 }}
               />
               <button type="submit" className="live-chat-send" disabled={isSending || !input.trim()}>
-                Send
+                {t.liveChat.send}
               </button>
             </form>
             <p className="live-chat-footer-note">
-              Prefer to talk directly? Call{' '}
-              <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, '')}`}>{contactInfo.phone}</a> or{' '}
-              <Link to="/contact">request a quote</Link>.
+              {t.liveChat.preferCall}{' '}
+              <a href={`tel:${contactInfo.phone.replace(/[^\d+]/g, '')}`}>{contactInfo.phone}</a>{' '}
+              {t.liveChat.or}{' '}
+              <Link to="/contact">{t.liveChat.requestQuote}</Link>.
             </p>
           </footer>
         </section>
@@ -190,7 +188,7 @@ export default function LiveChat() {
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
         aria-controls="live-chat-panel"
-        aria-label={isOpen ? 'Close live chat' : 'Open live chat'}
+        aria-label={isOpen ? t.liveChat.close : t.liveChat.open}
       >
         {isOpen ? (
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

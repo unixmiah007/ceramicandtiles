@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
 import { submitContactForm } from '../api';
 import { contactInfo } from '../data/content';
-import { services } from '../data/services';
+import { useLanguage } from '../context/LanguageContext';
 import { pageHeroImages, sectionImages } from '../data/images';
 import { ApiError } from '../types';
 
@@ -24,6 +24,7 @@ const initialFormState: FormState = {
 };
 
 export default function ContactPage() {
+  const { t, services, getEnglishServiceById } = useLanguage();
   const [form, setForm] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState('');
@@ -43,12 +44,19 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await submitContactForm(form);
+      const englishService = getEnglishServiceById(form.projectType);
+      const response = await submitContactForm({
+        ...form,
+        projectType:
+          form.projectType === 'other'
+            ? t.common.other
+            : englishService?.title ?? form.projectType,
+      });
       setSuccessMessage(response.message);
       setForm(initialFormState);
     } catch (err) {
       const apiError = err as ApiError;
-      setErrors(apiError.errors || [apiError.message || 'Something went wrong. Please try again.']);
+      setErrors(apiError.errors || [apiError.message || t.contact.genericError]);
     } finally {
       setIsSubmitting(false);
     }
@@ -57,8 +65,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        title="Request a Quote Today"
-        subtitle="Whether you're planning a bathroom renovation, shower installation, tile replacement, or commercial project, contact us today to discuss your project."
+        title={t.contact.heroTitle}
+        subtitle={t.contact.heroSubtitle}
         backgroundImage={pageHeroImages.contact}
       />
 
@@ -71,40 +79,35 @@ export default function ContactPage() {
                 aspectRatio="16 / 10"
                 className="contact-info-image rounded-image"
               />
-              <h2>Contact Abel Portillo</h2>
-              <p>
-                Reach out to discuss your project and request a personalized quote. We&apos;re
-                here to help bring your vision to life.
-              </p>
+              <h2>{t.contact.contactTitle}</h2>
+              <p>{t.contact.contactIntro}</p>
 
               <div className="contact-details">
                 <div className="contact-detail">
-                  <span className="contact-label">Phone</span>
+                  <span className="contact-label">{t.common.phone}</span>
                   <a href={`tel:${contactInfo.phone}`} className="contact-value">
                     {contactInfo.phone}
                   </a>
                 </div>
                 <div className="contact-detail">
-                  <span className="contact-label">Email</span>
+                  <span className="contact-label">{t.common.email}</span>
                   <a href={`mailto:${contactInfo.email}`} className="contact-value">
                     {contactInfo.email}
                   </a>
                 </div>
                 <div className="contact-detail">
-                  <span className="contact-label">Service Area</span>
-                  <span className="contact-value">Northern Virginia &amp; Washington, D.C.</span>
+                  <span className="contact-label">{t.common.serviceArea}</span>
+                  <span className="contact-value">{t.common.serviceAreaValue}</span>
                 </div>
               </div>
 
               <div className="contact-note">
-                <p>
-                  Family-Owned. Professional Craftsmanship. Quality You Can See.
-                </p>
+                <p>{t.contact.note}</p>
               </div>
             </div>
 
             <div className="contact-form-panel">
-              <h2>Send Us a Message</h2>
+              <h2>{t.contact.formTitle}</h2>
 
               {successMessage && (
                 <div className="alert alert-success" role="status">
@@ -124,7 +127,7 @@ export default function ContactPage() {
 
               <form onSubmit={handleSubmit} className="contact-form" noValidate>
                 <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
+                  <label htmlFor="name">{t.contact.fullName}</label>
                   <input
                     type="text"
                     id="name"
@@ -132,13 +135,13 @@ export default function ContactPage() {
                     value={form.name}
                     onChange={handleChange}
                     required
-                    placeholder="Your name"
+                    placeholder={t.contact.namePlaceholder}
                   />
                 </div>
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="email">Email *</label>
+                    <label htmlFor="email">{t.common.email} *</label>
                     <input
                       type="email"
                       id="email"
@@ -146,11 +149,11 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       required
-                      placeholder="your@email.com"
+                      placeholder={t.contact.emailPlaceholder}
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="phone">Phone *</label>
+                    <label htmlFor="phone">{t.common.phone} *</label>
                     <input
                       type="tel"
                       id="phone"
@@ -158,13 +161,13 @@ export default function ContactPage() {
                       value={form.phone}
                       onChange={handleChange}
                       required
-                      placeholder="(703) 555-0123"
+                      placeholder={t.contact.phonePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="projectType">Project Type *</label>
+                  <label htmlFor="projectType">{t.contact.projectType}</label>
                   <select
                     id="projectType"
                     name="projectType"
@@ -172,18 +175,18 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Select a service</option>
+                    <option value="">{t.contact.selectService}</option>
                     {services.map((service) => (
-                      <option key={service.id} value={service.title}>
+                      <option key={service.id} value={service.id}>
                         {service.title}
                       </option>
                     ))}
-                    <option value="Other">Other</option>
+                    <option value="other">{t.common.other}</option>
                   </select>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">Project Details *</label>
+                  <label htmlFor="message">{t.contact.projectDetails}</label>
                   <textarea
                     id="message"
                     name="message"
@@ -191,7 +194,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    placeholder="Tell us about your project..."
+                    placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
 
@@ -200,7 +203,7 @@ export default function ContactPage() {
                   className="btn btn-primary btn-lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Submit Request'}
+                  {isSubmitting ? t.common.sending : t.common.submitRequest}
                 </button>
               </form>
             </div>

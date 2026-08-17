@@ -2,15 +2,17 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
-import { projects } from '../data/content';
+import { useLanguage } from '../context/LanguageContext';
 import { pageHeroImages, projectImages, sectionImages } from '../data/images';
 
 export default function ExperiencePage() {
+  const { t, projects } = useLanguage();
+
   return (
     <>
       <PageHero
-        title="Experience You Can Trust"
-        subtitle="Our experience includes residential and commercial projects throughout Northern Virginia and the Washington, D.C. area."
+        title={t.experience.heroTitle}
+        subtitle={t.experience.heroSubtitle}
         backgroundImage={pageHeroImages.experience}
       />
 
@@ -42,10 +44,7 @@ export default function ExperiencePage() {
               overlay
               className="highlight-box-bg"
             />
-            <p>
-              Our experience working in professional and high-traffic facilities has taught us
-              the importance of quality, durability, precision, and attention to detail.
-            </p>
+            <p>{t.experience.highlight}</p>
           </div>
         </div>
       </section>
@@ -59,29 +58,21 @@ export default function ExperiencePage() {
               className="rounded-image column-image"
             />
             <div>
-              <h2>Residential &amp; Commercial Expertise</h2>
-              <p>
-                From residential bathrooms and custom showers to commercial locker rooms and
-                professional facilities, our family brings experience, precision, and pride to
-                every project.
-              </p>
-              <p>
-                Whether you&apos;re upgrading a bathroom, creating a new shower, replacing
-                outdated tile, or renovating a commercial facility, we focus on doing the job
-                correctly from start to finish.
-              </p>
+              <h2>{t.experience.expertiseTitle}</h2>
+              <p>{t.experience.expertiseP1}</p>
+              <p>{t.experience.expertiseP2}</p>
               <div className="stats-panel">
                 <div className="stat">
-                  <span className="stat-label">Service Area</span>
-                  <span className="stat-value">Northern Virginia &amp; D.C.</span>
+                  <span className="stat-label">{t.experience.statServiceArea}</span>
+                  <span className="stat-value">{t.common.serviceAreaValue}</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-label">Project Types</span>
-                  <span className="stat-value">Residential &amp; Commercial</span>
+                  <span className="stat-label">{t.experience.statProjectTypes}</span>
+                  <span className="stat-value">{t.experience.statProjectTypesValue}</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-label">Notable Clients</span>
-                  <span className="stat-value">Capitals, Pentagon &amp; More</span>
+                  <span className="stat-label">{t.experience.statNotableClients}</span>
+                  <span className="stat-value">{t.experience.statNotableClientsValue}</span>
                 </div>
               </div>
             </div>
@@ -90,14 +81,14 @@ export default function ExperiencePage() {
       </section>
 
       <CTASection
-        title="Ready to Start Your Project?"
-        description="Contact us today to discuss your residential or commercial tile project and request a quote."
+        title={t.experience.ctaTitle}
+        description={t.experience.ctaDescription}
       />
 
       <section className="section">
         <div className="container text-center">
           <Link to="/services" className="btn btn-secondary">
-            Explore Our Services
+            {t.common.exploreServices}
           </Link>
         </div>
       </section>

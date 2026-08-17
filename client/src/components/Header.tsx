@@ -1,14 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
-
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/experience', label: 'Experience' },
-  { to: '/services', label: 'Services' },
-  { to: '/why-portillo', label: 'Why Portillo' },
-  { to: '/contact', label: 'Contact' },
-];
+import { useLanguage } from '../context/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 
 export default function Header() {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { to: '/', label: t.nav.home },
+    { to: '/experience', label: t.nav.experience },
+    { to: '/services', label: t.nav.services },
+    { to: '/why-portillo', label: t.nav.whyPortillo },
+    { to: '/contact', label: t.nav.contact },
+  ];
+
   return (
     <header className="header">
       <div className="container header-inner">
@@ -36,9 +40,12 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Link to="/contact" className="btn btn-primary header-cta">
-          Request a Quote
-        </Link>
+        <div className="header-actions">
+          <LanguageToggle />
+          <Link to="/contact" className="btn btn-primary header-cta">
+            {t.nav.requestQuote}
+          </Link>
+        </div>
       </div>
     </header>
   );

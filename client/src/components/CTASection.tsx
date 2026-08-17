@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import { sectionImages } from '../data/images';
+import { useLanguage } from '../context/LanguageContext';
 
 interface CTASectionProps {
   title?: string;
   description?: string;
 }
 
-export default function CTASection({
-  title = 'Your Vision. Our Craftsmanship.',
-  description = 'Your home or business deserves tile work that looks beautiful and performs for years to come. Let Portillo Ceramic and Tile bring your vision to life.',
-}: CTASectionProps) {
+export default function CTASection({ title, description }: CTASectionProps) {
+  const { t } = useLanguage();
+
   return (
     <section
       className="cta-section cta-section--image"
@@ -18,10 +18,10 @@ export default function CTASection({
       <div className="cta-section-overlay" aria-hidden="true" />
       <span className="sr-only">{sectionImages.ctaBackground.alt}</span>
       <div className="container cta-content">
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>{title ?? t.cta.defaultTitle}</h2>
+        <p>{description ?? t.cta.defaultDescription}</p>
         <Link to="/contact" className="btn btn-primary btn-lg">
-          Request a Quote Today
+          {t.common.requestQuoteToday}
         </Link>
       </div>
     </section>

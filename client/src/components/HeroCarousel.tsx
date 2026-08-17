@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroSlides, FALLBACK_IMAGE } from '../data/images';
+import { useLanguage } from '../context/LanguageContext';
 
 const AUTOPLAY_MS = 6000;
 
 export default function HeroCarousel() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -23,12 +25,13 @@ export default function HeroCarousel() {
   }, [goNext, isPaused]);
 
   const activeSlide = heroSlides[activeIndex];
+  const activeSlideText = t.hero.slides[activeSlide.id];
 
   return (
     <section
       className="hero-carousel"
       aria-roledescription="carousel"
-      aria-label="Featured projects"
+      aria-label={t.hero.featuredProjects}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -60,33 +63,32 @@ export default function HeroCarousel() {
       </div>
 
       <div className="container hero-carousel-content">
-        <p className="hero-eyebrow">Portillo Ceramic and Tile</p>
+        <p className="hero-eyebrow">{t.hero.eyebrow}</p>
 
         <div className="hero-carousel-text">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`hero-carousel-caption ${index === activeIndex ? 'is-active' : ''}`}
-              aria-hidden={index !== activeIndex}
-            >
-              <h1>{slide.headline}</h1>
-              <p className="hero-subtitle">{slide.subtitle}</p>
-            </div>
-          ))}
+          {heroSlides.map((slide, index) => {
+            const slideText = t.hero.slides[slide.id];
+            return (
+              <div
+                key={slide.id}
+                className={`hero-carousel-caption ${index === activeIndex ? 'is-active' : ''}`}
+                aria-hidden={index !== activeIndex}
+              >
+                <h1>{slideText.headline}</h1>
+                <p className="hero-subtitle">{slideText.subtitle}</p>
+              </div>
+            );
+          })}
         </div>
 
-        <p className="hero-description">
-          Family-Owned Craftsmanship. Professional Results. From residential bathrooms and
-          custom showers to commercial locker rooms and professional facilities, our family
-          brings experience, precision, and pride to every project.
-        </p>
+        <p className="hero-description">{t.hero.description}</p>
 
         <div className="hero-actions">
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Quote
+            {t.common.requestQuote}
           </Link>
           <Link to="/services" className="btn btn-outline btn-lg">
-            View Our Services
+            {t.common.viewServices}
           </Link>
         </div>
 
@@ -95,19 +97,19 @@ export default function HeroCarousel() {
             type="button"
             className="hero-carousel-arrow hero-carousel-arrow--prev"
             onClick={goPrev}
-            aria-label="Previous slide"
+            aria-label={t.hero.previousSlide}
           >
             ‹
           </button>
 
-          <div className="hero-carousel-dots" role="tablist" aria-label="Hero slides">
+          <div className="hero-carousel-dots" role="tablist" aria-label={t.hero.featuredProjects}>
             {heroSlides.map((slide, index) => (
               <button
                 key={slide.id}
                 type="button"
                 role="tab"
                 className={`hero-carousel-dot ${index === activeIndex ? 'is-active' : ''}`}
-                aria-label={`Go to slide ${index + 1}: ${slide.headline}`}
+                aria-label={`${t.hero.goToSlide} ${index + 1}: ${t.hero.slides[slide.id].headline}`}
                 aria-selected={index === activeIndex}
                 onClick={() => goTo(index)}
               />
@@ -118,13 +120,13 @@ export default function HeroCarousel() {
             type="button"
             className="hero-carousel-arrow hero-carousel-arrow--next"
             onClick={goNext}
-            aria-label="Next slide"
+            aria-label={t.hero.nextSlide}
           >
             ›
           </button>
         </div>
 
-        <p className="sr-only">{activeSlide.image.alt}</p>
+        <p className="sr-only">{activeSlideText.headline}. {activeSlide.image.alt}</p>
       </div>
     </section>
   );
