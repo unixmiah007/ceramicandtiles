@@ -8,6 +8,7 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import WhyPortilloPage from './pages/WhyPortilloPage';
 import ValueDetailPage from './pages/ValueDetailPage';
 import ContactPage from './pages/ContactPage';
+import QuoteWizardPage from './pages/QuoteWizardPage';
 import BackToTop from './components/BackToTop';
 import LiveChat from './components/LiveChat';
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/why-portillo" element={<WhyPortilloPage />} />
           <Route path="/why-portillo/:valueId" element={<ValueDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/quote-wizard" element={<QuoteWizardPage />} />
         </Routes>
       </main>
       <Footer />

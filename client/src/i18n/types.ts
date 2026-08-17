@@ -13,6 +13,9 @@ export interface UiTranslations {
     whyPortillo: string;
     contact: string;
     requestQuote: string;
+    quoteWizard: string;
+    openMenu: string;
+    closeMenu: string;
   };
   footer: {
     tagline: string;
@@ -148,5 +151,63 @@ export interface UiTranslations {
     preferCall: string;
     or: string;
     requestQuote: string;
+  };
+  wizard: {
+    heroTitle: string;
+    heroSubtitle: string;
+    stepLabels: string[];
+    steps: {
+      property: { title: string; description: string };
+      service: { title: string; description: string };
+      tiles: { title: string; description: string };
+      details: { title: string; description: string };
+      contact: { title: string; description: string };
+    };
+    propertyType: string;
+    residential: string;
+    commercial: string;
+    propertyDescription: string;
+    propertyDescriptionPlaceholder: string;
+    location: string;
+    locationPlaceholder: string;
+    selectService: string;
+    tileSamplesTitle: string;
+    tileSamplesHint: string;
+    projectSize: string;
+    timeline: string;
+    additionalNotes: string;
+    additionalNotesPlaceholder: string;
+    reviewTitle: string;
+    fullName: string;
+    submit: string;
+    next: string;
+    back: string;
+    success: string;
+    validation: {
+      propertyType: string;
+      propertyDescription: string;
+      location: string;
+      service: string;
+      tiles: string;
+      projectSize: string;
+      timeline: string;
+      name: string;
+      email: string;
+      phone: string;
+    };
+    projectSizes: Record<string, string>;
+    timelines: Record<string, string>;
+    tileSamples: Record<string, string>;
+    review: {
+      propertyType: string;
+      location: string;
+      property: string;
+      service: string;
+      tiles: string;
+      size: string;
+      timeline: string;
+      notes: string;
+      none: string;
+    };
   };
 }

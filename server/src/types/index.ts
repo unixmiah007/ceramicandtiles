@@ -6,6 +6,20 @@ export interface ContactFormData {
   message: string;
 }
 
+export interface WizardSubmission {
+  propertyType: string;
+  propertyDescription: string;
+  location: string;
+  serviceTitle: string;
+  tileSamples: string[];
+  projectSize: string;
+  timeline: string;
+  additionalNotes: string;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export interface ContactResponse {
   success: boolean;
   message: string;

@@ -1,4 +1,4 @@
-import { ContactFormData, ContactResponse, ApiError, ChatMessage, ChatResponse, ChatStatusResponse } from '../types';
+import { ContactFormData, ContactResponse, ApiError, ChatMessage, ChatResponse, ChatStatusResponse, WizardSubmission } from '../types';
 
 const API_BASE = '/api';
 
@@ -31,6 +31,15 @@ export async function sendChatMessage(messages: Pick<ChatMessage, 'role' | 'cont
     body: JSON.stringify({ messages }),
   });
   return handleResponse<ChatResponse>(response);
+}
+
+export async function submitWizardForm(formData: WizardSubmission): Promise<ContactResponse> {
+  const response = await fetch(`${API_BASE}/wizard`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
+  return handleResponse<ContactResponse>(response);
 }
 
 export { services, projects, contactInfo } from '../data/content';
