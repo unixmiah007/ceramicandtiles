@@ -3,10 +3,12 @@ import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
 import { useLanguage } from '../context/LanguageContext';
+import { caseStudies } from '../data/features';
 import { pageHeroImages, projectImages, sectionImages } from '../data/images';
 
 export default function ExperiencePage() {
-  const { t, projects } = useLanguage();
+  const { t, f, projects } = useLanguage();
+  const caseStudyIds = new Set(caseStudies.map((study) => study.projectId));
 
   return (
     <>
@@ -32,6 +34,11 @@ export default function ExperiencePage() {
                     <span className="project-location">{project.location}</span>
                   </div>
                   <p>{project.description}</p>
+                  {caseStudyIds.has(project.id) && (
+                    <Link to={`/experience/${project.id}`} className="inline-link">
+                      {f.caseStudy.viewCaseStudy}
+                    </Link>
+                  )}
                 </div>
               </article>
             ))}

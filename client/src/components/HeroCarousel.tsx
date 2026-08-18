@@ -90,6 +90,9 @@ export default function HeroCarousel() {
           <Link to="/services" className="btn btn-outline btn-lg">
             {t.common.viewServices}
           </Link>
+          <Link to="/quote-wizard" className="btn btn-outline btn-lg">
+            {t.nav.quoteWizard}
+          </Link>
         </div>
 
         <div className="hero-carousel-controls">

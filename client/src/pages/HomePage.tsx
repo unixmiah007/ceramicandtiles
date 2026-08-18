@@ -3,14 +3,19 @@ import HeroCarousel from '../components/HeroCarousel';
 import GallerySection from '../components/GallerySection';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import TestimonialsSection from '../components/TestimonialsSection';
+import InstagramFeed from '../components/InstagramFeed';
+import ReferralCTA from '../components/ReferralCTA';
 import { useLanguage } from '../context/LanguageContext';
+import { beforeAfterProjects } from '../data/features';
 import { processStepImages, sectionImages, getServiceImage, getValueImage } from '../data/images';
 
 const processStepKeys = ['demolition', 'waterproofing', 'installation', 'finishing'] as const;
 const processStepNumbers = ['01', '02', '03', '04'];
 
 export default function HomePage() {
-  const { t, services, values, getEnglishServiceById, getEnglishValueById } = useLanguage();
+  const { t, f, services, values, getEnglishServiceById, getEnglishValueById } = useLanguage();
 
   return (
     <>
@@ -51,6 +56,59 @@ export default function HomePage() {
       </section>
 
       <GallerySection />
+
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-header">
+            <h2>{f.home.beforeAfterTitle}</h2>
+          </div>
+          <div className="before-after-preview">
+            {beforeAfterProjects.slice(0, 2).map((project) => (
+              <BeforeAfterSlider
+                key={project.id}
+                beforeImage={project.beforeImage}
+                afterImage={project.afterImage}
+                title={f.beforeAfter.titles[project.titleKey as keyof typeof f.beforeAfter.titles]}
+              />
+            ))}
+          </div>
+          <div className="section-cta">
+            <Link to="/before-after" className="btn btn-secondary">
+              {f.home.beforeAfterLink}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <TestimonialsSection />
+
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{f.home.resourcesTitle}</h2>
+          </div>
+          <div className="resources-grid">
+            <Link to="/estimate" className="resource-card">
+              <h3>{f.nav.estimate}</h3>
+              <span>{f.home.estimateLink}</span>
+            </Link>
+            <Link to="/faq" className="resource-card">
+              <h3>{f.nav.faq}</h3>
+              <span>{f.home.faqLink}</span>
+            </Link>
+            <Link to="/checklist" className="resource-card">
+              <h3>{f.nav.checklist}</h3>
+              <span>{f.checklist.download}</span>
+            </Link>
+            <Link to="/service-area" className="resource-card">
+              <h3>{f.nav.serviceArea}</h3>
+              <span>{f.serviceArea.notListedCta}</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <InstagramFeed />
 
       <section className="section section-alt">
         <div className="container">
@@ -122,6 +180,8 @@ export default function HomePage() {
       </section>
 
       <CTASection />
+
+      <ReferralCTA />
     </>
   );
 }

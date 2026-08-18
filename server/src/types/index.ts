@@ -1,9 +1,18 @@
+export interface PhotoAttachment {
+  name: string;
+  type: string;
+  data: string;
+}
+
 export interface ContactFormData {
   name: string;
   email: string;
   phone: string;
   projectType: string;
   message: string;
+  smsOptIn?: boolean;
+  preferredVisit?: string;
+  photos?: PhotoAttachment[];
 }
 
 export interface WizardSubmission {
@@ -18,6 +27,9 @@ export interface WizardSubmission {
   name: string;
   email: string;
   phone: string;
+  smsOptIn?: boolean;
+  preferredVisit?: string;
+  photos?: PhotoAttachment[];
 }
 
 export interface ContactResponse {

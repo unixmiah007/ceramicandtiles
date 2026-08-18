@@ -1,5 +1,6 @@
 import { StockImage, galleryImages, getServiceImage } from './images';
 import { services } from './services';
+import type { PhotoAttachment } from '../types';
 
 export interface TileSample {
   id: string;
@@ -85,6 +86,9 @@ export interface WizardFormData {
   name: string;
   email: string;
   phone: string;
+  smsOptIn: boolean;
+  preferredVisit: string;
+  photos: PhotoAttachment[];
 }
 
 export const initialWizardForm: WizardFormData = {
@@ -99,6 +103,9 @@ export const initialWizardForm: WizardFormData = {
   name: '',
   email: '',
   phone: '',
+  smsOptIn: false,
+  preferredVisit: '',
+  photos: [],
 };
 
 export const wizardSteps = [

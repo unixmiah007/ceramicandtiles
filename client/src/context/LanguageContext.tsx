@@ -14,7 +14,8 @@ import {
   getValueById as getEnglishValueById,
 } from '../data/values';
 import { Project, Service, ValueProposition } from '../types';
-import { getUiTranslations, Locale, uiTranslations } from '../i18n';
+import { getFeatureContent, getUiTranslations, Locale, uiTranslations } from '../i18n';
+import type { FeatureContent } from '../i18n/features.en';
 import { projectsEs } from '../i18n/projects.es';
 import { servicesEs } from '../i18n/services.es';
 import { valuesEs } from '../i18n/values.es';
@@ -26,6 +27,7 @@ interface LanguageContextValue {
   setLocale: (locale: Locale) => void;
   toggleLocale: () => void;
   t: ReturnType<typeof getUiTranslations>;
+  f: FeatureContent;
   services: Service[];
   values: ValueProposition[];
   projects: Project[];
@@ -127,6 +129,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       setLocale,
       toggleLocale,
       t: getUiTranslations(locale),
+      f: getFeatureContent(locale),
       services,
       values,
       projects: localizedProjects,

@@ -1,6 +1,9 @@
 import { FormEvent, useMemo, useState } from 'react';
 import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
+import PhotoUploadField from '../components/PhotoUploadField';
+import AppointmentField from '../components/AppointmentField';
+import SmsOptInField from '../components/SmsOptInField';
 import { submitWizardForm } from '../api';
 import { useLanguage } from '../context/LanguageContext';
 import {
@@ -124,6 +127,9 @@ export default function QuoteWizardPage() {
         name: form.name.trim(),
         email: form.email.trim(),
         phone: form.phone.trim(),
+        smsOptIn: form.smsOptIn || undefined,
+        preferredVisit: form.preferredVisit.trim() || undefined,
+        photos: form.photos.length ? form.photos : undefined,
       });
 
       setSuccessMessage(response.message);
@@ -414,6 +420,21 @@ export default function QuoteWizardPage() {
                     />
                   </div>
                 </div>
+
+                <PhotoUploadField
+                  photos={form.photos}
+                  onChange={(photos) => updateForm('photos', photos)}
+                />
+
+                <AppointmentField
+                  value={form.preferredVisit}
+                  onChange={(preferredVisit) => updateForm('preferredVisit', preferredVisit)}
+                />
+
+                <SmsOptInField
+                  checked={form.smsOptIn}
+                  onChange={(smsOptIn) => updateForm('smsOptIn', smsOptIn)}
+                />
               </form>
             )}
 

@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import { contactInfo } from '../data/content';
 import { useLanguage } from '../context/LanguageContext';
+import TrustBadges from './TrustBadges';
+import BusinessHours from './BusinessHours';
+import SocialShare from './SocialShare';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, f } = useLanguage();
 
   return (
     <footer className="footer">
@@ -11,6 +14,7 @@ export default function Footer() {
         <div className="footer-brand">
           <h2 className="footer-title">Portillo Ceramic and Tile</h2>
           <p className="footer-tagline">{t.footer.tagline}</p>
+          <TrustBadges />
         </div>
 
         <div className="footer-links">
@@ -20,6 +24,19 @@ export default function Footer() {
             <li><Link to="/services">{t.nav.services}</Link></li>
             <li><Link to="/why-portillo">{t.nav.whyPortillo}</Link></li>
             <li><Link to="/contact">{t.nav.contact}</Link></li>
+            <li><Link to="/quote-wizard">{t.nav.quoteWizard}</Link></li>
+          </ul>
+        </div>
+
+        <div className="footer-links">
+          <h3>{f.nav.resources}</h3>
+          <ul>
+            <li><Link to="/faq">{f.nav.faq}</Link></li>
+            <li><Link to="/before-after">{f.nav.beforeAfter}</Link></li>
+            <li><Link to="/service-area">{f.nav.serviceArea}</Link></li>
+            <li><Link to="/estimate">{f.nav.estimate}</Link></li>
+            <li><Link to="/blog">{f.nav.blog}</Link></li>
+            <li><Link to="/checklist">{f.nav.checklist}</Link></li>
           </ul>
         </div>
 
@@ -32,6 +49,8 @@ export default function Footer() {
           <p>
             <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
           </p>
+          <BusinessHours />
+          <SocialShare className="footer-social" />
         </div>
       </div>
 

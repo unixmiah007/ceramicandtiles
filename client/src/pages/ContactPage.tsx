@@ -1,11 +1,16 @@
 import { FormEvent, useState } from 'react';
 import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
+import PhotoUploadField from '../components/PhotoUploadField';
+import SmsOptInField from '../components/SmsOptInField';
+import AppointmentField from '../components/AppointmentField';
+import TrustBadges from '../components/TrustBadges';
+import BusinessHours from '../components/BusinessHours';
 import { submitContactForm } from '../api';
 import { contactInfo } from '../data/content';
 import { useLanguage } from '../context/LanguageContext';
 import { pageHeroImages, sectionImages } from '../data/images';
-import { ApiError } from '../types';
+import { ApiError, PhotoAttachment } from '../types';
 
 interface FormState {
   name: string;
@@ -13,6 +18,9 @@ interface FormState {
   phone: string;
   projectType: string;
   message: string;
+  smsOptIn: boolean;
+  preferredVisit: string;
+  photos: PhotoAttachment[];
 }
 
 const initialFormState: FormState = {
@@ -21,6 +29,9 @@ const initialFormState: FormState = {
   phone: '',
   projectType: '',
   message: '',
+  smsOptIn: false,
+  preferredVisit: '',
+  photos: [],
 };
 
 export default function ContactPage() {
@@ -51,6 +62,9 @@ export default function ContactPage() {
           form.projectType === 'other'
             ? t.common.other
             : englishService?.title ?? form.projectType,
+        photos: form.photos.length ? form.photos : undefined,
+        preferredVisit: form.preferredVisit.trim() || undefined,
+        smsOptIn: form.smsOptIn || undefined,
       });
       setSuccessMessage(response.message);
       setForm(initialFormState);
@@ -104,6 +118,9 @@ export default function ContactPage() {
               <div className="contact-note">
                 <p>{t.contact.note}</p>
               </div>
+
+              <TrustBadges />
+              <BusinessHours />
             </div>
 
             <div className="contact-form-panel">
@@ -197,6 +214,21 @@ export default function ContactPage() {
                     placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
+
+                <PhotoUploadField
+                  photos={form.photos}
+                  onChange={(photos) => setForm((prev) => ({ ...prev, photos }))}
+                />
+
+                <AppointmentField
+                  value={form.preferredVisit}
+                  onChange={(preferredVisit) => setForm((prev) => ({ ...prev, preferredVisit }))}
+                />
+
+                <SmsOptInField
+                  checked={form.smsOptIn}
+                  onChange={(smsOptIn) => setForm((prev) => ({ ...prev, smsOptIn }))}
+                />
 
                 <button
                   type="submit"

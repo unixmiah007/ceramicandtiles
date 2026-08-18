@@ -1,4 +1,4 @@
-import { ContactFormData, ContactResponse, ApiError, ChatMessage, ChatResponse, ChatStatusResponse, WizardSubmission } from '../types';
+import { ContactFormData, ContactResponse, ApiError, ChatMessage, ChatResponse, ChatStatusResponse, WizardSubmission, BlogCommentsResponse, BlogCommentInput, BlogCommentSubmitResponse } from '../types';
 
 const API_BASE = '/api';
 
@@ -40,6 +40,20 @@ export async function submitWizardForm(formData: WizardSubmission): Promise<Cont
     body: JSON.stringify(formData),
   });
   return handleResponse<ContactResponse>(response);
+}
+
+export async function fetchBlogComments(slug: string): Promise<BlogCommentsResponse> {
+  const response = await fetch(`${API_BASE}/blog/${encodeURIComponent(slug)}/comments`);
+  return handleResponse<BlogCommentsResponse>(response);
+}
+
+export async function submitBlogComment(slug: string, data: BlogCommentInput): Promise<BlogCommentSubmitResponse> {
+  const response = await fetch(`${API_BASE}/blog/${encodeURIComponent(slug)}/comments`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return handleResponse<BlogCommentSubmitResponse>(response);
 }
 
 export { services, projects, contactInfo } from '../data/content';

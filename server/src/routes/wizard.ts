@@ -53,6 +53,9 @@ router.post('/wizard', async (req: Request, res: Response<ContactResponse | ApiE
     name: formData.name!.trim(),
     email: formData.email!.trim(),
     phone: formData.phone!.trim(),
+    smsOptIn: Boolean(formData.smsOptIn),
+    preferredVisit: formData.preferredVisit?.trim(),
+    photos: Array.isArray(formData.photos) ? formData.photos : undefined,
   };
 
   if (!isEmailConfigured()) {

@@ -48,6 +48,9 @@ router.post('/contact', async (req: Request, res: Response<ContactResponse | Api
     phone: formData.phone!.trim(),
     projectType: formData.projectType!.trim(),
     message: formData.message!.trim(),
+    smsOptIn: Boolean(formData.smsOptIn),
+    preferredVisit: formData.preferredVisit?.trim(),
+    photos: Array.isArray(formData.photos) ? formData.photos : undefined,
   };
 
   if (!isEmailConfigured()) {

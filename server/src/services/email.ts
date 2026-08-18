@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
-import { ContactFormData, WizardSubmission } from '../types';
+import { ContactFormData, PhotoAttachment, WizardSubmission } from '../types';
 
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'PortilloCeramicTile@gmail.com';
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
@@ -34,6 +34,16 @@ function getTransporter(): Transporter {
   return transporter;
 }
 
+function buildAttachments(photos?: PhotoAttachment[]) {
+  if (!photos?.length) return undefined;
+
+  return photos.map((photo) => ({
+    filename: photo.name,
+    content: Buffer.from(photo.data, 'base64'),
+    contentType: photo.type,
+  }));
+}
+
 function buildEmailContent(submission: ContactFormData) {
   const submittedAt = new Date().toLocaleString('en-US', {
     timeZone: 'America/New_York',
@@ -48,6 +58,9 @@ function buildEmailContent(submission: ContactFormData) {
     `Email: ${submission.email}`,
     `Phone: ${submission.phone}`,
     `Project Type: ${submission.projectType}`,
+    submission.preferredVisit ? `Preferred Visit: ${submission.preferredVisit}` : '',
+    submission.smsOptIn ? 'SMS Updates: Yes' : 'SMS Updates: No',
+    submission.photos?.length ? `Photos Attached: ${submission.photos.length}` : '',
     '',
     'Project Details:',
     submission.message,
@@ -77,6 +90,9 @@ function buildEmailContent(submission: ContactFormData) {
         <td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Project Type</td>
         <td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${escapeHtml(submission.projectType)}</td>
       </tr>
+      ${submission.preferredVisit ? `<tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Preferred Visit</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${escapeHtml(submission.preferredVisit)}</td></tr>` : ''}
+      <tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">SMS Updates</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${submission.smsOptIn ? 'Yes' : 'No'}</td></tr>
+      ${submission.photos?.length ? `<tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Photos</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${submission.photos.length} attached</td></tr>` : ''}
     </table>
     <h3 style="margin-top: 24px;">Project Details</h3>
     <p style="white-space: pre-wrap; line-height: 1.6;">${escapeHtml(submission.message)}</p>
@@ -106,6 +122,7 @@ export async function sendContactEmail(submission: ContactFormData): Promise<voi
     subject: `Quote Request: ${submission.projectType} – ${submission.name}`,
     text,
     html,
+    attachments: buildAttachments(submission.photos),
   });
 }
 
@@ -127,6 +144,9 @@ function buildWizardEmailContent(submission: WizardSubmission) {
     `Name: ${submission.name}`,
     `Email: ${submission.email}`,
     `Phone: ${submission.phone}`,
+    submission.preferredVisit ? `Preferred Visit: ${submission.preferredVisit}` : '',
+    submission.smsOptIn ? 'SMS Updates: Yes' : 'SMS Updates: No',
+    submission.photos?.length ? `Photos Attached: ${submission.photos.length}` : '',
     '',
     'PROPERTY',
     `Type: ${submission.propertyType}`,
@@ -153,6 +173,9 @@ function buildWizardEmailContent(submission: WizardSubmission) {
       <tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Name</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${escapeHtml(submission.name)}</td></tr>
       <tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Email</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;"><a href="mailto:${escapeHtml(submission.email)}">${escapeHtml(submission.email)}</a></td></tr>
       <tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Phone</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${escapeHtml(submission.phone)}</td></tr>
+      ${submission.preferredVisit ? `<tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Preferred Visit</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${escapeHtml(submission.preferredVisit)}</td></tr>` : ''}
+      <tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">SMS Updates</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${submission.smsOptIn ? 'Yes' : 'No'}</td></tr>
+      ${submission.photos?.length ? `<tr><td style="padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #e0dcd4;">Photos</td><td style="padding: 8px 12px; border-bottom: 1px solid #e0dcd4;">${submission.photos.length} attached</td></tr>` : ''}
     </table>
     <h3 style="margin-top: 24px;">Property</h3>
     <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
@@ -186,6 +209,7 @@ export async function sendWizardEmail(submission: WizardSubmission): Promise<voi
     subject: `Wizard Quote: ${submission.serviceTitle} – ${submission.name}`,
     text,
     html,
+    attachments: buildAttachments(submission.photos),
   });
 }
 

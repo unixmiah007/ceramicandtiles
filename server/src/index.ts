@@ -7,6 +7,7 @@ import contactRoutes from './routes/contact';
 import contentRoutes from './routes/content';
 import chatRoutes from './routes/chat';
 import wizardRoutes from './routes/wizard';
+import commentRoutes from './routes/comments';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,6 +24,7 @@ app.use('/api', contactRoutes);
 app.use('/api', contentRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', wizardRoutes);
+app.use('/api', commentRoutes);
 
 const clientBuildPath = path.join(__dirname, '../../client/dist');
 app.use(express.static(clientBuildPath));
