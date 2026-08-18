@@ -4,8 +4,10 @@ import StockImage from '../components/StockImage';
 import PhotoUploadField from '../components/PhotoUploadField';
 import AppointmentField from '../components/AppointmentField';
 import SmsOptInField from '../components/SmsOptInField';
+import SeoHead from '../components/SeoHead';
 import { submitWizardForm } from '../api';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import {
   initialWizardForm,
   projectSizeOptions,
@@ -19,7 +21,8 @@ import { pageHeroImages } from '../data/images';
 import { ApiError } from '../types';
 
 export default function QuoteWizardPage() {
-  const { t, services, getEnglishServiceById } = useLanguage();
+  const { locale, t, services, getEnglishServiceById } = useLanguage();
+  const seo = getStaticPageSeo('quote-wizard', locale)!;
   const [stepIndex, setStepIndex] = useState(0);
   const [form, setForm] = useState<WizardFormData>(initialWizardForm);
   const [errors, setErrors] = useState<string[]>([]);
@@ -147,6 +150,7 @@ export default function QuoteWizardPage() {
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={t.wizard.heroTitle}
         subtitle={t.wizard.heroSubtitle}

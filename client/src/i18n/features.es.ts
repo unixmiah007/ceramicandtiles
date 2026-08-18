@@ -53,7 +53,7 @@ export const featuresEs: FeatureContent = {
   },
   testimonials: {
     title: 'Lo Que Dicen Nuestros Clientes',
-    subtitle: 'Propietarios y administradores de instalaciones en el norte de Virginia confían en Portillo Ceramic and Tile.',
+    subtitle: 'Propietarios y administradores de instalaciones en Washington D.C., Maryland, Virginia y Virginia Occidental confían en Portillo Ceramic and Tile.',
     projectTypes: {
       bathroom: 'Renovación de Baño',
       shower: 'Ducha Personalizada',
@@ -82,7 +82,7 @@ export const featuresEs: FeatureContent = {
   },
   serviceArea: {
     heroTitle: 'Área de Servicio',
-    heroSubtitle: 'Portillo Ceramic and Tile atiende propietarios y clientes comerciales en el norte de Virginia y Washington, D.C.',
+    heroSubtitle: 'Portillo Ceramic and Tile atiende propietarios y clientes comerciales en Washington D.C., Maryland, Virginia y Virginia Occidental.',
     mapTitle: 'Dónde Trabajamos',
     mapDescription: 'Completamos proyectos regularmente en las comunidades siguientes. Contáctenos si su ubicación no aparece—quizás aún podamos ayudarle.',
     citiesTitle: 'Comunidades que Atendemos',
@@ -110,7 +110,7 @@ export const featuresEs: FeatureContent = {
       repairQ: '¿Pueden reparar azulejos en lugar de reemplazar todo?',
       repairA: 'En muchos casos, sí. Evaluamos azulejos agrietados, sueltos o dañados y recomendamos reparación o reemplazo parcial cuando no es necesaria una renovación completa.',
       areaQ: '¿Qué áreas atienden?',
-      areaA: 'Atendemos el norte de Virginia y Washington, D.C., incluyendo Arlington, Fairfax, Alexandria, Loudoun y comunidades cercanas.',
+      areaA: 'Atendemos Washington D.C., Maryland, Virginia y Virginia Occidental — incluyendo Bethesda, Silver Spring, Arlington, Fairfax, Alexandria, Rockville, Martinsburg y comunidades cercanas.',
     },
   },
   estimate: {

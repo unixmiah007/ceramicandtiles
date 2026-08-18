@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { estimateOptions } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { sectionImages } from '../data/images';
 
 function formatCurrency(value: number) {
@@ -15,12 +17,14 @@ function formatCurrency(value: number) {
 }
 
 export default function EstimatePage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const seo = getStaticPageSeo('estimate', locale)!;
   const [selectedId, setSelectedId] = useState(estimateOptions[0].id);
   const selected = estimateOptions.find((opt) => opt.id === selectedId) ?? estimateOptions[0];
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.estimate.heroTitle}
         subtitle={f.estimate.heroSubtitle}

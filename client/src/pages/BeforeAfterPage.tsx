@@ -2,15 +2,19 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { beforeAfterProjects } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { galleryImages } from '../data/images';
 
 export default function BeforeAfterPage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const seo = getStaticPageSeo('before-after', locale)!;
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.beforeAfter.heroTitle}
         subtitle={f.beforeAfter.heroSubtitle}

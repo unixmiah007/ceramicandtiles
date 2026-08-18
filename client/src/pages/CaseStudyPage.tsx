@@ -3,12 +3,14 @@ import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
 import CTASection from '../components/CTASection';
 import { caseStudies } from '../data/features';
+import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
+import { getCaseStudySeo } from '../seo/meta';
 import { projectImages } from '../data/images';
 
 export default function CaseStudyPage() {
   const { projectId } = useParams<{ projectId: string }>();
-  const { f, projects } = useLanguage();
+  const { locale, f, projects } = useLanguage();
   const study = caseStudies.find((item) => item.projectId === projectId);
   const project = projects.find((item) => item.id === projectId);
 
@@ -27,9 +29,11 @@ export default function CaseStudyPage() {
 
   const studyKey = study.id as 'capitals' | 'pentagon' | 'orangetheory';
   const studyContent = f.caseStudy[studyKey];
+  const seo = getCaseStudySeo(project.name, project.location, project.description, project.id, locale);
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={project.name}
         subtitle={project.location}

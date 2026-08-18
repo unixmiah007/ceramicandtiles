@@ -21,7 +21,7 @@ export default function InstagramFeed() {
         </div>
         <p className="instagram-handle text-center">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/portilloceramicandtile"
             target="_blank"
             rel="noopener noreferrer"
           >

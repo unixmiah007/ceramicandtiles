@@ -51,7 +51,7 @@ export const featuresEn = {
   },
   testimonials: {
     title: 'What Our Customers Say',
-    subtitle: 'Homeowners and facility managers across Northern Virginia trust Portillo Ceramic and Tile.',
+    subtitle: 'Homeowners and facility managers across Washington D.C., Maryland, Virginia, and West Virginia trust Portillo Ceramic and Tile.',
     projectTypes: {
       bathroom: 'Bathroom Renovation',
       shower: 'Custom Shower',
@@ -80,7 +80,7 @@ export const featuresEn = {
   },
   serviceArea: {
     heroTitle: 'Service Area',
-    heroSubtitle: 'Portillo Ceramic and Tile serves homeowners and commercial clients throughout Northern Virginia and Washington, D.C.',
+    heroSubtitle: 'Portillo Ceramic and Tile serves homeowners and commercial clients throughout Washington D.C., Maryland, Virginia, and West Virginia.',
     mapTitle: 'Where We Work',
     mapDescription: 'We regularly complete projects in the communities below. Contact us if your location is not listed—we may still be able to help.',
     citiesTitle: 'Communities We Serve',
@@ -108,7 +108,7 @@ export const featuresEn = {
       repairQ: 'Can you repair tile instead of replacing everything?',
       repairA: 'In many cases, yes. We assess cracked, loose, or damaged tile and recommend repair or partial replacement when full renovation is not necessary.',
       areaQ: 'What areas do you serve?',
-      areaA: 'We serve Northern Virginia and Washington, D.C., including Arlington, Fairfax, Alexandria, Loudoun, and surrounding communities.',
+      areaA: 'We serve Washington D.C., Maryland, Virginia, and West Virginia — including Bethesda, Silver Spring, Arlington, Fairfax, Alexandria, Rockville, Martinsburg, and surrounding communities.',
     },
   },
   estimate: {

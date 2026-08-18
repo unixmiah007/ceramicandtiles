@@ -40,7 +40,7 @@ export const es: UiTranslations = {
     phone: 'Teléfono',
     email: 'Correo',
     serviceArea: 'Área de Servicio',
-    serviceAreaValue: 'Virginia del Norte y Washington, D.C.',
+    serviceAreaValue: 'Washington D.C., Maryland, Virginia y Virginia Occidental',
   },
   hero: {
     eyebrow: 'Portillo Ceramic and Tile',
@@ -94,14 +94,14 @@ export const es: UiTranslations = {
       'Cada proyecto refleja nuestro compromiso con diseños precisos, cortes limpios y acabados hechos para el uso diario.',
     servicesTitle: 'Nuestros Servicios',
     servicesDescription:
-      'Soluciones integrales de azulejos y cerámica para hogares e instalaciones comerciales en Virginia del Norte y Washington, D.C.',
+      'Soluciones integrales de azulejos y cerámica para hogares e instalaciones comerciales en Washington D.C., Maryland, Virginia y Virginia Occidental.',
     whyTitle: '¿Por qué Portillo?',
     learnMoreAboutUs: 'Conozca Más Sobre Nosotros',
   },
   experience: {
     heroTitle: 'Experiencia en la que Puede Confiar',
     heroSubtitle:
-      'Nuestra experiencia incluye proyectos residenciales y comerciales en Virginia del Norte y el área de Washington, D.C.',
+      'Nuestra experiencia incluye proyectos residenciales y comerciales en Washington D.C., Maryland, Virginia y Virginia Occidental.',
     highlight:
       'Nuestra experiencia en instalaciones profesionales y de alto tráfico nos ha enseñado la importancia de la calidad, durabilidad, precisión y atención al detalle.',
     expertiseTitle: 'Experiencia Residencial y Comercial',
@@ -215,7 +215,7 @@ export const es: UiTranslations = {
     prompts: [
       '¿Qué servicios ofrecen?',
       '¿Cómo solicito una cotización?',
-      '¿Trabajan en Virginia del Norte?',
+      '¿Trabajan en el área metropolitana de D.C.?',
     ],
     preferCall: '¿Prefiere hablar directamente? Llame al',
     or: 'o',
@@ -255,7 +255,7 @@ export const es: UiTranslations = {
     propertyDescriptionPlaceholder:
       'Ejemplo: Baño principal con ducha walk-in, baño de visitas, salpicadero de cocina, vestuario, etc.',
     location: 'Ubicación del Proyecto *',
-    locationPlaceholder: 'Ciudad o zona en Virginia del Norte / área de D.C.',
+    locationPlaceholder: 'Ciudad o zona en D.C., Maryland, Virginia o Virginia Occidental',
     selectService: 'Seleccione un servicio *',
     tileSamplesTitle: 'Estilos de Azulejos de Muestra',
     tileSamplesHint: 'Seleccione todos los estilos que le interesen',

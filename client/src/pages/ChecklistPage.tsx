@@ -1,11 +1,14 @@
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { checklistPhases } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { sectionImages } from '../data/images';
 
 export default function ChecklistPage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const seo = getStaticPageSeo('checklist', locale)!;
 
   const handlePrint = () => {
     window.print();
@@ -13,6 +16,7 @@ export default function ChecklistPage() {
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.checklist.heroTitle}
         subtitle={f.checklist.heroSubtitle}

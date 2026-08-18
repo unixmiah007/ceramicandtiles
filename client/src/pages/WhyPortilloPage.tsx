@@ -2,14 +2,18 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { pageHeroImages, sectionImages, getValueImage } from '../data/images';
 
 export default function WhyPortilloPage() {
-  const { t, values, getEnglishValueById } = useLanguage();
+  const { locale, t, values, getEnglishValueById } = useLanguage();
+  const seo = getStaticPageSeo('why-portillo', locale)!;
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={t.whyPortillo.heroTitle}
         subtitle={t.whyPortillo.heroSubtitle}

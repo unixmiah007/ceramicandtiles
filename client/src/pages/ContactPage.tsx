@@ -6,9 +6,11 @@ import SmsOptInField from '../components/SmsOptInField';
 import AppointmentField from '../components/AppointmentField';
 import TrustBadges from '../components/TrustBadges';
 import BusinessHours from '../components/BusinessHours';
+import SeoHead from '../components/SeoHead';
 import { submitContactForm } from '../api';
 import { contactInfo } from '../data/content';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { pageHeroImages, sectionImages } from '../data/images';
 import { ApiError, PhotoAttachment } from '../types';
 
@@ -35,7 +37,8 @@ const initialFormState: FormState = {
 };
 
 export default function ContactPage() {
-  const { t, services, getEnglishServiceById } = useLanguage();
+  const { locale, t, services, getEnglishServiceById } = useLanguage();
+  const seo = getStaticPageSeo('contact', locale)!;
   const [form, setForm] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState('');
@@ -78,6 +81,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={t.contact.heroTitle}
         subtitle={t.contact.heroSubtitle}

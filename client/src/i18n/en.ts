@@ -40,7 +40,7 @@ export const en: UiTranslations = {
     phone: 'Phone',
     email: 'Email',
     serviceArea: 'Service Area',
-    serviceAreaValue: 'Northern Virginia & Washington, D.C.',
+    serviceAreaValue: 'Washington D.C., Maryland, Virginia & West Virginia',
   },
   hero: {
     eyebrow: 'Portillo Ceramic and Tile',
@@ -94,14 +94,14 @@ export const en: UiTranslations = {
       'Every project reflects our commitment to precision layouts, clean cuts, and finishes built to stand up to everyday use.',
     servicesTitle: 'Our Services',
     servicesDescription:
-      'Comprehensive tile and ceramic solutions for homes and commercial facilities throughout Northern Virginia and Washington, D.C.',
+      'Comprehensive tile and ceramic solutions for homes and commercial facilities throughout Washington D.C., Maryland, Virginia, and West Virginia.',
     whyTitle: 'Why Portillo?',
     learnMoreAboutUs: 'Learn More About Us',
   },
   experience: {
     heroTitle: 'Experience You Can Trust',
     heroSubtitle:
-      'Our experience includes residential and commercial projects throughout Northern Virginia and the Washington, D.C. area.',
+      'Our experience includes residential and commercial projects throughout Washington D.C., Maryland, Virginia, and West Virginia.',
     highlight:
       'Our experience working in professional and high-traffic facilities has taught us the importance of quality, durability, precision, and attention to detail.',
     expertiseTitle: 'Residential & Commercial Expertise',
@@ -215,7 +215,7 @@ export const en: UiTranslations = {
     prompts: [
       'What services do you offer?',
       'How do I request a quote?',
-      'Do you work in Northern Virginia?',
+      'Do you work in the DC metro area?',
     ],
     preferCall: 'Prefer to talk directly? Call',
     or: 'or',
@@ -255,7 +255,7 @@ export const en: UiTranslations = {
     propertyDescriptionPlaceholder:
       'Example: Master bathroom with walk-in shower, guest bath, kitchen backsplash, locker room, etc.',
     location: 'Project Location *',
-    locationPlaceholder: 'City or neighborhood in Northern Virginia / D.C. area',
+    locationPlaceholder: 'City or neighborhood in DC, Maryland, Virginia, or West Virginia',
     selectService: 'Select a service *',
     tileSamplesTitle: 'Sample Tile Styles',
     tileSamplesHint: 'Select all styles that interest you',

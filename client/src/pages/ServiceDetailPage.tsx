@@ -2,18 +2,22 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
+import { getServiceSeo } from '../seo/meta';
 import { getServiceImage, getServiceSectionImage } from '../data/images';
 
 export default function ServiceDetailPage() {
   const { serviceId } = useParams<{ serviceId: string }>();
-  const { t, services, getServiceById, getEnglishServiceById } = useLanguage();
+  const { locale, t, services, getServiceById, getEnglishServiceById } = useLanguage();
   const service = serviceId ? getServiceById(serviceId) : undefined;
   const englishService = serviceId ? getEnglishServiceById(serviceId) : undefined;
 
   if (!service || !englishService) {
     return <Navigate to="/services" replace />;
   }
+
+  const seo = getServiceSeo(service, locale);
 
   const otherServices = services.filter((item) => item.id !== service.id).slice(0, 6);
   const heroImage = getServiceImage(englishService.id, englishService.title);
@@ -23,6 +27,7 @@ export default function ServiceDetailPage() {
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero title={service.title} subtitle={service.tagline} backgroundImage={heroImage} />
 
       <section className="section">

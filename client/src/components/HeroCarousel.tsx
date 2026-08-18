@@ -46,7 +46,7 @@ export default function HeroCarousel() {
           >
             <img
               src={slide.image.src}
-              alt=""
+              alt={index === activeIndex ? slide.image.alt : ''}
               className="hero-carousel-bg"
               loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
@@ -74,7 +74,11 @@ export default function HeroCarousel() {
                 className={`hero-carousel-caption ${index === activeIndex ? 'is-active' : ''}`}
                 aria-hidden={index !== activeIndex}
               >
-                <h1>{slideText.headline}</h1>
+                {index === activeIndex ? (
+                  <h1>{slideText.headline}</h1>
+                ) : (
+                  <h2 className="hero-carousel-heading">{slideText.headline}</h2>
+                )}
                 <p className="hero-subtitle">{slideText.subtitle}</p>
               </div>
             );

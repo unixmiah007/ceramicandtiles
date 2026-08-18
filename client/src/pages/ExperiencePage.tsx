@@ -2,16 +2,20 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { caseStudies } from '../data/features';
 import { pageHeroImages, projectImages, sectionImages } from '../data/images';
 
 export default function ExperiencePage() {
-  const { t, f, projects } = useLanguage();
+  const { locale, t, f, projects } = useLanguage();
+  const seo = getStaticPageSeo('experience', locale)!;
   const caseStudyIds = new Set(caseStudies.map((study) => study.projectId));
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={t.experience.heroTitle}
         subtitle={t.experience.heroSubtitle}

@@ -2,15 +2,19 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import StockImage from '../components/StockImage';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { blogPosts } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { galleryImages } from '../data/images';
 
 export default function BlogPage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const seo = getStaticPageSeo('blog', locale)!;
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.blog.heroTitle}
         subtitle={f.blog.heroSubtitle}

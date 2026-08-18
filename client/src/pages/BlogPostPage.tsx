@@ -1,28 +1,18 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import BlogComments from '../components/BlogComments';
+import SeoHead from '../components/SeoHead';
 import { blogPosts } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { buildBreadcrumbSchema } from '../seo/meta';
 import { BlogComment } from '../types';
-
-const SITE_URL = 'https://portilloceramicandtile.com';
-
-function upsertJsonLd(id: string, data: object) {
-  let script = document.getElementById(id) as HTMLScriptElement | null;
-  if (!script) {
-    script = document.createElement('script');
-    script.id = id;
-    script.type = 'application/ld+json';
-    document.head.appendChild(script);
-  }
-  script.textContent = JSON.stringify(data);
-}
+import { absoluteUrl } from '../seo/site';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
   const post = blogPosts.find((item) => item.slug === slug);
   const content = post
     ? f.blog.posts[post.titleKey as keyof typeof f.blog.posts]
@@ -30,57 +20,41 @@ export default function BlogPostPage() {
 
   const updateStructuredData = useCallback(
     (comments: BlogComment[]) => {
-      if (!post || !slug || !content) return;
+      if (!post || !content || !slug) return;
 
-      const pageUrl = `${SITE_URL}/blog/${slug}`;
+      const pageUrl = absoluteUrl(`/blog/${slug}`);
+      const script = document.getElementById('page-jsonld');
+      if (!script) return;
 
-      upsertJsonLd('blog-post-jsonld', {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: content.title,
-        description: content.excerpt,
-        datePublished: post.date,
-        dateModified: post.date,
-        author: {
-          '@type': 'Organization',
-          name: 'Portillo Ceramic and Tile',
+      script.textContent = JSON.stringify([
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: content.title,
+          description: content.excerpt,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
+          publisher: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
+          mainEntityOfPage: pageUrl,
+          url: pageUrl,
+          commentCount: comments.length,
+          comment: comments.map((comment) => ({
+            '@type': 'Comment',
+            author: { '@type': 'Person', name: comment.name },
+            datePublished: comment.createdAt,
+            text: comment.body,
+          })),
         },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Portillo Ceramic and Tile',
-        },
-        mainEntityOfPage: pageUrl,
-        url: pageUrl,
-        commentCount: comments.length,
-        comment: comments.map((comment) => ({
-          '@type': 'Comment',
-          author: { '@type': 'Person', name: comment.name },
-          datePublished: comment.createdAt,
-          text: comment.body,
-        })),
-      });
+        buildBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: locale === 'es' ? 'Blog' : 'Blog', path: '/blog' },
+          { name: content.title, path: `/blog/${slug}` },
+        ]),
+      ]);
     },
-    [post, slug, content]
+    [post, content, slug, locale]
   );
-
-  useEffect(() => {
-    if (!post || !content) return;
-
-    document.title = `${content.title} | Portillo Ceramic and Tile`;
-
-    let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'description';
-      document.head.appendChild(meta);
-    }
-    meta.content = content.excerpt;
-    updateStructuredData([]);
-
-    return () => {
-      document.title = 'Portillo Ceramic and Tile';
-    };
-  }, [post, content, updateStructuredData]);
 
   if (!post || !content) {
     return (
@@ -95,8 +69,37 @@ export default function BlogPostPage() {
     );
   }
 
+  const seo = {
+    title: content.title,
+    description: `${content.excerpt} Expert tile advice for Washington D.C., Maryland, Virginia, and West Virginia.`,
+    path: `/blog/${post.slug}`,
+    ogType: 'article',
+    ogImage: absoluteUrl(post.image.src),
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: content.title,
+        description: content.excerpt,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
+        publisher: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
+        mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+        url: absoluteUrl(`/blog/${post.slug}`),
+      },
+      buildBreadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: 'Blog', path: '/blog' },
+        { name: content.title, path: `/blog/${post.slug}` },
+      ]),
+    ],
+  };
+
   return (
     <>
+      <SeoHead {...seo} />
+
       <PageHero title={content.title} subtitle={content.excerpt} backgroundImage={post.image} />
 
       <section className="section">

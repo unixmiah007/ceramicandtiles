@@ -7,7 +7,10 @@ import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import TestimonialsSection from '../components/TestimonialsSection';
 import InstagramFeed from '../components/InstagramFeed';
 import ReferralCTA from '../components/ReferralCTA';
+import SeoHead from '../components/SeoHead';
+import LocalSeoIntro from '../components/LocalSeoIntro';
 import { useLanguage } from '../context/LanguageContext';
+import { getHomeSeo } from '../seo/meta';
 import { beforeAfterProjects } from '../data/features';
 import { processStepImages, sectionImages, getServiceImage, getValueImage } from '../data/images';
 
@@ -15,10 +18,12 @@ const processStepKeys = ['demolition', 'waterproofing', 'installation', 'finishi
 const processStepNumbers = ['01', '02', '03', '04'];
 
 export default function HomePage() {
-  const { t, f, services, values, getEnglishServiceById, getEnglishValueById } = useLanguage();
+  const { locale, t, f, services, values, getEnglishServiceById, getEnglishValueById } = useLanguage();
+  const seo = getHomeSeo(locale);
 
   return (
     <>
+      <SeoHead {...seo} />
       <HeroCarousel />
 
       <section className="section">
@@ -180,6 +185,8 @@ export default function HomePage() {
       </section>
 
       <CTASection />
+
+      <LocalSeoIntro />
 
       <ReferralCTA />
     </>

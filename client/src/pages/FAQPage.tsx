@@ -2,16 +2,21 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { faqItems } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getFaqItemsForSchema, getFaqSeo } from '../seo/meta';
 import { galleryImages } from '../data/images';
 
 export default function FAQPage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const faqSchemaItems = getFaqItemsForSchema(locale, f);
+  const seo = getFaqSeo(locale, faqSchemaItems);
   const [openId, setOpenId] = useState<string | null>(faqItems[0]?.id ?? null);
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.faq.heroTitle}
         subtitle={f.faq.heroSubtitle}

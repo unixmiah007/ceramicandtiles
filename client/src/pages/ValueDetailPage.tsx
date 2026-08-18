@@ -2,18 +2,22 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
+import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
+import { getValueSeo } from '../seo/meta';
 import { getValueImage, getValueSectionImage } from '../data/images';
 
 export default function ValueDetailPage() {
   const { valueId } = useParams<{ valueId: string }>();
-  const { t, values, getValueById, getEnglishValueById } = useLanguage();
+  const { locale, t, values, getValueById, getEnglishValueById } = useLanguage();
   const value = valueId ? getValueById(valueId) : undefined;
   const englishValue = valueId ? getEnglishValueById(valueId) : undefined;
 
   if (!value || !englishValue) {
     return <Navigate to="/why-portillo" replace />;
   }
+
+  const seo = getValueSeo(value, locale);
 
   const otherValues = values.filter((item) => item.id !== value.id);
   const heroImage = getValueImage(englishValue.id, englishValue.title);
@@ -23,6 +27,7 @@ export default function ValueDetailPage() {
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero title={value.title} subtitle={value.tagline} backgroundImage={heroImage} />
 
       <section className="section">

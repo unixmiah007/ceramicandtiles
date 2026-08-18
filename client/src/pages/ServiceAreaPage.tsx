@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
+import SeoHead from '../components/SeoHead';
 import { serviceAreaCities } from '../data/features';
 import { useLanguage } from '../context/LanguageContext';
+import { getStaticPageSeo } from '../seo/meta';
 import { sectionImages } from '../data/images';
 
 export default function ServiceAreaPage() {
-  const { f } = useLanguage();
+  const { locale, f } = useLanguage();
+  const seo = getStaticPageSeo('service-area', locale)!;
 
   return (
     <>
+      <SeoHead {...seo} />
       <PageHero
         title={f.serviceArea.heroTitle}
         subtitle={f.serviceArea.heroSubtitle}
@@ -25,7 +29,7 @@ export default function ServiceAreaPage() {
 
           <div className="service-area-map">
             <iframe
-              title="Northern Virginia service area map"
+              title="Washington D.C. metro service area map"
               src="https://www.openstreetmap.org/export/embed.html?bbox=-77.6%2C38.7%2C-77.0%2C39.1&layer=mapnik&marker=38.88%2C-77.3"
               loading="lazy"
             />
