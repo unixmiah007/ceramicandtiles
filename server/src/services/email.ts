@@ -1,3 +1,4 @@
+import '../loadEnv';
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 import { ContactFormData, PhotoAttachment, WizardSubmission } from '../types';
