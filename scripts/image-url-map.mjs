@@ -21,7 +21,7 @@ export const IMAGE_URL_MAP = {
   'pages/request-a-quote-today': 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
 
   // Shared sections
-  'sections/your-space-deserves-the-best': 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+  'sections/your-space-deserves-the-best': 'https://production-next-images-cdn.thumbtack.com/i/302055787456274526/width/1024.jpeg',
   'sections/craftsmanship-you-can-see': 'https://images.pexels.com/photos/6580707/pexels-photo-6580707.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'sections/residential-projects': 'https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'sections/commercial-projects': 'https://images.pexels.com/photos/1910488/pexels-photo-1910488.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -135,8 +135,8 @@ export const IMAGE_URL_MAP = {
   // Quality without shortcuts
   'values/quality-without-shortcuts/quality-without-shortcuts': 'https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1600',
   'values/quality-without-shortcuts/proper-preparation-comes-first': 'https://images.pexels.com/photos/6492405/pexels-photo-6492405.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'values/quality-without-shortcuts/waterproofing-and-structural-steps-matter': 'https://images.pexels.com/photos/6580702/pexels-photo-6580702.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'values/quality-without-shortcuts/built-to-our-standard-not-a-deadline': 'https://images.pexels.com/photos/3862131/pexels-photo-3862131.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'values/quality-without-shortcuts/waterproofing-and-structural-steps-matter': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxv7B29u5t0IOtiK8AZFdSNRCMLxf_1AuK-oBq6Wb8U7z6H0DOi93boPU&s=10',
+  'values/quality-without-shortcuts/built-to-our-standard-not-a-deadline': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRodk3Nfvn3AcynOAzP8-zdt8j3EF7slbO6skXO-pzyfXxnbnLL2Ai2Ar0&s=10',
 
   // Built to last
   'values/built-to-last/built-to-last': 'https://images.pexels.com/photos/6527032/pexels-photo-6527032.jpeg?auto=compress&cs=tinysrgb&w=1600',

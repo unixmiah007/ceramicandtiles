@@ -152,7 +152,7 @@ export const sectionImages = {
   contactSide: image('sections', 'Contact Abel Portillo', 'Finished tile bathroom showcasing quality craftsmanship'),
   ctaBackground: image('sections', 'Your Vision. Our Craftsmanship.', 'Elegant tiled shower as inspiration for your project'),
   whyPortillo: image('sections', 'Precision Shower Tile', 'Close-up of precision shower tile installation'),
-  yourSpaceDeservesTheBest: image('sections', 'Your Space Deserves the Best', 'Beautiful bathroom tile installation'),
+  yourSpaceDeservesTheBest: image('sections', 'Your Space Deserves the Best', 'Tile contractor installing large-format floor tile with precision'),
 };
 
 export const projectImages: Record<string, StockImage> = {
