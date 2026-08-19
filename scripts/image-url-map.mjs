@@ -24,7 +24,7 @@ export const IMAGE_URL_MAP = {
   'sections/your-space-deserves-the-best': 'https://production-next-images-cdn.thumbtack.com/i/302055787456274526/width/1024.jpeg',
   'sections/craftsmanship-you-can-see': 'https://images.pexels.com/photos/6580707/pexels-photo-6580707.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'sections/residential-projects': 'https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'sections/commercial-projects': 'https://images.pexels.com/photos/1910488/pexels-photo-1910488.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'sections/commercial-projects': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXgAzTodqcmZG8i05Fkwuo7GlVZWoRCwPzTlKAJ8IFvnb98rMucZI5jbvB&s=10',
   'sections/contact-abel-portillo': 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
   'sections/your-vision-our-craftsmanship': 'https://images.pexels.com/photos/6585758/pexels-photo-6585758.jpeg?auto=compress&cs=tinysrgb&w=1600',
   'sections/precision-shower-tile': 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1200',

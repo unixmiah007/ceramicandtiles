@@ -148,7 +148,7 @@ export const pageHeroImages: Record<string, StockImage> = {
 export const sectionImages = {
   craftsmanship: image('sections', 'Craftsmanship You Can See', 'Tile craftsman measuring and cutting ceramic tile'),
   residential: image('sections', 'Residential Projects', 'Residential bathroom renovation with new tile'),
-  commercial: image('sections', 'Commercial Projects', 'Commercial facility with professional tile flooring'),
+  commercial: image('sections', 'Commercial Projects', 'Construction team reviewing plans at a commercial building site'),
   contactSide: image('sections', 'Contact Abel Portillo', 'Finished tile bathroom showcasing quality craftsmanship'),
   ctaBackground: image('sections', 'Your Vision. Our Craftsmanship.', 'Elegant tiled shower as inspiration for your project'),
   whyPortillo: image('sections', 'Precision Shower Tile', 'Close-up of precision shower tile installation'),
