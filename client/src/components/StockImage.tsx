@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes, useState } from 'react';
+import { ImgHTMLAttributes, useEffect, useState } from 'react';
 import { StockImage as StockImageType, FALLBACK_IMAGE } from '../data/images';
 
 interface StockImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
@@ -17,6 +17,10 @@ export default function StockImage({
 }: StockImageProps) {
   const [src, setSrc] = useState(image.src);
   const wrapperStyle = aspectRatio ? { aspectRatio } : undefined;
+
+  useEffect(() => {
+    setSrc(image.src);
+  }, [image.src]);
 
   return (
     <div className={`stock-image ${overlay ? 'stock-image--overlay' : ''} ${className}`.trim()} style={wrapperStyle}>

@@ -20,7 +20,7 @@ export interface DetailImages {
 
 export const FALLBACK_IMAGE: StockImage = {
   src: imagePath('fallback', 'default-tile-installation'),
-  alt: 'Professional ceramic and tile installation',
+  alt: 'Family owned business badge with construction workers',
 };
 
 function image(category: string, heading: string, alt = heading): StockImage {
@@ -50,8 +50,23 @@ export function getServiceSectionImage(serviceId: string, heading: string): Stoc
   return nestedImage('services', serviceId, heading, heading);
 }
 
+export const FAMILY_OWNED_IMAGE: StockImage = {
+  src: '/images/values/family-owned/family-owned.jpg',
+  alt: 'Family owned business badge with construction workers',
+};
+
+export const ATTENTION_TO_DETAIL_IMAGE: StockImage = {
+  src: '/images/values/attention-to-detail/attention-to-detail.jpg',
+  alt: 'Construction worker using a level to mark precise tile layout lines',
+};
+
+export const valueImages: Record<string, StockImage> = {
+  'family-owned': FAMILY_OWNED_IMAGE,
+  'attention-to-detail': ATTENTION_TO_DETAIL_IMAGE,
+};
+
 export function getValueImage(valueId: string, title: string): StockImage {
-  return nestedImage('values', valueId, title, title);
+  return valueImages[valueId] ?? nestedImage('values', valueId, title, title);
 }
 
 export function getValueSectionImage(valueId: string, heading: string): StockImage {
@@ -110,17 +125,17 @@ export const processStepImages: Record<string, StockImage> = {
     'Waterproofing',
     'Construction worker applying waterproofing material with a spray gun'
   ),
-  installation: image('process', 'Installation', 'Ceramic tile being precisely installed on a wall surface'),
-  finishing: image('process', 'Grout and Finishing', 'Finished bathroom with clean grout lines and polished tile'),
+  installation: image('process', 'Installation', 'Construction worker installing ceramic floor tile with spacers'),
+  finishing: image('process', 'Grout and Finishing', 'Construction grout being applied during finishing work'),
 };
 
 export const galleryImages: StockImage[] = [
   image('gallery', 'Spa-like bathroom with floor-to-ceiling tile'),
   image('gallery', 'Kitchen with ceramic tile backsplash'),
-  image('gallery', 'Designer shower with geometric tile pattern'),
-  image('gallery', 'Large-format floor tile in open living space'),
+  image('gallery', 'Designer shower with geometric tile pattern', 'Architect reviewing floor plans beside a home renovation in progress'),
+  image('gallery', 'Large-format floor tile in open living space', 'Designers reviewing material samples during a renovation project'),
   image('gallery', 'Walk-in shower with marble-look porcelain tile'),
-  image('gallery', 'Detailed mosaic tile accent wall'),
+  image('gallery', 'Detailed mosaic tile accent wall', 'Construction worker using a power drill during a sustainable renovation project'),
 ];
 
 export const pageHeroImages: Record<string, StockImage> = {
