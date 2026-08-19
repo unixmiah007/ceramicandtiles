@@ -9,8 +9,8 @@ export const IMAGE_URL_MAP = {
   'hero/building-trust': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
 
   // Homepage process steps
-  'process/demolition-and-preparation': 'https://images.pexels.com/photos/6492405/pexels-photo-6492405.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'process/waterproofing': 'https://images.pexels.com/photos/6580702/pexels-photo-6580702.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'process/demolition-and-preparation': 'https://images.pexels.com/photos/10133578/pexels-photo-10133578.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'process/waterproofing': 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Applying_waterproofing_material_to_the_outside_of_a_tunnel.jpg',
   'process/installation': 'https://images.pexels.com/photos/3862131/pexels-photo-3862131.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'process/grout-and-finishing': 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
 

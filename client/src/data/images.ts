@@ -104,8 +104,12 @@ export const heroSlides: HeroSlide[] = [
 ];
 
 export const processStepImages: Record<string, StockImage> = {
-  demolition: image('process', 'Demolition and Preparation', 'Interior renovation and demolition preparation for new tile'),
-  waterproofing: image('process', 'Waterproofing', 'Shower area prepared with waterproof tile backing'),
+  demolition: image('process', 'Demolition and Preparation', 'Construction worker using a jackhammer for demolition and site preparation'),
+  waterproofing: image(
+    'process',
+    'Waterproofing',
+    'Construction worker applying waterproofing material with a spray gun'
+  ),
   installation: image('process', 'Installation', 'Ceramic tile being precisely installed on a wall surface'),
   finishing: image('process', 'Grout and Finishing', 'Finished bathroom with clean grout lines and polished tile'),
 };
