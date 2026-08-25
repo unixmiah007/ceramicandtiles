@@ -902,6 +902,89 @@ body.menu-open {
   margin-bottom: 1rem;
 }
 
+.hero-service-categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 1.25rem;
+  line-height: 1.4;
+}
+
+.hero-service-categories-prefix {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+}
+
+.hero-service-categories--static .hero-service-categories-static-list {
+  color: var(--color-accent);
+}
+
+.hero-service-rotator-link {
+  display: inline-block;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(201, 169, 98, 0.45);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-service-rotator-link:hover {
+  color: #e8d5a3;
+  border-bottom-color: var(--color-accent);
+}
+
+.hero-service-rotator {
+  position: relative;
+  display: inline-block;
+  height: 1.45em;
+  min-width: 14.5rem;
+  overflow: hidden;
+}
+
+.hero-service-rotator-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  color: var(--color-accent);
+  opacity: 0;
+  transform: translateY(110%);
+  transition: opacity 0.42s ease, transform 0.42s ease;
+}
+
+.hero-service-rotator-word.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-service-rotator-word.is-exiting {
+  opacity: 0;
+  transform: translateY(-110%);
+}
+
+.hero-service-categories-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.15rem;
+}
+
+.hero-service-categories-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+
+.hero-service-categories-dot.is-active {
+  background: var(--color-accent);
+  transform: scale(1.25);
+}
+
 .hero-description {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.85);
@@ -2359,6 +2442,16 @@ body.menu-open {
 
   .hero-carousel-content {
     padding: 4rem 1.5rem 3rem;
+  }
+
+  .hero-service-categories {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hero-service-rotator {
+    min-width: 11rem;
   }
 
   .hero-carousel-controls {

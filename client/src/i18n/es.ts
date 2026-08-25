@@ -50,6 +50,14 @@ export const es: UiTranslations = {
     previousSlide: 'Diapositiva anterior',
     nextSlide: 'Diapositiva siguiente',
     goToSlide: 'Ir a la diapositiva',
+    serviceCategoriesPrefix: 'Instalación profesional de azulejos para',
+    serviceCategories: [
+      { label: 'Baños', href: '/services/bathroom-renovations' },
+      { label: 'Duchas', href: '/services/shower-installation' },
+      { label: 'Pisos', href: '/services/floor-wall-tile' },
+      { label: 'Backsplashes', href: '/services/backsplashes' },
+      { label: 'Proyectos Comerciales', href: '/services/commercial-tile' },
+    ],
     slides: {
       'transforming-spaces': {
         headline: 'Transformando Espacios.',

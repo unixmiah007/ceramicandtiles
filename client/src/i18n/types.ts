@@ -49,6 +49,8 @@ export interface UiTranslations {
     previousSlide: string;
     nextSlide: string;
     goToSlide: string;
+    serviceCategoriesPrefix: string;
+    serviceCategories: { label: string; href: string }[];
     slides: Record<string, { headline: string; subtitle: string }>;
   };
   home: {

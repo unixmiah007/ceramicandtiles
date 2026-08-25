@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroSlides, FALLBACK_IMAGE } from '../data/images';
 import { useLanguage } from '../context/LanguageContext';
+import ServiceCategoriesAnimation from './ServiceCategoriesAnimation';
 
 const AUTOPLAY_MS = 6000;
 
@@ -84,6 +85,8 @@ export default function HeroCarousel() {
             );
           })}
         </div>
+
+        <ServiceCategoriesAnimation />
 
         <p className="hero-description">{t.hero.description}</p>
 

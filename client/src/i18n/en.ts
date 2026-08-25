@@ -50,6 +50,14 @@ export const en: UiTranslations = {
     previousSlide: 'Previous slide',
     nextSlide: 'Next slide',
     goToSlide: 'Go to slide',
+    serviceCategoriesPrefix: 'Professional tile installation for',
+    serviceCategories: [
+      { label: 'Bathrooms', href: '/services/bathroom-renovations' },
+      { label: 'Showers', href: '/services/shower-installation' },
+      { label: 'Floors', href: '/services/floor-wall-tile' },
+      { label: 'Backsplashes', href: '/services/backsplashes' },
+      { label: 'Commercial Projects', href: '/services/commercial-tile' },
+    ],
     slides: {
       'transforming-spaces': {
         headline: 'Transforming Spaces.',
