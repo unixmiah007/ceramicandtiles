@@ -42,6 +42,9 @@ export interface UiTranslations {
     serviceArea: string;
     serviceAreaValue: string;
   };
+  topBar: {
+    followUs: string;
+  };
   hero: {
     eyebrow: string;
     description: string;
@@ -55,8 +58,11 @@ export interface UiTranslations {
   };
   home: {
     yourSpaceTitle: string;
+    yourSpaceEyebrow: string;
     yourSpaceP1: string;
     yourSpaceP2: string;
+    yourSpaceHighlightsLabel: string;
+    yourSpaceHighlights: string[];
     processSteps: Record<string, { title: string; description: string }>;
     galleryTitle: string;
     galleryDescription: string;

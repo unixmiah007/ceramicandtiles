@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import TopBar from './components/TopBar';
 import Footer from './components/Footer';
 import SeasonalBanner from './components/SeasonalBanner';
 import HomePage from './pages/HomePage';
@@ -25,7 +26,10 @@ export default function App() {
   return (
     <div className="app">
       <SeasonalBanner />
-      <Header />
+      <div className="site-header">
+        <TopBar />
+        <Header />
+      </div>
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

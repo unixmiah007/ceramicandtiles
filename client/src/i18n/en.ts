@@ -42,6 +42,9 @@ export const en: UiTranslations = {
     serviceArea: 'Service Area',
     serviceAreaValue: 'Washington D.C., Maryland, Virginia & West Virginia',
   },
+  topBar: {
+    followUs: 'Follow us',
+  },
   hero: {
     eyebrow: 'Portillo Ceramic and Tile',
     description:
@@ -75,10 +78,18 @@ export const en: UiTranslations = {
   },
   home: {
     yourSpaceTitle: 'Your Space Deserves the Best',
+    yourSpaceEyebrow: 'Craftsmanship & Care',
     yourSpaceP1:
       "Whether you're upgrading a bathroom, creating a new shower, replacing outdated tile, or renovating a commercial facility, we focus on doing the job correctly from start to finish.",
     yourSpaceP2:
       'From demolition and preparation to waterproofing, installation, grout, and finishing touches—we take pride in every step.',
+    yourSpaceHighlightsLabel: 'Our process highlights',
+    yourSpaceHighlights: [
+      'Demolition & Preparation',
+      'Waterproofing',
+      'Precision Installation',
+      'Grout & Finishing',
+    ],
     processSteps: {
       demolition: {
         title: 'Demolition & Preparation',

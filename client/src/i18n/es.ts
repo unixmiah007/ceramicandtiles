@@ -42,6 +42,9 @@ export const es: UiTranslations = {
     serviceArea: 'Área de Servicio',
     serviceAreaValue: 'Washington D.C., Maryland, Virginia y Virginia Occidental',
   },
+  topBar: {
+    followUs: 'Síguenos',
+  },
   hero: {
     eyebrow: 'Portillo Ceramic and Tile',
     description:
@@ -75,10 +78,18 @@ export const es: UiTranslations = {
   },
   home: {
     yourSpaceTitle: 'Su Espacio Merece lo Mejor',
+    yourSpaceEyebrow: 'Artesanía y Cuidado',
     yourSpaceP1:
       'Ya sea que esté renovando un baño, creando una ducha nueva, reemplazando azulejos antiguos o renovando una instalación comercial, nos enfocamos en hacer el trabajo correctamente de principio a fin.',
     yourSpaceP2:
       'Desde la demolición y preparación hasta la impermeabilización, instalación, lechada y acabados finales—nos enorgullecemos de cada paso.',
+    yourSpaceHighlightsLabel: 'Aspectos clave de nuestro proceso',
+    yourSpaceHighlights: [
+      'Demolición y Preparación',
+      'Impermeabilización',
+      'Instalación Precisa',
+      'Lechada y Acabado',
+    ],
     processSteps: {
       demolition: {
         title: 'Demolición y Preparación',

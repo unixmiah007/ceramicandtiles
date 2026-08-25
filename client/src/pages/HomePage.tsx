@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import HeroCarousel from '../components/HeroCarousel';
+import YourSpaceSection from '../components/YourSpaceSection';
 import GallerySection from '../components/GallerySection';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
@@ -12,7 +13,7 @@ import LocalSeoIntro from '../components/LocalSeoIntro';
 import { useLanguage } from '../context/LanguageContext';
 import { getHomeSeo } from '../seo/meta';
 import { beforeAfterProjects } from '../data/features';
-import { processStepImages, sectionImages, getServiceImage, getValueImage } from '../data/images';
+import { processStepImages, getServiceImage, getValueImage } from '../data/images';
 
 const processStepKeys = ['demolition', 'waterproofing', 'installation', 'finishing'] as const;
 const processStepNumbers = ['01', '02', '03', '04'];
@@ -26,21 +27,10 @@ export default function HomePage() {
       <SeoHead {...seo} />
       <HeroCarousel />
 
+      <YourSpaceSection />
+
       <section className="section">
         <div className="container">
-          <div className="split-feature">
-            <div className="split-feature-content">
-              <h2>{t.home.yourSpaceTitle}</h2>
-              <p>{t.home.yourSpaceP1}</p>
-              <p>{t.home.yourSpaceP2}</p>
-            </div>
-            <StockImage
-              image={sectionImages.yourSpaceDeservesTheBest}
-              aspectRatio="4 / 3"
-              className="split-feature-image rounded-image"
-            />
-          </div>
-
           <div className="process-steps">
             {processStepKeys.map((key, index) => (
               <div key={key} className="process-step process-step--image">
