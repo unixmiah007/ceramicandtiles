@@ -21,6 +21,7 @@ import CaseStudyPage from './pages/CaseStudyPage';
 import ChecklistPage from './pages/ChecklistPage';
 import BackToTop from './components/BackToTop';
 import LiveChat from './components/LiveChat';
+import EstimateFloater from './components/EstimateFloater';
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ export default function App() {
       <Footer />
       <BackToTop />
       <LiveChat />
+      <EstimateFloater />
     </div>
   );
 }
