@@ -175,6 +175,7 @@ export const en: UiTranslations = {
   whyPortillo: {
     heroTitle: 'Why Portillo?',
     heroSubtitle: 'Family-Owned Craftsmanship. Professional Results.',
+    showcaseEyebrow: 'See the craftsmanship',
     introLead:
       'At Portillo Ceramic and Tile, we believe great tile work can completely transform a space. Our name is on every project—we treat every customer and every home with respect.',
     introP:

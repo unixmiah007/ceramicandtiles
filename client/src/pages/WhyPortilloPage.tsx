@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
+import WhyPortilloImageShowcase from '../components/WhyPortilloImageShowcase';
 import CTASection from '../components/CTASection';
 import StockImage from '../components/StockImage';
 import SeoHead from '../components/SeoHead';
 import { useLanguage } from '../context/LanguageContext';
 import { getStaticPageSeo } from '../seo/meta';
-import { pageHeroImages, sectionImages, getValueImage } from '../data/images';
+import { pageHeroImages, getValueImage } from '../data/images';
 
 export default function WhyPortilloPage() {
   const { locale, t, values, getEnglishValueById } = useLanguage();
@@ -20,20 +21,10 @@ export default function WhyPortilloPage() {
         backgroundImage={pageHeroImages['why-portillo']}
       />
 
+      <WhyPortilloImageShowcase />
+
       <section className="section">
         <div className="container">
-          <div className="split-feature split-feature--reverse">
-            <StockImage
-              image={sectionImages.whyPortillo}
-              aspectRatio="4 / 3"
-              className="split-feature-image rounded-image"
-            />
-            <div className="split-feature-content intro-block intro-block--left">
-              <p className="lead">{t.whyPortillo.introLead}</p>
-              <p>{t.whyPortillo.introP}</p>
-            </div>
-          </div>
-
           <div className="values-grid values-grid-large">
             {values.map((value, index) => {
               const englishValue = getEnglishValueById(value.id)!;

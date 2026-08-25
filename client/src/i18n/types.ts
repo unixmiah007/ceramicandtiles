@@ -108,6 +108,7 @@ export interface UiTranslations {
   whyPortillo: {
     heroTitle: string;
     heroSubtitle: string;
+    showcaseEyebrow: string;
     introLead: string;
     introP: string;
     learnMoreAbout: string;

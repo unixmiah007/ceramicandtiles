@@ -175,6 +175,7 @@ export const es: UiTranslations = {
   whyPortillo: {
     heroTitle: '¿Por qué Portillo?',
     heroSubtitle: 'Artesanía Familiar. Resultados Profesionales.',
+    showcaseEyebrow: 'Vea la artesanía',
     introLead:
       'En Portillo Ceramic and Tile, creemos que un gran trabajo de azulejos puede transformar completamente un espacio. Nuestro nombre está en cada proyecto—tratamos a cada cliente y cada hogar con respeto.',
     introP:

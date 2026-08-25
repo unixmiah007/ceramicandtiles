@@ -168,3 +168,13 @@ export const projectImages: Record<string, StockImage> = {
     'Fitness facility locker room with high-traffic tile flooring'
   ),
 };
+
+export const whyPortilloShowcaseImages: StockImage[] = [
+  sectionImages.whyPortillo,
+  sectionImages.craftsmanship,
+  sectionImages.residential,
+  sectionImages.commercial,
+  ...galleryImages,
+  ...Object.values(processStepImages),
+  ...Object.values(projectImages),
+];
