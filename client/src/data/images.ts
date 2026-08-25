@@ -178,3 +178,39 @@ export const whyPortilloShowcaseImages: StockImage[] = [
   ...Object.values(processStepImages),
   ...Object.values(projectImages),
 ];
+
+export const caseStudyGalleries: Record<string, StockImage[]> = {
+  'washington-capitals': [
+    projectImages['washington-capitals'],
+    getServiceImage('locker-rooms', 'Locker Rooms'),
+    getServiceSectionImage('locker-rooms', 'Moisture-Resistant Surfaces'),
+    getServiceSectionImage('commercial-tile', 'Commercial Tile Installation'),
+    processStepImages.waterproofing,
+    processStepImages.installation,
+    processStepImages.finishing,
+    galleryImages[4],
+    sectionImages.commercial,
+  ],
+  'the-pentagon': [
+    projectImages['the-pentagon'],
+    getServiceImage('commercial-tile', 'Commercial Tile Installation'),
+    getServiceSectionImage('commercial-tile', 'Built for High-Traffic Use'),
+    getServiceSectionImage('commercial-tile', 'Professional Facility Experience'),
+    processStepImages.installation,
+    processStepImages.finishing,
+    galleryImages[2],
+    sectionImages.craftsmanship,
+    sectionImages.commercial,
+  ],
+  'orangetheory-fitness': [
+    projectImages['orangetheory-fitness'],
+    getServiceImage('locker-rooms', 'Locker Rooms'),
+    getServiceSectionImage('locker-rooms', 'Professional Facility Standards'),
+    getServiceSectionImage('locker-rooms', 'Moisture-Resistant Surfaces'),
+    processStepImages.waterproofing,
+    processStepImages.installation,
+    galleryImages[0],
+    sectionImages.residential,
+    projectImages['washington-capitals'],
+  ],
+};

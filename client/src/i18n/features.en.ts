@@ -182,6 +182,9 @@ export const featuresEn = {
     result: 'Result',
     viewCaseStudy: 'View Case Study',
     backToExperience: 'Back to Experience',
+    galleryTitle: 'Work Completed',
+    galleryDescription:
+      'A look at the tile and ceramic work delivered for this project—from preparation and waterproofing through installation and finishing.',
     capitals: {
       scope1: 'Locker room and wet-area tile installation',
       scope2: 'High-traffic durable finishes',

@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
+import CaseStudyGallery from '../components/CaseStudyGallery';
 import StockImage from '../components/StockImage';
 import CTASection from '../components/CTASection';
 import { caseStudies } from '../data/features';
@@ -48,7 +49,13 @@ export default function CaseStudyPage() {
             className="case-study-hero rounded-image"
           />
           <p className="case-study-intro">{project.description}</p>
+        </div>
 
+        <div className="container">
+          <CaseStudyGallery projectId={project.id} projectName={project.name} />
+        </div>
+
+        <div className="container case-study">
           <div className="case-study-section">
             <h2>{f.caseStudy.scope}</h2>
             <ul>

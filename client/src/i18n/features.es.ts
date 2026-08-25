@@ -184,6 +184,9 @@ export const featuresEs: FeatureContent = {
     result: 'Resultado',
     viewCaseStudy: 'Ver Caso de Estudio',
     backToExperience: 'Volver a Experiencia',
+    galleryTitle: 'Trabajo Completado',
+    galleryDescription:
+      'Una mirada al trabajo de azulejos y cerámica entregado en este proyecto—desde la preparación e impermeabilización hasta la instalación y el acabado.',
     capitals: {
       scope1: 'Instalación de azulejos en vestuario y áreas húmedas',
       scope2: 'Acabados duraderos para alto tráfico',

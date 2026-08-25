@@ -22,7 +22,7 @@ export const IMAGE_URL_MAP = {
 
   // Shared sections
   'sections/your-space-deserves-the-best': 'https://production-next-images-cdn.thumbtack.com/i/302055787456274526/width/1024.jpeg',
-  'sections/craftsmanship-you-can-see': 'https://images.pexels.com/photos/6580707/pexels-photo-6580707.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'sections/craftsmanship-you-can-see': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpONNhHPOUyzWUx6Je_j9B4gTeoKVjCqtrorLzx-aJZ3SYlwWGuK5r_TTQ&s=10',
   'sections/residential-projects': 'https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'sections/commercial-projects': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXgAzTodqcmZG8i05Fkwuo7GlVZWoRCwPzTlKAJ8IFvnb98rMucZI5jbvB&s=10',
   'sections/contact-abel-portillo': 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80',
@@ -38,9 +38,9 @@ export const IMAGE_URL_MAP = {
   'gallery/detailed-mosaic-tile-accent-wall': 'https://sheararchitecturaldesign.co.uk/wp-content/uploads/2023/03/Sustainable-Renovation-Materials-24.03.2023.webp',
 
   // Portfolio projects
-  'projects/washington-capitals-capital-one-arena': 'https://images.pexels.com/photos/6580706/pexels-photo-6580706.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'projects/the-pentagon': 'https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'projects/orangetheory-fitness': 'https://images.pexels.com/photos/6580705/pexels-photo-6580705.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'projects/washington-capitals-capital-one-arena': 'https://www.capitalonearena.com/assets/img/Photo-Credit-2022-Craig-Hunter-Ross-0050-67b012132b.jpg',
+  'projects/the-pentagon': 'https://upload.wikimedia.org/wikipedia/commons/2/2a/The_Pentagon%2C_Headquarters_of_the_US_Department_of_Defense_%28cropped2%29.jpg',
+  'projects/orangetheory-fitness': 'https://fitnesstestdrive.com/wp-content/uploads/2018/04/Screen-Shot-2018-01-22-at-1.45.19-PM.png',
 
   // Services – bathroom renovations
   'services/bathroom-renovations/bathroom-renovations': 'https://images.ctfassets.net/9aljq1ivr2md/HNm7Wko0M0i5t1J5rV0fP/0165f0276b27f39d47d09b818089d52f/solid-newhomebuild-39.jpg?w=1200&h=800&fl=progressive&q=50&fm=jpg&bg=transparent',
