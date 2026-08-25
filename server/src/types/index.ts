@@ -32,6 +32,23 @@ export interface WizardSubmission {
   photos?: PhotoAttachment[];
 }
 
+export interface EstimateSubmission {
+  name: string;
+  email: string;
+  phone: string;
+  message?: string;
+  propertyType: string;
+  projectType: string;
+  size: string;
+  timeline: string;
+  tileMaterial: string;
+  addons: string[];
+  minCost: number;
+  maxCost: number;
+  weeksMin: number;
+  weeksMax: number;
+}
+
 export interface ContactResponse {
   success: boolean;
   message: string;

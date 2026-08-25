@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
+import { FormEvent, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { submitEstimateForm } from '../api';
 import { useLanguage } from '../context/LanguageContext';
 import {
   calculateEstimate,
@@ -16,6 +17,7 @@ import {
   type EstimateTileMaterialId,
   type EstimateTimelineId,
 } from '../data/estimateCalculator';
+import { ApiError } from '../types';
 
 function formatCurrency(value: number, locale: string) {
   return new Intl.NumberFormat(locale === 'es' ? 'es-US' : 'en-US', {
@@ -47,10 +49,28 @@ const commercialProjects: EstimateProjectTypeId[] = [
   'commercial-facility',
 ];
 
+interface ContactFormState {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
+const initialContactForm: ContactFormState = {
+  name: '',
+  email: '',
+  phone: '',
+  message: '',
+};
+
 export default function EstimateCalculator() {
-  const { locale, f } = useLanguage();
+  const { locale, f, t } = useLanguage();
   const labels = f.estimate;
   const [input, setInput] = useState<EstimateInput>(defaultEstimateInput);
+  const [contactForm, setContactForm] = useState<ContactFormState>(initialContactForm);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const result = useMemo(() => calculateEstimate(input), [input]);
 
@@ -79,6 +99,15 @@ export default function EstimateCalculator() {
   const projectLabel = (id: string) =>
     labels.projectTypes[id as keyof typeof labels.projectTypes] ?? id;
 
+  const sizeLabel = labels.sizes[input.size as keyof typeof labels.sizes]?.title ?? input.size;
+  const timelineLabel =
+    labels.timelines[input.timeline as keyof typeof labels.timelines]?.title ?? input.timeline;
+  const tileLabel =
+    labels.tiles[input.tileMaterial as keyof typeof labels.tiles]?.title ?? input.tileMaterial;
+  const addonLabels = input.addons.map(
+    (id) => labels.addons[id as keyof typeof labels.addons]?.title ?? id
+  );
+
   const visibleProjects =
     input.propertyType === 'commercial'
       ? [...commercialProjects, ...residentialProjects]
@@ -87,6 +116,55 @@ export default function EstimateCalculator() {
   const breakdownItems = result.breakdown.filter(
     (item) => item.id !== 'base' && Math.abs(item.minDelta) + Math.abs(item.maxDelta) > 0
   );
+
+  const validateContactForm = (): string[] => {
+    const errors: string[] = [];
+    if (!contactForm.name.trim()) errors.push(labels.validationName);
+    if (!contactForm.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactForm.email)) {
+      errors.push(labels.validationEmail);
+    }
+    if (!contactForm.phone.trim()) errors.push(labels.validationPhone);
+    return errors;
+  };
+
+  const handleContactSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    setSuccessMessage('');
+    const errors = validateContactForm();
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors([]);
+    setIsSubmitting(true);
+
+    try {
+      const response = await submitEstimateForm({
+        name: contactForm.name.trim(),
+        email: contactForm.email.trim(),
+        phone: contactForm.phone.trim(),
+        message: contactForm.message.trim() || undefined,
+        propertyType: labels.propertyTypes[input.propertyType],
+        projectType: projectLabel(input.projectType),
+        size: sizeLabel,
+        timeline: timelineLabel,
+        tileMaterial: tileLabel,
+        addons: addonLabels,
+        minCost: result.minCost,
+        maxCost: result.maxCost,
+        weeksMin: result.weeksMin,
+        weeksMax: result.weeksMax,
+      });
+      setSuccessMessage(response.message);
+      setContactForm(initialContactForm);
+    } catch (err) {
+      const apiError = err as ApiError;
+      setFormErrors(apiError.errors || [apiError.message || labels.emailError]);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="estimate-calculator">
@@ -299,7 +377,80 @@ export default function EstimateCalculator() {
 
           <p className="estimate-disclaimer">{labels.disclaimer}</p>
 
-          <Link to="/quote-wizard" className="btn btn-primary estimate-results-cta">
+          <form className="estimate-contact-form" onSubmit={handleContactSubmit}>
+            <h4>{labels.saveEstimateTitle}</h4>
+            <p>{labels.saveEstimateHint}</p>
+
+            {formErrors.length > 0 && (
+              <ul className="estimate-form-errors" role="alert">
+                {formErrors.map((error) => (
+                  <li key={error}>{error}</li>
+                ))}
+              </ul>
+            )}
+
+            {successMessage && (
+              <p className="estimate-form-success" role="status">
+                {successMessage}
+              </p>
+            )}
+
+            <label className="estimate-form-field">
+              <span>{labels.fullName}</span>
+              <input
+                type="text"
+                name="name"
+                value={contactForm.name}
+                onChange={(e) => setContactForm((prev) => ({ ...prev, name: e.target.value }))}
+                placeholder={labels.namePlaceholder}
+                autoComplete="name"
+                required
+              />
+            </label>
+
+            <label className="estimate-form-field">
+              <span>{t.common.email}</span>
+              <input
+                type="email"
+                name="email"
+                value={contactForm.email}
+                onChange={(e) => setContactForm((prev) => ({ ...prev, email: e.target.value }))}
+                placeholder={labels.emailPlaceholder}
+                autoComplete="email"
+                required
+              />
+            </label>
+
+            <label className="estimate-form-field">
+              <span>{t.common.phone}</span>
+              <input
+                type="tel"
+                name="phone"
+                value={contactForm.phone}
+                onChange={(e) => setContactForm((prev) => ({ ...prev, phone: e.target.value }))}
+                placeholder={labels.phonePlaceholder}
+                autoComplete="tel"
+                required
+              />
+            </label>
+
+            <label className="estimate-form-field">
+              <span>{labels.messageLabel}</span>
+              <textarea
+                name="message"
+                value={contactForm.message}
+                onChange={(e) => setContactForm((prev) => ({ ...prev, message: e.target.value }))}
+                placeholder={labels.messagePlaceholder}
+                rows={3}
+              />
+            </label>
+
+            <button type="submit" className="btn btn-primary estimate-results-cta" disabled={isSubmitting}>
+              {isSubmitting ? t.common.sending : labels.emailEstimate}
+            </button>
+          </form>
+
+          <Link to="/quote-wizard" className="btn btn-secondary estimate-results-secondary">
             {labels.getQuote}
           </Link>
           <Link to="/contact" className="btn btn-secondary estimate-results-secondary">

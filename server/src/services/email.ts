@@ -1,7 +1,7 @@
 import '../loadEnv';
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
-import { ContactFormData, PhotoAttachment, WizardSubmission } from '../types';
+import { ContactFormData, EstimateSubmission, PhotoAttachment, WizardSubmission } from '../types';
 
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'PortilloCeramicTile@gmail.com';
 const CONTACT_EMAIL_CC =
@@ -436,6 +436,185 @@ export async function sendWizardEmail(submission: WizardSubmission): Promise<voi
     });
   } catch (error) {
     console.error('Failed to send wizard confirmation email to customer:', error);
+  }
+}
+
+function formatCurrency(value: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function buildEstimateSummaryRows(submission: EstimateSubmission) {
+  const costRange = `${formatCurrency(submission.minCost)} – ${formatCurrency(submission.maxCost)}`;
+  const timeline = `${submission.weeksMin}–${submission.weeksMax} weeks`;
+  const addons =
+    submission.addons.length > 0 ? submission.addons.join(', ') : 'None selected';
+
+  return { costRange, timeline, addons };
+}
+
+function buildEstimateEmailContent(submission: EstimateSubmission) {
+  const submittedAt = formatSubmittedAt();
+  const { costRange, timeline, addons } = buildEstimateSummaryRows(submission);
+
+  const text = [
+    'New cost estimator submission from the Portillo Ceramic and Tile website',
+    '',
+    'CONTACT',
+    `Name: ${submission.name}`,
+    `Email: ${submission.email}`,
+    `Phone: ${submission.phone}`,
+    '',
+    'ESTIMATE SUMMARY',
+    `Estimated Cost: ${costRange}`,
+    `Estimated Timeline: ${timeline}`,
+    '',
+    'SELECTIONS',
+    `Property Type: ${submission.propertyType}`,
+    `Project Type: ${submission.projectType}`,
+    `Project Size: ${submission.size}`,
+    `Timeline: ${submission.timeline}`,
+    `Tile Material: ${submission.tileMaterial}`,
+    `Add-ons: ${addons}`,
+    '',
+    'Customer Message:',
+    submission.message || 'None',
+    '',
+    `Submitted: ${submittedAt}`,
+  ].join('\n');
+
+  const html = `
+    <h2>New Cost Estimator Submission</h2>
+    <p>A customer saved their project estimate and requested contact from the Portillo Ceramic and Tile website.</p>
+    <h3 style="margin-top: 24px;">Contact Information</h3>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Name</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.name)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Email</td><td style="${EMAIL_CELL_VALUE}"><a href="mailto:${escapeHtml(submission.email)}">${escapeHtml(submission.email)}</a></td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Phone</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.phone)}</td></tr>
+    </table>
+    <h3 style="margin-top: 24px;">Estimate Summary</h3>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Estimated Cost</td><td style="${EMAIL_CELL_VALUE}"><strong>${escapeHtml(costRange)}</strong></td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Estimated Timeline</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(timeline)}</td></tr>
+    </table>
+    <h3 style="margin-top: 24px;">Customer Selections</h3>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Property Type</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.propertyType)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Project Type</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.projectType)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Project Size</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.size)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Timeline</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.timeline)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Tile Material</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.tileMaterial)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Add-ons</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(addons)}</td></tr>
+    </table>
+    <h3 style="margin-top: 24px;">Customer Message</h3>
+    <p style="white-space: pre-wrap; line-height: 1.6;">${escapeHtml(submission.message || 'None')}</p>
+    <p style="color: #5a6a7a; font-size: 14px; margin-top: 24px;">Submitted: ${escapeHtml(submittedAt)}</p>
+  `;
+
+  return { text, html };
+}
+
+function buildEstimateConfirmationContent(submission: EstimateSubmission) {
+  const submittedAt = formatSubmittedAt();
+  const { costRange, timeline, addons } = buildEstimateSummaryRows(submission);
+
+  const text = [
+    `Hi ${submission.name},`,
+    '',
+    'Thank you for using the Portillo Ceramic and Tile cost estimator. We saved your selections and someone from our team will contact you soon to discuss your project.',
+    '',
+    'YOUR ESTIMATE',
+    `Estimated Cost: ${costRange}`,
+    `Estimated Timeline: ${timeline}`,
+    '',
+    'YOUR SELECTIONS',
+    `Property Type: ${submission.propertyType}`,
+    `Project Type: ${submission.projectType}`,
+    `Project Size: ${submission.size}`,
+    `Timeline: ${submission.timeline}`,
+    `Tile Material: ${submission.tileMaterial}`,
+    `Add-ons: ${addons}`,
+    '',
+    'Your Message:',
+    submission.message || 'None',
+    '',
+    'This is a planning estimate only. Final pricing depends on site conditions, layout complexity, and material selections.',
+    '',
+    `Submitted: ${submittedAt}`,
+    '',
+    'Questions? Call 703-867-0742 or email PortilloCeramicTile@gmail.com.',
+  ].join('\n');
+
+  const detailsHtml = `
+    <h4 style="margin: 0 0 8px; font-size: 15px;">Your Estimate</h4>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Estimated Cost</td><td style="${EMAIL_CELL_VALUE}"><strong>${escapeHtml(costRange)}</strong></td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Estimated Timeline</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(timeline)}</td></tr>
+    </table>
+    <h4 style="margin: 24px 0 8px; font-size: 15px;">Your Selections</h4>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Property Type</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.propertyType)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Project Type</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.projectType)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Project Size</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.size)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Timeline</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.timeline)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Tile Material</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.tileMaterial)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Add-ons</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(addons)}</td></tr>
+    </table>
+    <h4 style="margin: 24px 0 8px; font-size: 15px;">Contact Information</h4>
+    <table style="${EMAIL_TABLE_STYLE}">
+      <tr><td style="${EMAIL_CELL_LABEL}">Name</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.name)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Email</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.email)}</td></tr>
+      <tr><td style="${EMAIL_CELL_LABEL}">Phone</td><td style="${EMAIL_CELL_VALUE}">${escapeHtml(submission.phone)}</td></tr>
+    </table>
+    ${submission.message ? `<h4 style="margin: 24px 0 8px; font-size: 15px;">Your Message</h4><p style="white-space: pre-wrap; line-height: 1.6; margin: 0;">${escapeHtml(submission.message)}</p>` : ''}
+    <p style="margin-top: 20px; font-size: 14px; color: #5a6a7a;">
+      This is a planning estimate only. Final pricing depends on site conditions, layout complexity, and material selections.
+    </p>
+  `;
+
+  const introHtml = `
+    <p style="margin: 0 0 12px;">Hi ${escapeHtml(submission.name)},</p>
+    <p style="margin: 0 0 12px;">
+      Thank you for using our cost estimator. We saved your selections and
+      <strong>someone from our team will contact you soon</strong> to discuss your project.
+    </p>
+    <p style="margin: 0;">Below is a copy of your estimate and the options you selected.</p>
+  `;
+
+  const html = buildCustomerEmailWrapper(introHtml, detailsHtml, submittedAt);
+
+  return { text, html };
+}
+
+export async function sendEstimateEmail(submission: EstimateSubmission): Promise<void> {
+  const mailer = getTransporter();
+  const { text, html } = buildEstimateEmailContent(submission);
+  const { to, cc } = getFormEmailRecipients();
+
+  await mailer.sendMail({
+    from: `"Portillo Ceramic and Tile Website" <${CONTACT_EMAIL_FROM}>`,
+    to,
+    cc,
+    replyTo: `"${submission.name}" <${submission.email}>`,
+    subject: `Cost Estimate: ${submission.projectType} – ${submission.name}`,
+    text,
+    html,
+  });
+
+  const confirmation = buildEstimateConfirmationContent(submission);
+  try {
+    await sendCustomerConfirmationEmail({
+      to: submission.email,
+      name: submission.name,
+      subject: 'Your project estimate – Portillo Ceramic and Tile',
+      text: confirmation.text,
+      html: confirmation.html,
+    });
+  } catch (error) {
+    console.error('Failed to send estimate confirmation email to customer:', error);
   }
 }
 
