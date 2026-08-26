@@ -2,15 +2,13 @@ import { isEmailConfigured, sendPlainTextMail } from './email.js';
 
 const DEFAULT_SMS_NUMBERS = ['5715122599', '7038670742', '7038678773'];
 
-/** Major US carrier email-to-SMS gateways. Only the recipient's carrier delivers the text. */
-const SMS_GATEWAYS = [
-  'vtext.com',
-  'tmomail.net',
-  'txt.att.net',
-  'messaging.sprintpcs.com',
-  'email.uscc.net',
-  'msg.fi.google.com',
-];
+/**
+ * Email-to-SMS gateways that still deliver. Google Fi (msg.fi.google.com),
+ * Sprint, and US Cellular are omitted: they hard-bounce "address not found"
+ * for numbers that are not on those networks and flood the inbox.
+ * Google Fi numbers still receive texts through T-Mobile's tmomail.net.
+ */
+const SMS_GATEWAYS = ['vtext.com', 'tmomail.net', 'txt.att.net'];
 
 export interface FormSmsAlert {
   form: string;
@@ -72,7 +70,9 @@ export async function sendFormSmsAlert(alert: FormSmsAlert): Promise<void> {
   if (failed === results.length) {
     console.error(`SMS alerts failed for all ${failed} carrier gateways.`);
   } else if (failed > 0) {
-    console.warn(`SMS alerts: ${results.length - failed} sent, ${failed} gateways rejected (expected for unmatched carriers).`);
+    console.warn(
+      `SMS alerts: ${results.length - failed} sent, ${failed} gateways rejected (expected for unmatched carriers).`
+    );
   }
 }
 
