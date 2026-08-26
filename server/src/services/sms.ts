@@ -3,12 +3,15 @@ import { isEmailConfigured, sendPlainTextMail } from './email.js';
 const DEFAULT_SMS_NUMBERS = ['5715122599', '7038670742', '7038678773'];
 
 /**
- * Email-to-SMS gateways that still deliver. Google Fi (msg.fi.google.com),
- * Sprint, and US Cellular are omitted: they hard-bounce "address not found"
- * for numbers that are not on those networks and flood the inbox.
- * Google Fi numbers still receive texts through T-Mobile's tmomail.net.
+ * Verizon is the only remaining major US email-to-SMS gateway that does not
+ * hard-bounce unknown numbers. AT&T retired txt.att.net (DNS NXDOMAIN).
+ * Google Fi (msg.fi.google.com) and T-Mobile (tmomail.net) return
+ * "address not found" for numbers that are not on those networks.
+ *
+ * Override with full addresses if a phone is T-Mobile, e.g.
+ * SMS_ALERT_NUMBERS=5715122599@tmomail.net,7038670742@vtext.com
  */
-const SMS_GATEWAYS = ['vtext.com', 'tmomail.net', 'txt.att.net'];
+const DEFAULT_GATEWAY = 'vtext.com';
 
 export interface FormSmsAlert {
   form: string;
@@ -21,19 +24,40 @@ function digitsOnly(value: string): string {
   return value.replace(/\D/g, '');
 }
 
-function getAlertNumbers(): string[] {
-  const fromEnv = process.env.SMS_ALERT_NUMBERS;
-  const raw = fromEnv?.trim() ? fromEnv.split(',') : DEFAULT_SMS_NUMBERS;
-  const numbers = raw
-    .map((item) => digitsOnly(item))
-    .filter((item) => item.length === 10 || item.length === 11)
-    .map((item) => (item.length === 11 && item.startsWith('1') ? item.slice(1) : item));
-
-  return [...new Set(numbers)];
+function normalizeNumber(value: string): string | null {
+  const digits = digitsOnly(value);
+  if (digits.length === 10) {
+    return digits;
+  }
+  if (digits.length === 11 && digits.startsWith('1')) {
+    return digits.slice(1);
+  }
+  return null;
 }
 
-function gatewayAddresses(number: string): string[] {
-  return SMS_GATEWAYS.map((domain) => `${number}@${domain}`);
+function getAlertRecipients(): string[] {
+  const fromEnv = process.env.SMS_ALERT_NUMBERS;
+  const raw = fromEnv?.trim() ? fromEnv.split(',') : DEFAULT_SMS_NUMBERS;
+  const recipients: string[] = [];
+
+  for (const item of raw) {
+    const trimmed = item.trim();
+    if (!trimmed) {
+      continue;
+    }
+
+    if (trimmed.includes('@')) {
+      recipients.push(trimmed.toLowerCase());
+      continue;
+    }
+
+    const number = normalizeNumber(trimmed);
+    if (number) {
+      recipients.push(`${number}@${DEFAULT_GATEWAY}`);
+    }
+  }
+
+  return [...new Set(recipients)];
 }
 
 function buildSmsBody(alert: FormSmsAlert): string {
@@ -54,25 +78,21 @@ export async function sendFormSmsAlert(alert: FormSmsAlert): Promise<void> {
     return;
   }
 
-  const numbers = getAlertNumbers();
-  if (numbers.length === 0) {
+  const recipients = getAlertRecipients();
+  if (recipients.length === 0) {
     return;
   }
 
   const body = buildSmsBody(alert);
-  const recipients = numbers.flatMap(gatewayAddresses);
-
   const results = await Promise.allSettled(
     recipients.map((to) => sendPlainTextMail(to, 'PCT', body))
   );
 
   const failed = results.filter((result) => result.status === 'rejected').length;
   if (failed === results.length) {
-    console.error(`SMS alerts failed for all ${failed} carrier gateways.`);
+    console.error(`SMS alerts failed for all ${failed} recipients.`);
   } else if (failed > 0) {
-    console.warn(
-      `SMS alerts: ${results.length - failed} sent, ${failed} gateways rejected (expected for unmatched carriers).`
-    );
+    console.warn(`SMS alerts: ${results.length - failed} sent, ${failed} rejected.`);
   }
 }
 
