@@ -93,6 +93,13 @@ export const en: UiTranslations = {
       'Precision Installation',
       'Grout & Finishing',
     ],
+    yourSpaceVideoBadge: 'Renovation Timelapse',
+    yourSpaceVideoDuration: '3 min',
+    yourSpaceVideoPlayLabel: 'Play interior renovation video',
+    yourSpaceVideoPlayText: 'Watch the Process',
+    yourSpaceVideoTitle: 'Interior bathroom renovation timelapse from demo to finish',
+    yourSpaceVideoTagsLabel: 'Video highlights',
+    yourSpaceVideoTags: ['Demo to Finish', 'Tile & Grout', 'Real Craftsmanship'],
     processSteps: {
       demolition: {
         title: 'Demolition & Preparation',

@@ -89,6 +89,86 @@ export const featuresEn = {
     notListed: 'Not sure if we serve your area?',
     notListedCta: 'Contact us to confirm',
   },
+  cityLanding: {
+    heroTitle: 'Tile Installation in {cityState}',
+    heroSubtitle:
+      'Family-owned ceramic and tile contractor serving homeowners and businesses in {city} and nearby communities.',
+    introP1:
+      'Portillo Ceramic and Tile provides bathroom renovations, shower installations, floor and wall tile, kitchen backsplashes, and commercial tile work for properties in {cityState}.',
+    regionIntro: {
+      dc: 'From Capitol Hill rowhomes to downtown condos, we install tile with proper waterproofing, clean layouts, and durable finishes across {cityState}.',
+      maryland:
+        'From Bethesda to Frederick, we help Maryland homeowners and businesses upgrade bathrooms, showers, kitchens, and high-traffic spaces with professional tile craftsmanship in {cityState}.',
+      virginia:
+        'Across Northern Virginia, we install ceramic and porcelain tile for bathrooms, showers, backsplashes, and commercial facilities in {cityState} and surrounding communities.',
+      'west-virginia':
+        'We bring the same attention to detail to Eastern Panhandle projects in {cityState}—bathroom remodels, shower upgrades, floor tile, and commercial work built to last.',
+    },
+    introP2:
+      'Every project includes careful demolition and preparation, waterproofing where it matters, precise installation, and finishing that holds up to daily use. Call Abel Portillo for a straightforward quote.',
+    contactTitle: 'Request a Quote in {cityState}',
+    contactDescription:
+      'Tell us about your bathroom, shower, floor, backsplash, or commercial tile project. We serve {city} and the greater Washington D.C. metro area.',
+    callCta: 'Call',
+    quoteCta: 'Request a Quote Online',
+    highlightsTitle: 'Why {city} homeowners choose us',
+    highlights: [
+      'Demolition, prep, waterproofing, and installation handled in-house',
+      'Clean grout lines, precise cuts, and layouts built for real-world use',
+      'Residential bathrooms, showers, kitchens, and commercial facilities',
+      'Straightforward quotes from Abel Portillo — no high-pressure sales',
+    ],
+    servicesTitle: 'Tile Services in {cityState}',
+    servicesDescription:
+      'Explore the services we most often deliver for homeowners and businesses in {city} and nearby communities.',
+    viewService: 'View service details',
+    allServices: 'View all tile services',
+    whyTitle: 'Local Tile Craftsmanship in {cityState}',
+    whyDescription:
+      'We are a family-owned contractor focused on doing each phase correctly — not cutting corners on prep, waterproofing, or finishing.',
+    whyItems: [
+      {
+        title: 'Built for wet areas',
+        body: 'Showers and bathroom floors in {city} need proper waterproofing and preparation. We never skip the steps that protect your investment.',
+      },
+      {
+        title: 'Residential and commercial experience',
+        body: 'From master baths in {cityState} to locker rooms and restrooms, we understand how different spaces need different materials and schedules.',
+      },
+      {
+        title: 'Clear communication',
+        body: 'You will know what to expect before, during, and after your project — including realistic timelines for homes and businesses in {city}.',
+      },
+    ],
+    nearbyTitle: 'Nearby Service Areas',
+    nearbyDescription: 'We also serve communities near {cityState}.',
+    viewAllAreas: 'View all service areas',
+    faqTitle: 'Common Questions in {cityState}',
+    faqItems: [
+      {
+        question: 'Do you serve {city}?',
+        answer:
+          'Yes. We regularly complete tile projects in {cityState} and throughout Washington D.C., Maryland, Virginia, and West Virginia. Contact us to confirm scheduling for your address.',
+      },
+      {
+        question: 'How do I get a tile quote in {city}?',
+        answer:
+          'Residents in {cityState} can reach Abel Portillo directly, use our contact form, or try the Quote Wizard. Photos of your space help us prepare a more accurate estimate.',
+      },
+      {
+        question: 'What types of tile projects do you handle in {cityState}?',
+        answer:
+          'Bathroom renovations, custom showers, tub-to-shower conversions, floor and wall tile, kitchen backsplashes, tile repair, and commercial restroom or locker room installations.',
+      },
+    ],
+    moreFaq: 'Browse all frequently asked questions',
+    regionLabels: {
+      dc: 'Washington, D.C.',
+      maryland: 'Maryland',
+      virginia: 'Virginia',
+      'west-virginia': 'West Virginia',
+    },
+  },
   faq: {
     heroTitle: 'Frequently Asked Questions',
     heroSubtitle: 'Answers to common questions about timelines, materials, waterproofing, quotes, and our service area.',

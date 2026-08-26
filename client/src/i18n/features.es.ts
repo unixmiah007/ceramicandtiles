@@ -90,6 +90,86 @@ export const featuresEs: FeatureContent = {
     notListed: '¿No está seguro si atendemos su área?',
     notListedCta: 'Contáctenos para confirmar',
   },
+  cityLanding: {
+    heroTitle: 'Instalación de Azulejos en {cityState}',
+    heroSubtitle:
+      'Contratista familiar de azulejos y cerámica para propietarios y negocios en {city} y comunidades cercanas.',
+    introP1:
+      'Portillo Ceramic and Tile ofrece renovaciones de baños, instalación de duchas, azulejos de piso y pared, backsplash de cocina y proyectos comerciales en {cityState}.',
+    regionIntro: {
+      dc: 'Desde casas adosadas en Capitol Hill hasta condominios del centro, instalamos azulejos con impermeabilización adecuada, diseños limpios y acabados duraderos en {cityState}.',
+      maryland:
+        'Desde Bethesda hasta Frederick, ayudamos a propietarios y negocios de Maryland a renovar baños, duchas, cocinas y espacios de alto tráfico con artesanía profesional en {cityState}.',
+      virginia:
+        'En el norte de Virginia, instalamos azulejos cerámicos y de porcelanato para baños, duchas, backsplashes e instalaciones comerciales en {cityState} y comunidades cercanas.',
+      'west-virginia':
+        'Llevamos la misma atención al detalle a proyectos en el Panhandle Oriental en {cityState}: remodelaciones de baño, duchas, pisos y trabajo comercial hecho para durar.',
+    },
+    introP2:
+      'Cada proyecto incluye demolición y preparación cuidadosa, impermeabilización donde importa, instalación precisa y acabados que resisten el uso diario. Llame a Abel Portillo para una cotización directa.',
+    contactTitle: 'Solicite una Cotización en {cityState}',
+    contactDescription:
+      'Cuéntenos sobre su baño, ducha, piso, backsplash o proyecto comercial. Atendemos {city} y el área metropolitana de Washington D.C.',
+    callCta: 'Llamar',
+    quoteCta: 'Solicitar Cotización en Línea',
+    highlightsTitle: 'Por qué nos eligen en {city}',
+    highlights: [
+      'Demolición, preparación, impermeabilización e instalación en un solo equipo',
+      'Líneas de lechada limpias, cortes precisos y diseños hechos para el uso real',
+      'Baños residenciales, duchas, cocinas e instalaciones comerciales',
+      'Cotizaciones directas de Abel Portillo — sin presión de ventas',
+    ],
+    servicesTitle: 'Servicios de Azulejos en {cityState}',
+    servicesDescription:
+      'Explore los servicios que más ofrecemos a propietarios y negocios en {city} y comunidades cercanas.',
+    viewService: 'Ver detalles del servicio',
+    allServices: 'Ver todos los servicios de azulejos',
+    whyTitle: 'Artesanía Local de Azulejos en {cityState}',
+    whyDescription:
+      'Somos un contratista familiar enfocado en hacer cada fase correctamente — sin atajos en preparación, impermeabilización o acabados.',
+    whyItems: [
+      {
+        title: 'Hecho para áreas húmedas',
+        body: 'Las duchas y pisos de baño en {city} necesitan impermeabilización y preparación adecuadas. Nunca omitimos los pasos que protegen su inversión.',
+      },
+      {
+        title: 'Experiencia residencial y comercial',
+        body: 'Desde baños principales en {cityState} hasta vestuarios y baños comerciales, entendemos cómo cada espacio necesita materiales y horarios distintos.',
+      },
+      {
+        title: 'Comunicación clara',
+        body: 'Sabrá qué esperar antes, durante y después de su proyecto — incluyendo plazos realistas para hogares y negocios en {city}.',
+      },
+    ],
+    nearbyTitle: 'Áreas de Servicio Cercanas',
+    nearbyDescription: 'También atendemos comunidades cerca de {cityState}.',
+    viewAllAreas: 'Ver todas las áreas de servicio',
+    faqTitle: 'Preguntas Frecuentes en {cityState}',
+    faqItems: [
+      {
+        question: '¿Atienden {city}?',
+        answer:
+          'Sí. Completamos proyectos de azulejos regularmente en {cityState} y en Washington D.C., Maryland, Virginia y Virginia Occidental. Contáctenos para confirmar la programación en su dirección.',
+      },
+      {
+        question: '¿Cómo obtengo una cotización de azulejos en {city}?',
+        answer:
+          'Los residentes en {cityState} pueden llamar directamente a Abel Portillo, usar nuestro formulario de contacto o probar el Asistente de Cotización. Las fotos de su espacio nos ayudan a preparar una estimación más precisa.',
+      },
+      {
+        question: '¿Qué tipos de proyectos de azulejos manejan en {cityState}?',
+        answer:
+          'Renovaciones de baño, duchas personalizadas, conversiones de tina a ducha, azulejos de piso y pared, backsplash de cocina, reparación de azulejos e instalaciones comerciales en baños o vestuarios.',
+      },
+    ],
+    moreFaq: 'Ver todas las preguntas frecuentes',
+    regionLabels: {
+      dc: 'Washington D.C.',
+      maryland: 'Maryland',
+      virginia: 'Virginia',
+      'west-virginia': 'Virginia Occidental',
+    },
+  },
   faq: {
     heroTitle: 'Preguntas Frecuentes',
     heroSubtitle: 'Respuestas sobre plazos, materiales, impermeabilización, cotizaciones y nuestra área de servicio.',

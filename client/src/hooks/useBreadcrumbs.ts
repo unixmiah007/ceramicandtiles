@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router-dom';
 import { blogCategories, blogPosts, type BlogCategory } from '../data/blog';
+import { formatCityLabel, getCityBySlug } from '../data/service-area-cities';
 import { useLanguage } from '../context/LanguageContext';
 import { getBlogCategoryPath } from '../seo/blog';
 
@@ -75,6 +76,16 @@ export function useBreadcrumbs(): BreadcrumbItem[] | null {
       if (project) {
         crumbs.push({ label: t.nav.experience, path: '/experience' });
         crumbs.push({ label: project.name });
+        return crumbs;
+      }
+    }
+
+    const cityMatch = matchPath({ path: '/service-area/:citySlug', end: true }, pathname);
+    if (cityMatch?.params.citySlug) {
+      const city = getCityBySlug(cityMatch.params.citySlug);
+      if (city) {
+        crumbs.push({ label: f.nav.serviceArea, path: '/service-area' });
+        crumbs.push({ label: formatCityLabel(city) });
         return crumbs;
       }
     }

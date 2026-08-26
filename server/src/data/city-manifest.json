@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "washington-dc",
+    "path": "/service-area/washington-dc"
+  },
+  {
+    "slug": "bethesda-md",
+    "path": "/service-area/bethesda-md"
+  },
+  {
+    "slug": "silver-spring-md",
+    "path": "/service-area/silver-spring-md"
+  },
+  {
+    "slug": "rockville-md",
+    "path": "/service-area/rockville-md"
+  },
+  {
+    "slug": "gaithersburg-md",
+    "path": "/service-area/gaithersburg-md"
+  },
+  {
+    "slug": "frederick-md",
+    "path": "/service-area/frederick-md"
+  },
+  {
+    "slug": "bowie-md",
+    "path": "/service-area/bowie-md"
+  },
+  {
+    "slug": "college-park-md",
+    "path": "/service-area/college-park-md"
+  },
+  {
+    "slug": "hyattsville-md",
+    "path": "/service-area/hyattsville-md"
+  },
+  {
+    "slug": "laurel-md",
+    "path": "/service-area/laurel-md"
+  },
+  {
+    "slug": "annapolis-md",
+    "path": "/service-area/annapolis-md"
+  },
+  {
+    "slug": "germantown-md",
+    "path": "/service-area/germantown-md"
+  },
+  {
+    "slug": "potomac-md",
+    "path": "/service-area/potomac-md"
+  },
+  {
+    "slug": "chevy-chase-md",
+    "path": "/service-area/chevy-chase-md"
+  },
+  {
+    "slug": "takoma-park-md",
+    "path": "/service-area/takoma-park-md"
+  },
+  {
+    "slug": "wheaton-md",
+    "path": "/service-area/wheaton-md"
+  },
+  {
+    "slug": "arlington-va",
+    "path": "/service-area/arlington-va"
+  },
+  {
+    "slug": "alexandria-va",
+    "path": "/service-area/alexandria-va"
+  },
+  {
+    "slug": "fairfax-va",
+    "path": "/service-area/fairfax-va"
+  },
+  {
+    "slug": "falls-church-va",
+    "path": "/service-area/falls-church-va"
+  },
+  {
+    "slug": "mclean-va",
+    "path": "/service-area/mclean-va"
+  },
+  {
+    "slug": "vienna-va",
+    "path": "/service-area/vienna-va"
+  },
+  {
+    "slug": "reston-va",
+    "path": "/service-area/reston-va"
+  },
+  {
+    "slug": "herndon-va",
+    "path": "/service-area/herndon-va"
+  },
+  {
+    "slug": "leesburg-va",
+    "path": "/service-area/leesburg-va"
+  },
+  {
+    "slug": "sterling-va",
+    "path": "/service-area/sterling-va"
+  },
+  {
+    "slug": "ashburn-va",
+    "path": "/service-area/ashburn-va"
+  },
+  {
+    "slug": "manassas-va",
+    "path": "/service-area/manassas-va"
+  },
+  {
+    "slug": "woodbridge-va",
+    "path": "/service-area/woodbridge-va"
+  },
+  {
+    "slug": "springfield-va",
+    "path": "/service-area/springfield-va"
+  },
+  {
+    "slug": "burke-va",
+    "path": "/service-area/burke-va"
+  },
+  {
+    "slug": "annandale-va",
+    "path": "/service-area/annandale-va"
+  },
+  {
+    "slug": "loudoun-county-va",
+    "path": "/service-area/loudoun-county-va"
+  },
+  {
+    "slug": "prince-william-county-va",
+    "path": "/service-area/prince-william-county-va"
+  },
+  {
+    "slug": "martinsburg-wv",
+    "path": "/service-area/martinsburg-wv"
+  },
+  {
+    "slug": "charles-town-wv",
+    "path": "/service-area/charles-town-wv"
+  },
+  {
+    "slug": "harpers-ferry-wv",
+    "path": "/service-area/harpers-ferry-wv"
+  },
+  {
+    "slug": "shepherdstown-wv",
+    "path": "/service-area/shepherdstown-wv"
+  },
+  {
+    "slug": "ranson-wv",
+    "path": "/service-area/ranson-wv"
+  },
+  {
+    "slug": "inwood-wv",
+    "path": "/service-area/inwood-wv"
+  }
+]

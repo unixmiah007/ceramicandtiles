@@ -93,6 +93,13 @@ export const es: UiTranslations = {
       'Instalación Precisa',
       'Lechada y Acabado',
     ],
+    yourSpaceVideoBadge: 'Time-lapse de Renovación',
+    yourSpaceVideoDuration: '3 min',
+    yourSpaceVideoPlayLabel: 'Reproducir video de renovación interior',
+    yourSpaceVideoPlayText: 'Ver el Proceso',
+    yourSpaceVideoTitle: 'Time-lapse de renovación de baño desde demolición hasta acabado',
+    yourSpaceVideoTagsLabel: 'Aspectos del video',
+    yourSpaceVideoTags: ['De Demolición a Acabado', 'Azulejo y Lechada', 'Artesanía Real'],
     processSteps: {
       demolition: {
         title: 'Demolición y Preparación',

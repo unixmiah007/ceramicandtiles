@@ -1,5 +1,5 @@
 import { contactInfo } from '../data/content';
-import { serviceAreaCities } from '../data/features';
+import { serviceAreaCities } from '../data/service-area-cities';
 
 export const SITE_NAME = 'Portillo Ceramic and Tile';
 export const SITE_URL =

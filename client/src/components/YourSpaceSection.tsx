@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import StockImage from './StockImage';
+import YourSpaceVideo from './YourSpaceVideo';
 import { useLanguage } from '../context/LanguageContext';
-import { sectionImages } from '../data/images';
 
 export default function YourSpaceSection() {
   const { t } = useLanguage();
@@ -75,11 +74,7 @@ export default function YourSpaceSection() {
           <div className={`your-space-media${visibleClass}`}>
             <span className="your-space-frame your-space-frame--tl" aria-hidden="true" />
             <span className="your-space-frame your-space-frame--br" aria-hidden="true" />
-            <StockImage
-              image={sectionImages.yourSpaceDeservesTheBest}
-              aspectRatio="4 / 3"
-              className="split-feature-image rounded-image your-space-image"
-            />
+            <YourSpaceVideo isVisible={isVisible} />
             <span className="your-space-shimmer" aria-hidden="true" />
           </div>
         </div>

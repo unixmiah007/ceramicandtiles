@@ -169,19 +169,6 @@ export const checklistPhases: ChecklistItem[] = [
   { id: 'after', phaseKey: 'after', itemsKeys: ['after1', 'after2', 'after3', 'after4'] },
 ];
 
-export const serviceAreaCities = [
-  // Washington, D.C.
-  'Washington, D.C.',
-  // Maryland
-  'Bethesda', 'Silver Spring', 'Rockville', 'Gaithersburg', 'Frederick', 'Bowie',
-  'College Park', 'Hyattsville', 'Laurel', 'Annapolis', 'Germantown', 'Potomac',
-  'Chevy Chase', 'Takoma Park', 'Wheaton',
-  // Virginia
-  'Arlington', 'Alexandria', 'Fairfax', 'Falls Church', 'McLean', 'Vienna', 'Reston',
-  'Herndon', 'Leesburg', 'Sterling', 'Ashburn', 'Manassas', 'Woodbridge', 'Springfield',
-  'Burke', 'Annandale', 'Loudoun County', 'Prince William County',
-  // West Virginia
-  'Martinsburg', 'Charles Town', 'Harpers Ferry', 'Shepherdstown', 'Ranson', 'Inwood',
-];
+export { serviceAreaCities } from './service-area-cities';
 
 export const instagramFeedImages = galleryImages.slice(0, 6);

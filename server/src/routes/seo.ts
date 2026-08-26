@@ -17,12 +17,25 @@ interface BlogManifestEntry {
   imagePath: string;
 }
 
+interface CityManifestEntry {
+  slug: string;
+  path: string;
+}
+
 function loadBlogManifest(): BlogManifestEntry[] {
   const manifestPath = path.join(__dirname, '../data/blog-manifest.json');
   if (!fs.existsSync(manifestPath)) {
     return [];
   }
   return JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as BlogManifestEntry[];
+}
+
+function loadCityManifest(): CityManifestEntry[] {
+  const manifestPath = path.join(__dirname, '../data/city-manifest.json');
+  if (!fs.existsSync(manifestPath)) {
+    return [];
+  }
+  return JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as CityManifestEntry[];
 }
 
 const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
@@ -74,12 +87,17 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function buildSitemap(posts: BlogManifestEntry[]): string {
+function buildSitemap(posts: BlogManifestEntry[], cities: CityManifestEntry[]): string {
   const urls = [
     ...STATIC_PAGES.map((page) => ({
       loc: `${SITE_URL}${page.path}`,
       changefreq: page.changefreq,
       priority: page.priority,
+    })),
+    ...cities.map((city) => ({
+      loc: `${SITE_URL}${city.path}`,
+      changefreq: 'monthly',
+      priority: '0.75',
     })),
     ...posts.map((post) => ({
       loc: `${SITE_URL}/blog/${post.slug}`,
@@ -137,7 +155,8 @@ ${items}
 
 router.get('/sitemap.xml', (_req: Request, res: Response) => {
   const posts = loadBlogManifest();
-  res.type('application/xml').send(buildSitemap(posts));
+  const cities = loadCityManifest();
+  res.type('application/xml').send(buildSitemap(posts, cities));
 });
 
 router.get('/rss.xml', (_req: Request, res: Response) => {

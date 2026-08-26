@@ -66,6 +66,13 @@ export interface UiTranslations {
     yourSpaceP2: string;
     yourSpaceHighlightsLabel: string;
     yourSpaceHighlights: string[];
+    yourSpaceVideoBadge: string;
+    yourSpaceVideoDuration: string;
+    yourSpaceVideoPlayLabel: string;
+    yourSpaceVideoPlayText: string;
+    yourSpaceVideoTitle: string;
+    yourSpaceVideoTagsLabel: string;
+    yourSpaceVideoTags: string[];
     processSteps: Record<string, { title: string; description: string }>;
     galleryTitle: string;
     galleryDescription: string;

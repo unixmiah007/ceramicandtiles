@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import SeoHead from '../components/SeoHead';
-import { serviceAreaCities } from '../data/features';
+import {
+  SERVICE_AREA_CITIES,
+  SERVICE_AREA_REGION_ORDER,
+  formatCityLabel,
+  getCityPath,
+  getCitiesByRegion,
+} from '../data/service-area-cities';
 import { useLanguage } from '../context/LanguageContext';
 import { getStaticPageSeo } from '../seo/meta';
 import { sectionImages } from '../data/images';
@@ -37,11 +43,28 @@ export default function ServiceAreaPage() {
 
           <div className="service-area-cities">
             <h3>{f.serviceArea.citiesTitle}</h3>
-            <ul className="city-grid">
-              {serviceAreaCities.map((city) => (
-                <li key={city}>{city}</li>
-              ))}
-            </ul>
+            <p className="service-area-cities-note">
+              {locale === 'es'
+                ? `Explore páginas locales de azulejos para ${SERVICE_AREA_CITIES.length} comunidades.`
+                : `Browse local tile contractor pages for ${SERVICE_AREA_CITIES.length} communities.`}
+            </p>
+            {SERVICE_AREA_REGION_ORDER.map((region) => {
+              const cities = getCitiesByRegion(region);
+              if (cities.length === 0) return null;
+
+              return (
+                <div key={region} className="service-area-region">
+                  <h4>{f.cityLanding.regionLabels[region]}</h4>
+                  <ul className="city-grid city-grid--linked">
+                    {cities.map((city) => (
+                      <li key={city.slug}>
+                        <Link to={getCityPath(city)}>{formatCityLabel(city)}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
 
           <div className="service-area-cta text-center">

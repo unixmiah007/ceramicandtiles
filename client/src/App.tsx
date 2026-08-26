@@ -13,6 +13,7 @@ import ContactPage from './pages/ContactPage';
 import QuoteWizardPage from './pages/QuoteWizardPage';
 import FAQPage from './pages/FAQPage';
 import ServiceAreaPage from './pages/ServiceAreaPage';
+import CityLandingPage from './pages/CityLandingPage';
 import BeforeAfterPage from './pages/BeforeAfterPage';
 import EstimatePage from './pages/EstimatePage';
 import BlogPage from './pages/BlogPage';
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/quote-wizard" element={<QuoteWizardPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/service-area" element={<ServiceAreaPage />} />
+          <Route path="/service-area/:citySlug" element={<CityLandingPage />} />
           <Route path="/before-after" element={<BeforeAfterPage />} />
           <Route path="/estimate" element={<EstimatePage />} />
           <Route path="/blog" element={<BlogPage />} />
