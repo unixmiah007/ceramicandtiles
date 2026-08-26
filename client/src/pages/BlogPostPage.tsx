@@ -1,14 +1,20 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import PageHero from '../components/PageHero';
+import StockImage from '../components/StockImage';
 import CTASection from '../components/CTASection';
 import BlogComments from '../components/BlogComments';
 import SeoHead from '../components/SeoHead';
-import { blogPosts } from '../data/features';
+import { blogPosts } from '../data/blog';
 import { useLanguage } from '../context/LanguageContext';
+import {
+  buildBlogPostingSchema,
+  getBlogCategoryPath,
+  getBlogPostSeo,
+  getRelatedPosts,
+} from '../seo/blog';
 import { buildBreadcrumbSchema } from '../seo/meta';
 import { BlogComment } from '../types';
-import { absoluteUrl } from '../seo/site';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -18,83 +24,60 @@ export default function BlogPostPage() {
     ? f.blog.posts[post.titleKey as keyof typeof f.blog.posts]
     : null;
 
+  const relatedPosts = useMemo(
+    () => (post ? getRelatedPosts(post) : []),
+    [post]
+  );
+
   const updateStructuredData = useCallback(
     (comments: BlogComment[]) => {
       if (!post || !content || !slug) return;
 
-      const pageUrl = absoluteUrl(`/blog/${slug}`);
       const script = document.getElementById('page-jsonld');
       if (!script) return;
 
       script.textContent = JSON.stringify([
-        {
-          '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: content.title,
-          description: content.excerpt,
-          datePublished: post.date,
-          dateModified: post.date,
-          author: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
-          publisher: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
-          mainEntityOfPage: pageUrl,
-          url: pageUrl,
-          commentCount: comments.length,
-          comment: comments.map((comment) => ({
-            '@type': 'Comment',
-            author: { '@type': 'Person', name: comment.name },
-            datePublished: comment.createdAt,
-            text: comment.body,
-          })),
-        },
+        buildBlogPostingSchema(
+          post,
+          content,
+          locale,
+          f.blog.categories[post.category],
+          comments.length,
+          comments
+        ),
         buildBreadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: locale === 'es' ? 'Blog' : 'Blog', path: '/blog' },
+          { name: locale === 'es' ? 'Inicio' : 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: f.blog.categories[post.category], path: getBlogCategoryPath(post.category) },
           { name: content.title, path: `/blog/${slug}` },
         ]),
       ]);
     },
-    [post, content, slug, locale]
+    [post, content, slug, locale, f.blog.categories]
   );
 
   if (!post || !content) {
     return (
-      <section className="section">
-        <div className="container text-center">
-          <h1>Article not found</h1>
-          <Link to="/blog" className="btn btn-secondary">
-            {f.blog.backToBlog}
-          </Link>
-        </div>
-      </section>
+      <>
+        <SeoHead
+          title="Article not found"
+          description="The requested blog article could not be found."
+          path="/blog"
+          noindex
+        />
+        <section className="section">
+          <div className="container text-center">
+            <h1>Article not found</h1>
+            <Link to="/blog" className="btn btn-secondary">
+              {f.blog.backToBlog}
+            </Link>
+          </div>
+        </section>
+      </>
     );
   }
 
-  const seo = {
-    title: content.title,
-    description: `${content.excerpt} Expert tile advice for Washington D.C., Maryland, Virginia, and West Virginia.`,
-    path: `/blog/${post.slug}`,
-    ogType: 'article',
-    ogImage: absoluteUrl(post.image.src),
-    jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: content.title,
-        description: content.excerpt,
-        datePublished: post.date,
-        dateModified: post.date,
-        author: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
-        publisher: { '@type': 'Organization', name: 'Portillo Ceramic and Tile' },
-        mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-        url: absoluteUrl(`/blog/${post.slug}`),
-      },
-      buildBreadcrumbSchema([
-        { name: 'Home', path: '/' },
-        { name: 'Blog', path: '/blog' },
-        { name: content.title, path: `/blog/${post.slug}` },
-      ]),
-    ],
-  };
+  const seo = getBlogPostSeo(post, content, locale, f.blog.categories[post.category]);
 
   return (
     <>
@@ -102,25 +85,81 @@ export default function BlogPostPage() {
 
       <PageHero title={content.title} subtitle={content.excerpt} backgroundImage={post.image} />
 
-      <section className="section">
+      <article className="section" itemScope itemType="https://schema.org/BlogPosting">
         <div className="container blog-article">
-          <time dateTime={post.date}>
+          <meta itemProp="headline" content={content.title} />
+          <meta itemProp="description" content={content.excerpt} />
+          <meta itemProp="datePublished" content={post.date} />
+          <meta itemProp="dateModified" content={post.date} />
+          <Link to={getBlogCategoryPath(post.category)} className="blog-card-category" itemProp="articleSection">
+            {f.blog.categories[post.category]}
+          </Link>
+          <time dateTime={post.date} itemProp="datePublished">
             {new Date(post.date).toLocaleDateString(undefined, {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
           </time>
-          <p>{content.p1}</p>
-          <p>{content.p2}</p>
-          <p>{content.p3}</p>
+          {content.paragraphs.map((paragraph, index) => (
+            <p key={index} itemProp={index === 0 ? 'articleBody' : undefined}>
+              {paragraph}
+            </p>
+          ))}
+
+          <nav className="blog-article-links" aria-label="Related site links">
+            <Link to="/estimate" className="inline-link">
+              {f.blog.getEstimate}
+            </Link>
+            <Link to="/contact" className="inline-link">
+              {f.blog.requestQuote}
+            </Link>
+            <Link to={getBlogCategoryPath(post.category)} className="inline-link">
+              {f.blog.moreInCategory.replace('{category}', f.blog.categories[post.category])}
+            </Link>
+          </nav>
+
           <Link to="/blog" className="inline-link">
             ← {f.blog.backToBlog}
           </Link>
         </div>
-      </section>
+      </article>
 
-      <section className="section section-alt">
+      {relatedPosts.length > 0 && (
+        <section className="section section-alt">
+          <div className="container">
+            <h2 className="blog-related-title">{f.blog.relatedPosts}</h2>
+            <div className="blog-related-grid">
+              {relatedPosts.map((related) => {
+                const relatedContent =
+                  f.blog.posts[related.titleKey as keyof typeof f.blog.posts];
+                return (
+                  <article key={related.id} className="blog-related-card">
+                    <Link to={`/blog/${related.slug}`}>
+                      <StockImage
+                        image={related.image}
+                        aspectRatio="16 / 10"
+                        className="blog-related-image"
+                      />
+                    </Link>
+                    <div className="blog-related-body">
+                      <Link to={getBlogCategoryPath(related.category)} className="blog-card-category">
+                        {f.blog.categories[related.category]}
+                      </Link>
+                      <h3>
+                        <Link to={`/blog/${related.slug}`}>{relatedContent.title}</Link>
+                      </h3>
+                      <p>{relatedContent.excerpt}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="section">
         <div className="container">
           <BlogComments
             slug={post.slug}

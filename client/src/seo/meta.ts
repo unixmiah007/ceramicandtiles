@@ -3,6 +3,21 @@ import { Service, ValueProposition } from '../types';
 import { Locale } from '../i18n/types';
 import { BUSINESS, LOCAL_SEO, SITE_NAME, SITE_URL, absoluteUrl } from './site';
 
+export interface SeoAlternateLink {
+  href: string;
+  hreflang?: string;
+  type?: string;
+  title?: string;
+}
+
+export interface SeoArticleMeta {
+  publishedTime: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
+  author?: string;
+}
+
 export interface SeoConfig {
   title: string;
   description: string;
@@ -12,6 +27,8 @@ export interface SeoConfig {
   ogType?: string;
   ogImage?: string;
   noindex?: boolean;
+  article?: SeoArticleMeta;
+  alternateLinks?: SeoAlternateLink[];
 }
 
 function localSuffix(locale: Locale): string {

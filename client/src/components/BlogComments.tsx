@@ -2,7 +2,6 @@ import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { fetchBlogComments, submitBlogComment } from '../api';
 import { useLanguage } from '../context/LanguageContext';
 import { ApiError, BlogComment } from '../types';
-import RecaptchaWidget from './RecaptchaWidget';
 
 interface BlogCommentsProps {
   slug: string;
@@ -19,13 +18,10 @@ export default function BlogComments({
 }: BlogCommentsProps) {
   const { f } = useLanguage();
   const [comments, setComments] = useState<BlogComment[]>([]);
-  const [siteKey, setSiteKey] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
   const [successMessage, setSuccessMessage] = useState('');
-  const [recaptchaToken, setRecaptchaToken] = useState('');
-  const [recaptchaKey, setRecaptchaKey] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', body: '' });
 
   const loadComments = useCallback(async () => {
@@ -33,7 +29,6 @@ export default function BlogComments({
     try {
       const data = await fetchBlogComments(slug);
       setComments(data.comments);
-      setSiteKey(data.recaptchaSiteKey);
       onCommentsChange?.(data.comments);
     } catch {
       setComments([]);
@@ -53,14 +48,9 @@ export default function BlogComments({
     setIsSubmitting(true);
 
     try {
-      const response = await submitBlogComment(slug, {
-        ...form,
-        recaptchaToken,
-      });
+      const response = await submitBlogComment(slug, form);
       setSuccessMessage(response.message);
       setForm({ name: '', email: '', body: '' });
-      setRecaptchaToken('');
-      setRecaptchaKey((key) => key + 1);
       if (response.comment) {
         const next = [response.comment, ...comments];
         setComments(next);
@@ -132,65 +122,50 @@ export default function BlogComments({
           </div>
         )}
 
-        {!siteKey ? (
-          <p className="blog-comments-unavailable">{f.blogComments.unavailable}</p>
-        ) : (
-          <form onSubmit={handleSubmit} className="blog-comment-form" noValidate>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="comment-name">{f.blogComments.name}</label>
-                <input
-                  id="comment-name"
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                  placeholder={f.blogComments.namePlaceholder}
-                  required
-                  itemProp="creator"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="comment-email">{f.blogComments.email}</label>
-                <input
-                  id="comment-email"
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
-                  placeholder={f.blogComments.emailPlaceholder}
-                  required
-                />
-              </div>
-            </div>
-
+        <form onSubmit={handleSubmit} className="blog-comment-form" noValidate>
+          <div className="form-row">
             <div className="form-group">
-              <label htmlFor="comment-body">{f.blogComments.body}</label>
-              <textarea
-                id="comment-body"
-                value={form.body}
-                onChange={(e) => setForm((prev) => ({ ...prev, body: e.target.value }))}
-                placeholder={f.blogComments.bodyPlaceholder}
-                rows={5}
+              <label htmlFor="comment-name">{f.blogComments.name}</label>
+              <input
+                id="comment-name"
+                type="text"
+                value={form.name}
+                onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
+                placeholder={f.blogComments.namePlaceholder}
                 required
-                itemProp="commentText"
+                itemProp="creator"
               />
             </div>
+            <div className="form-group">
+              <label htmlFor="comment-email">{f.blogComments.email}</label>
+              <input
+                id="comment-email"
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
+                placeholder={f.blogComments.emailPlaceholder}
+                required
+              />
+            </div>
+          </div>
 
-            <RecaptchaWidget
-              key={recaptchaKey}
-              siteKey={siteKey}
-              onChange={setRecaptchaToken}
-              onExpired={() => setRecaptchaToken('')}
+          <div className="form-group">
+            <label htmlFor="comment-body">{f.blogComments.body}</label>
+            <textarea
+              id="comment-body"
+              value={form.body}
+              onChange={(e) => setForm((prev) => ({ ...prev, body: e.target.value }))}
+              placeholder={f.blogComments.bodyPlaceholder}
+              rows={5}
+              required
+              itemProp="commentText"
             />
+          </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={isSubmitting || !recaptchaToken}
-            >
-              {isSubmitting ? f.blogComments.submitting : f.blogComments.submit}
-            </button>
-          </form>
-        )}
+          <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+            {isSubmitting ? f.blogComments.submitting : f.blogComments.submit}
+          </button>
+        </form>
       </div>
 
       <meta itemProp="about" content={postTitle} />

@@ -1,3 +1,5 @@
+import { blogPostsEn } from './blog.en';
+
 export const featuresEn = {
   nav: {
     resources: 'Resources',
@@ -234,33 +236,25 @@ export const featuresEn = {
   },
   blog: {
     heroTitle: 'Tile Tips & Insights',
-    heroSubtitle: 'Practical advice on tile selection, waterproofing, maintenance, and planning your renovation.',
+    heroSubtitle: 'Practical advice on tile, ceramic, bathrooms, bedrooms, and living spaces—from selection to installation.',
     readMore: 'Read Article',
     backToBlog: 'Back to Blog',
+    relatedPosts: 'Related Articles',
+    moreInCategory: 'More {category} articles',
+    getEstimate: 'Get a cost estimate',
+    requestQuote: 'Request a quote',
     commentCount: 'comments',
-    posts: {
-      replaceTile: {
-        title: 'When Should You Replace Tile Instead of Repairing?',
-        excerpt: 'Cracks, loose grout, and water damage are signs it may be time for a full refresh.',
-        p1: 'Minor chips and isolated grout issues can often be repaired. But when tile is loose, water has reached the substrate, or the layout feels outdated, replacement usually delivers better long-term value.',
-        p2: 'A professional assessment checks for hidden moisture, improper waterproofing, and structural issues beneath the surface.',
-        p3: 'Portillo Ceramic and Tile can help you decide whether targeted repair or a full renovation is the right path for your bathroom, shower, or floor.',
-      },
-      waterproofing: {
-        title: 'Why Waterproofing Matters Behind Your Shower Tile',
-        excerpt: 'The tile you see is only part of the system—what is behind it protects your home.',
-        p1: 'Beautiful shower tile can fail quickly if waterproofing is skipped or installed incorrectly. Moisture behind tile leads to mold, rot, and costly repairs.',
-        p2: 'We use proven waterproof membranes and proper slope preparation so water stays where it belongs.',
-        p3: 'Whether you are building a new walk-in shower or renovating an existing bath, waterproofing is never an optional step.',
-      },
-      lockerRoom: {
-        title: 'Choosing Tile for High-Traffic Commercial Spaces',
-        excerpt: 'Locker rooms and restrooms need durable materials and precise installation.',
-        p1: 'Commercial spaces demand tile that withstands moisture, cleaning chemicals, and heavy daily use.',
-        p2: 'Slip resistance, grout durability, and layout efficiency all matter in facility environments.',
-        p3: 'Our experience with professional and fitness facilities helps clients choose finishes that look great and perform under pressure.',
-      },
+    allCategories: 'All Topics',
+    showingPosts: 'Showing',
+    ofPosts: 'articles',
+    categories: {
+      tile: 'Tile',
+      ceramic: 'Ceramic',
+      bathroom: 'Bathroom',
+      bedroom: 'Bedroom',
+      livingroom: 'Living Room',
     },
+    posts: blogPostsEn,
   },
   blogComments: {
     title: 'Comments',
@@ -276,7 +270,7 @@ export const featuresEn = {
     bodyPlaceholder: 'Share your thoughts about this article...',
     submit: 'Post Comment',
     submitting: 'Posting...',
-    unavailable: 'Comments are not available right now. reCAPTCHA must be configured on the server.',
+    unavailable: 'Comments are temporarily unavailable. Please try again later.',
     genericError: 'Something went wrong. Please try again.',
   },
   caseStudy: {

@@ -10,13 +10,11 @@ export interface BlogCommentInput {
   name: string;
   email: string;
   body: string;
-  recaptchaToken: string;
 }
 
 export interface BlogCommentsResponse {
   success: boolean;
   comments: BlogComment[];
-  recaptchaSiteKey: string | null;
 }
 
 export interface BlogCommentSubmitResponse {

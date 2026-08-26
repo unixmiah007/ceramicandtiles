@@ -1,4 +1,5 @@
 import { FeatureContent } from './features.en';
+import { blogPostsEs } from './blog.es';
 
 export const featuresEs: FeatureContent = {
   nav: {
@@ -236,33 +237,25 @@ export const featuresEs: FeatureContent = {
   },
   blog: {
     heroTitle: 'Consejos e Información sobre Azulejos',
-    heroSubtitle: 'Consejos prácticos sobre selección de azulejos, impermeabilización, mantenimiento y planificación de renovaciones.',
+    heroSubtitle: 'Consejos prácticos sobre azulejos, cerámica, baños, dormitorios y salas—desde selección hasta instalación.',
     readMore: 'Leer Artículo',
     backToBlog: 'Volver al Blog',
+    relatedPosts: 'Artículos Relacionados',
+    moreInCategory: 'Más artículos de {category}',
+    getEstimate: 'Obtener estimación de costo',
+    requestQuote: 'Solicitar cotización',
     commentCount: 'comentarios',
-    posts: {
-      replaceTile: {
-        title: '¿Cuándo Reemplazar Azulejos en Lugar de Reparar?',
-        excerpt: 'Grietas, lechada suelta y daño por agua son señales de que puede ser momento de una renovación completa.',
-        p1: 'Los chips menores y problemas aislados de lechada a menudo se pueden reparar. Pero cuando el azulejo está suelto, el agua llegó al sustrato, o el diseño está desactualizado, el reemplazo suele ofrecer mejor valor a largo plazo.',
-        p2: 'Una evaluación profesional verifica humedad oculta, impermeabilización incorrecta y problemas estructurales debajo de la superficie.',
-        p3: 'Portillo Ceramic and Tile puede ayudarle a decidir si la reparación focalizada o una renovación completa es el camino correcto.',
-      },
-      waterproofing: {
-        title: 'Por Qué Importa la Impermeabilización Detrás del Azulejo de la Ducha',
-        excerpt: 'El azulejo que ve es solo parte del sistema—lo que está detrás protege su hogar.',
-        p1: 'Un azulejo de ducha hermoso puede fallar rápidamente si se omite o instala incorrectamente la impermeabilización. La humedad detrás del azulejo causa moho, podredumbre y reparaciones costosas.',
-        p2: 'Usamos membranas probadas y preparación de pendiente adecuada para que el agua se quede donde debe.',
-        p3: 'Ya sea que construya una ducha walk-in nueva o renueve un baño existente, la impermeabilización nunca es opcional.',
-      },
-      lockerRoom: {
-        title: 'Elegir Azulejos para Espacios Comerciales de Alto Tráfico',
-        excerpt: 'Vestuarios y baños necesitan materiales duraderos e instalación precisa.',
-        p1: 'Los espacios comerciales requieren azulejos que resisten humedad, productos de limpieza y uso diario intenso.',
-        p2: 'La resistencia al deslizamiento, durabilidad de la lechada y eficiencia del diseño importan en instalaciones.',
-        p3: 'Nuestra experiencia con instalaciones profesionales y de fitness ayuda a elegir acabados que se ven bien y rinden bajo presión.',
-      },
+    allCategories: 'Todos los Temas',
+    showingPosts: 'Mostrando',
+    ofPosts: 'artículos',
+    categories: {
+      tile: 'Azulejos',
+      ceramic: 'Cerámica',
+      bathroom: 'Baño',
+      bedroom: 'Dormitorio',
+      livingroom: 'Sala',
     },
+    posts: blogPostsEs,
   },
   blogComments: {
     title: 'Comentarios',
@@ -278,7 +271,7 @@ export const featuresEs: FeatureContent = {
     bodyPlaceholder: 'Comparta sus ideas sobre este artículo...',
     submit: 'Publicar Comentario',
     submitting: 'Publicando...',
-    unavailable: 'Los comentarios no están disponibles. reCAPTCHA debe configurarse en el servidor.',
+    unavailable: 'Los comentarios no están disponibles en este momento. Inténtelo más tarde.',
     genericError: 'Algo salió mal. Por favor intente de nuevo.',
   },
   caseStudy: {

@@ -28,35 +28,6 @@ async function writeStore(store: CommentsStore): Promise<void> {
   await fs.writeFile(COMMENTS_FILE, JSON.stringify(store, null, 2), 'utf-8');
 }
 
-export function getRecaptchaSiteKey(): string | null {
-  return process.env.RECAPTCHA_SITE_KEY || null;
-}
-
-export function isRecaptchaConfigured(): boolean {
-  return Boolean(process.env.RECAPTCHA_SITE_KEY && process.env.RECAPTCHA_SECRET_KEY);
-}
-
-export async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) {
-    return false;
-  }
-
-  const params = new URLSearchParams({
-    secret,
-    response: token,
-  });
-
-  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString(),
-  });
-
-  const result = (await response.json()) as { success?: boolean };
-  return result.success === true;
-}
-
 export async function getCommentsForSlug(slug: string): Promise<BlogComment[]> {
   const store = await readStore();
   return (store[slug] ?? []).sort(
@@ -85,10 +56,6 @@ export function validateCommentInput(input: Partial<BlogCommentInput>): string[]
     errors.push('Comment must be at least 10 characters');
   } else if (input.body.trim().length > 2000) {
     errors.push('Comment must be 2000 characters or less');
-  }
-
-  if (!input.recaptchaToken?.trim()) {
-    errors.push('Please complete the reCAPTCHA verification');
   }
 
   return errors;

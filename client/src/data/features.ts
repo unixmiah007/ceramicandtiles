@@ -23,16 +23,6 @@ export interface FaqItem {
   answerKey: string;
 }
 
-export interface BlogPost {
-  id: string;
-  slug: string;
-  titleKey: string;
-  excerptKey: string;
-  bodyKeys: string[];
-  date: string;
-  image: typeof galleryImages[0];
-}
-
 export interface CaseStudy {
   id: string;
   projectId: string;
@@ -133,36 +123,6 @@ export const faqItems: FaqItem[] = [
   { id: 'commercial', questionKey: 'commercialQ', answerKey: 'commercialA' },
   { id: 'repair-vs-replace', questionKey: 'repairQ', answerKey: 'repairA' },
   { id: 'service-area', questionKey: 'areaQ', answerKey: 'areaA' },
-];
-
-export const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    slug: 'when-to-replace-tile',
-    titleKey: 'replaceTile',
-    excerptKey: 'replaceTileExcerpt',
-    bodyKeys: ['replaceTileP1', 'replaceTileP2', 'replaceTileP3'],
-    date: '2026-03-01',
-    image: galleryImages[3],
-  },
-  {
-    id: '2',
-    slug: 'waterproofing-matters',
-    titleKey: 'waterproofing',
-    excerptKey: 'waterproofingExcerpt',
-    bodyKeys: ['waterproofingP1', 'waterproofingP2', 'waterproofingP3'],
-    date: '2026-02-15',
-    image: galleryImages[4],
-  },
-  {
-    id: '3',
-    slug: 'commercial-locker-room-tile',
-    titleKey: 'lockerRoom',
-    excerptKey: 'lockerRoomExcerpt',
-    bodyKeys: ['lockerRoomP1', 'lockerRoomP2', 'lockerRoomP3'],
-    date: '2026-01-20',
-    image: projectImages['orangetheory-fitness'],
-  },
 ];
 
 export const caseStudies: CaseStudy[] = [

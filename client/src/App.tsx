@@ -47,6 +47,7 @@ export default function App() {
           <Route path="/before-after" element={<BeforeAfterPage />} />
           <Route path="/estimate" element={<EstimatePage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/category/:category" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/checklist" element={<ChecklistPage />} />
         </Routes>

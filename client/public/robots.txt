@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portilloceramicandtile.com/sitemap.xml
+Sitemap: https://ceramicandtile.com/sitemap.xml
