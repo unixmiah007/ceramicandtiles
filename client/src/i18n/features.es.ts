@@ -367,6 +367,11 @@ export const featuresEs: FeatureContent = {
     allCategories: 'Todos los Temas',
     showingPosts: 'Mostrando',
     ofPosts: 'artículos',
+    searchLabel: 'Buscar artículos',
+    searchPlaceholder: 'Buscar por tema, habitación o palabra clave…',
+    searchClear: 'Borrar búsqueda',
+    searchEmpty: 'Ningún artículo coincide con su búsqueda. Pruebe otra palabra clave o borre la búsqueda.',
+    searchResultsFor: 'que coinciden con',
     categories: {
       tile: 'Azulejos',
       ceramic: 'Cerámica',

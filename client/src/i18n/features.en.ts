@@ -366,6 +366,11 @@ export const featuresEn = {
     allCategories: 'All Topics',
     showingPosts: 'Showing',
     ofPosts: 'articles',
+    searchLabel: 'Search articles',
+    searchPlaceholder: 'Search by topic, room, or keyword…',
+    searchClear: 'Clear search',
+    searchEmpty: 'No articles match your search. Try a different keyword or clear the search.',
+    searchResultsFor: 'matching',
     categories: {
       tile: 'Tile',
       ceramic: 'Ceramic',
