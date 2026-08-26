@@ -17,6 +17,9 @@ export const en: UiTranslations = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
   },
+  breadcrumbs: {
+    ariaLabel: 'Breadcrumb',
+  },
   footer: {
     tagline: 'Family-Owned. Professional Craftsmanship. Quality You Can See.',
     quickLinks: 'Quick Links',

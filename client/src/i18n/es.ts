@@ -17,6 +17,9 @@ export const es: UiTranslations = {
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
   },
+  breadcrumbs: {
+    ariaLabel: 'Ruta de navegación',
+  },
   footer: {
     tagline: 'Empresa Familiar. Artesanía Profesional. Calidad que se Ve.',
     quickLinks: 'Enlaces Rápidos',

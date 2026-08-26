@@ -17,6 +17,9 @@ export interface UiTranslations {
     openMenu: string;
     closeMenu: string;
   };
+  breadcrumbs: {
+    ariaLabel: string;
+  };
   footer: {
     tagline: string;
     quickLinks: string;

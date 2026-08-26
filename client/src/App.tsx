@@ -22,6 +22,7 @@ import ChecklistPage from './pages/ChecklistPage';
 import BackToTop from './components/BackToTop';
 import LiveChat from './components/LiveChat';
 import EstimateFloater from './components/EstimateFloater';
+import Breadcrumbs from './components/Breadcrumbs';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Header />
       </div>
       <main>
+        <Breadcrumbs />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/experience" element={<ExperiencePage />} />
