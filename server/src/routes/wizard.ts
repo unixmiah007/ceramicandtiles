@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { ApiError, ContactResponse, WizardSubmission } from '../types';
-import { isEmailConfigured, sendWizardEmail } from '../services/email';
+import { ApiError, ContactResponse, WizardSubmission } from '../types/index.js';
+import { isEmailConfigured, sendWizardEmail } from '../services/email.js';
 
 const router = Router();
 

@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
-import { ApiError } from '../types';
-import { addComment, getCommentsForSlug, validateCommentInput } from '../services/comments';
-import { BlogCommentInput, BlogCommentSubmitResponse, BlogCommentsResponse } from '../types/blog';
+import { ApiError } from '../types/index.js';
+import { addComment, getCommentsForSlug, validateCommentInput } from '../services/comments.js';
+import { BlogCommentInput, BlogCommentSubmitResponse, BlogCommentsResponse } from '../types/blog.js';
 
 const router = Router();
 

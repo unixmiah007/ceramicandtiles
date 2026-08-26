@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { ApiError, ContactResponse, EstimateSubmission } from '../types';
-import { isEmailConfigured, sendEstimateEmail } from '../services/email';
+import { ApiError, ContactResponse, EstimateSubmission } from '../types/index.js';
+import { isEmailConfigured, sendEstimateEmail } from '../services/email.js';
 
 const router = Router();
 

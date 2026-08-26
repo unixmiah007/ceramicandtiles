@@ -1,7 +1,7 @@
-import '../loadEnv';
+import '../loadEnv.js';
 import nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
-import { ContactFormData, EstimateSubmission, PhotoAttachment, WizardSubmission } from '../types';
+import { ContactFormData, EstimateSubmission, PhotoAttachment, WizardSubmission } from '../types/index.js';
 
 const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO || 'PortilloCeramicTile@gmail.com';
 const CONTACT_EMAIL_CC =

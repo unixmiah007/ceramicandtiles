@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { generateChatResponse, getChatMode } from '../services/chatAgent';
-import { ApiError, ChatRequest, ChatResponse } from '../types';
+import { generateChatResponse, getChatMode } from '../services/chatAgent.js';
+import { ApiError, ChatRequest, ChatResponse } from '../types/index.js';
 
 const router = Router();
 const rateLimitMap = new Map<string, number[]>();

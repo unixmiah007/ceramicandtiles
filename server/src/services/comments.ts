@@ -1,8 +1,10 @@
 import { randomUUID } from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
-import { BlogComment, BlogCommentInput } from '../types/blog';
+import { fileURLToPath } from 'url';
+import { BlogComment, BlogCommentInput } from '../types/blog.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '../../data');
 const COMMENTS_FILE = path.join(DATA_DIR, 'comments.json');
 

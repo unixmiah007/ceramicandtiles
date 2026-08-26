@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { Router, Request, Response } from 'express';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const router = Router();
 
 const SITE_URL = (process.env.SITE_URL || 'https://ceramicandtile.com').replace(/\/$/, '');

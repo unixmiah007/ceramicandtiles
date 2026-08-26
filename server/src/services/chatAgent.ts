@@ -1,5 +1,5 @@
-import { contactInfo, projects, services, valuePropositions } from '../data/content';
-import { ChatMessage } from '../types';
+import { contactInfo, projects, services, valuePropositions } from '../data/content.js';
+import { ChatMessage } from '../types/index.js';
 
 const SERVICE_AREA = 'Northern Virginia and the Washington, D.C. area';
 

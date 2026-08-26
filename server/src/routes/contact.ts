@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { ContactFormData, ContactResponse, ApiError } from '../types';
-import { isEmailConfigured, sendContactEmail } from '../services/email';
+import { ContactFormData, ContactResponse, ApiError } from '../types/index.js';
+import { isEmailConfigured, sendContactEmail } from '../services/email.js';
 
 const router = Router();
 

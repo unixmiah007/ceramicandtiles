@@ -1,16 +1,18 @@
-import './loadEnv';
+import './loadEnv.js';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import path from 'path';
-import contactRoutes from './routes/contact';
-import contentRoutes from './routes/content';
-import chatRoutes from './routes/chat';
-import wizardRoutes from './routes/wizard';
-import estimateRoutes from './routes/estimate';
-import commentRoutes from './routes/comments';
-import seoRoutes from './routes/seo';
+import { fileURLToPath } from 'url';
+import contactRoutes from './routes/contact.js';
+import contentRoutes from './routes/content.js';
+import chatRoutes from './routes/chat.js';
+import wizardRoutes from './routes/wizard.js';
+import estimateRoutes from './routes/estimate.js';
+import commentRoutes from './routes/comments.js';
+import seoRoutes from './routes/seo.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3001;
 

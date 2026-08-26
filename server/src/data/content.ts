@@ -1,4 +1,4 @@
-import { Service, Project, ValueProposition } from '../types';
+import { Service, Project, ValueProposition } from '../types/index.js';
 
 export const services: Service[] = [
   {

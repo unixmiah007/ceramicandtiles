@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { services, projects, valuePropositions, contactInfo } from '../data/content';
+import { services, projects, valuePropositions, contactInfo } from '../data/content.js';
 
 const router = Router();
 
