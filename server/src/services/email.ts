@@ -621,3 +621,13 @@ export async function sendEstimateEmail(submission: EstimateSubmission): Promise
 export function isEmailConfigured(): boolean {
   return Boolean(SMTP_USER && SMTP_PASS);
 }
+
+export async function sendPlainTextMail(to: string, subject: string, text: string): Promise<void> {
+  const mailer = getTransporter();
+  await mailer.sendMail({
+    from: `"Portillo Ceramic and Tile" <${CONTACT_EMAIL_FROM}>`,
+    to,
+    subject,
+    text,
+  });
+}

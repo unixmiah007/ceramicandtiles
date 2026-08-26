@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { ApiError, ContactResponse, EstimateSubmission } from '../types/index.js';
 import { isEmailConfigured, sendEstimateEmail } from '../services/email.js';
+import { notifyFormSms } from '../services/sms.js';
 
 const router = Router();
 
@@ -69,6 +70,12 @@ router.post('/estimate', async (req: Request, res: Response<ContactResponse | Ap
 
   try {
     await sendEstimateEmail(submission);
+    notifyFormSms({
+      form: 'Estimate',
+      name: submission.name,
+      phone: submission.phone,
+      summary: `${submission.projectType} $${submission.minCost}-$${submission.maxCost}`,
+    });
 
     return res.status(200).json({
       success: true,

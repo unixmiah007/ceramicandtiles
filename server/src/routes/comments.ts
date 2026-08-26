@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { ApiError } from '../types/index.js';
 import { addComment, getCommentsForSlug, validateCommentInput } from '../services/comments.js';
+import { notifyFormSms } from '../services/sms.js';
 import { BlogCommentInput, BlogCommentSubmitResponse, BlogCommentsResponse } from '../types/blog.js';
 
 const router = Router();
@@ -43,6 +44,12 @@ router.post(
         name: input.name!.trim(),
         email: input.email!.trim(),
         body: input.body!.trim(),
+      });
+
+      notifyFormSms({
+        form: 'Blog comment',
+        name: comment.name,
+        summary: slug.replace(/-/g, ' '),
       });
 
       return res.status(201).json({

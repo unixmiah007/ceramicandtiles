@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { ContactFormData, ContactResponse, ApiError } from '../types/index.js';
 import { isEmailConfigured, sendContactEmail } from '../services/email.js';
+import { notifyFormSms } from '../services/sms.js';
 
 const router = Router();
 
@@ -63,6 +64,12 @@ router.post('/contact', async (req: Request, res: Response<ContactResponse | Api
 
   try {
     await sendContactEmail(submission);
+    notifyFormSms({
+      form: 'Contact',
+      name: submission.name,
+      phone: submission.phone,
+      summary: submission.projectType,
+    });
 
     return res.status(200).json({
       success: true,

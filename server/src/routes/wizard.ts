@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { ApiError, ContactResponse, WizardSubmission } from '../types/index.js';
 import { isEmailConfigured, sendWizardEmail } from '../services/email.js';
+import { notifyFormSms } from '../services/sms.js';
 
 const router = Router();
 
@@ -67,6 +68,12 @@ router.post('/wizard', async (req: Request, res: Response<ContactResponse | ApiE
 
   try {
     await sendWizardEmail(submission);
+    notifyFormSms({
+      form: 'Quote Wizard',
+      name: submission.name,
+      phone: submission.phone,
+      summary: `${submission.serviceTitle} in ${submission.location}`,
+    });
 
     return res.status(200).json({
       success: true,
