@@ -22,23 +22,36 @@ interface CityManifestEntry {
   path: string;
 }
 
-function loadBlogManifest(): BlogManifestEntry[] {
-  const manifestPath = path.join(__dirname, '../data/blog-manifest.json');
-  if (!fs.existsSync(manifestPath)) {
-    return [];
+interface SitemapPage {
+  path: string;
+  changefreq: string;
+  priority: string;
+  lastmod?: string;
+  imagePath?: string;
+  imageTitle?: string;
+}
+
+function loadJson<T>(relativePath: string, fallback: T): T {
+  const filePath = path.join(__dirname, relativePath);
+  if (!fs.existsSync(filePath)) {
+    return fallback;
   }
-  return JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as BlogManifestEntry[];
+  return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T;
+}
+
+function loadBlogManifest(): BlogManifestEntry[] {
+  return loadJson<BlogManifestEntry[]>('../data/blog-manifest.json', []);
 }
 
 function loadCityManifest(): CityManifestEntry[] {
-  const manifestPath = path.join(__dirname, '../data/city-manifest.json');
-  if (!fs.existsSync(manifestPath)) {
-    return [];
-  }
-  return JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as CityManifestEntry[];
+  return loadJson<CityManifestEntry[]>('../data/city-manifest.json', []);
 }
 
-const STATIC_PAGES: { path: string; changefreq: string; priority: string }[] = [
+function loadSitemapPages(): SitemapPage[] {
+  return loadJson<SitemapPage[]>('../data/sitemap-pages.json', []);
+}
+
+const STATIC_PAGES: SitemapPage[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/services', changefreq: 'weekly', priority: '0.9' },
   { path: '/services/bathroom-renovations', changefreq: 'monthly', priority: '0.8' },
@@ -87,40 +100,64 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function buildSitemap(posts: BlogManifestEntry[], cities: CityManifestEntry[]): string {
-  const urls = [
-    ...STATIC_PAGES.map((page) => ({
-      loc: `${SITE_URL}${page.path}`,
-      changefreq: page.changefreq,
-      priority: page.priority,
-    })),
+function resolvePages(): SitemapPage[] {
+  const generated = loadSitemapPages();
+  if (generated.length > 0) {
+    return generated;
+  }
+
+  const posts = loadBlogManifest();
+  const cities = loadCityManifest();
+  return [
+    ...STATIC_PAGES,
     ...cities.map((city) => ({
-      loc: `${SITE_URL}${city.path}`,
+      path: city.path,
       changefreq: 'monthly',
       priority: '0.75',
     })),
     ...posts.map((post) => ({
-      loc: `${SITE_URL}/blog/${post.slug}`,
-      lastmod: post.date,
+      path: `/blog/${post.slug}`,
       changefreq: 'monthly',
       priority: '0.6',
+      lastmod: post.date,
+      imagePath: post.imagePath,
+      imageTitle: post.title,
     })),
   ];
+}
 
-  const body = urls
-    .map((url) => {
-      const parts = [`  <url>`, `    <loc>${escapeXml(url.loc)}</loc>`];
-      if ('lastmod' in url && url.lastmod) {
-        parts.push(`    <lastmod>${url.lastmod}</lastmod>`);
+function buildSitemap(pages: SitemapPage[]): string {
+  const body = pages
+    .map((page) => {
+      const loc = `${SITE_URL}${page.path === '/' ? '/' : page.path}`;
+      const parts = [
+        '  <url>',
+        `    <loc>${escapeXml(loc)}</loc>`,
+      ];
+      if (page.lastmod) {
+        parts.push(`    <lastmod>${page.lastmod}</lastmod>`);
       }
-      parts.push(`    <changefreq>${url.changefreq}</changefreq>`);
-      parts.push(`    <priority>${url.priority}</priority>`);
-      parts.push(`  </url>`);
+      parts.push(`    <changefreq>${page.changefreq}</changefreq>`);
+      parts.push(`    <priority>${page.priority}</priority>`);
+      if (page.imagePath) {
+        parts.push('    <image:image>');
+        parts.push(`      <image:loc>${escapeXml(`${SITE_URL}${page.imagePath}`)}</image:loc>`);
+        if (page.imageTitle) {
+          parts.push(`      <image:title>${escapeXml(page.imageTitle)}</image:title>`);
+        }
+        parts.push('    </image:image>');
+      }
+      parts.push('  </url>');
       return parts.join('\n');
     })
     .join('\n');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${body}
+</urlset>
+`;
 }
 
 function buildRss(posts: BlogManifestEntry[]): string {
@@ -154,13 +191,14 @@ ${items}
 }
 
 router.get('/sitemap.xml', (_req: Request, res: Response) => {
-  const posts = loadBlogManifest();
-  const cities = loadCityManifest();
-  res.type('application/xml').send(buildSitemap(posts, cities));
+  const xml = buildSitemap(resolvePages());
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.type('application/xml').send(xml);
 });
 
 router.get('/rss.xml', (_req: Request, res: Response) => {
   const posts = loadBlogManifest();
+  res.set('Cache-Control', 'public, max-age=3600');
   res.type('application/rss+xml').send(buildRss(posts));
 });
 

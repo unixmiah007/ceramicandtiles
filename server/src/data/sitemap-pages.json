@@ -1,0 +1,866 @@
+[
+  {
+    "path": "/",
+    "changefreq": "weekly",
+    "priority": "1.0",
+    "lastmod": "2026-08-26",
+    "imagePath": "/images/sections/your-space-deserves-the-best.jpg",
+    "imageTitle": "Portillo Ceramic and Tile"
+  },
+  {
+    "path": "/services",
+    "changefreq": "weekly",
+    "priority": "0.9",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/bathroom-renovations",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/shower-installation",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/ceramic-porcelain",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/shower-waterproofing",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/floor-wall-tile",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/commercial-tile",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/locker-rooms",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/backsplashes",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/tile-replacement",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/tile-repair",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/demolition-removal",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/services/custom-designs",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/experience",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/experience/washington-capitals",
+    "changefreq": "monthly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/experience/the-pentagon",
+    "changefreq": "monthly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/experience/orangetheory-fitness",
+    "changefreq": "monthly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo",
+    "changefreq": "monthly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo/family-owned",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo/professional-experience",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo/attention-to-detail",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo/quality-without-shortcuts",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/why-portillo/built-to-last",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/contact",
+    "changefreq": "monthly",
+    "priority": "0.9",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/quote-wizard",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area",
+    "changefreq": "monthly",
+    "priority": "0.9",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/washington-dc",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/bethesda-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/silver-spring-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/rockville-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/gaithersburg-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/frederick-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/bowie-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/college-park-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/hyattsville-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/laurel-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/annapolis-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/germantown-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/potomac-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/chevy-chase-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/takoma-park-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/wheaton-md",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/arlington-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/alexandria-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/fairfax-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/falls-church-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/mclean-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/vienna-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/reston-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/herndon-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/leesburg-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/sterling-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/ashburn-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/manassas-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/woodbridge-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/springfield-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/burke-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/annandale-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/loudoun-county-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/prince-william-county-va",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/martinsburg-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/charles-town-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/harpers-ferry-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/shepherdstown-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/ranson-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/service-area/inwood-wv",
+    "changefreq": "monthly",
+    "priority": "0.75",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/faq",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/before-after",
+    "changefreq": "monthly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/estimate",
+    "changefreq": "monthly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/checklist",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog",
+    "changefreq": "weekly",
+    "priority": "0.8",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/category/tile",
+    "changefreq": "weekly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/category/ceramic",
+    "changefreq": "weekly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/category/bathroom",
+    "changefreq": "weekly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/category/bedroom",
+    "changefreq": "weekly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/category/livingroom",
+    "changefreq": "weekly",
+    "priority": "0.7",
+    "lastmod": "2026-08-26"
+  },
+  {
+    "path": "/blog/living-room-renovation-phasing-your-project",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-12-14",
+    "imagePath": "/images/blog/living-room-renovation-phasing-your-project.jpg",
+    "imageTitle": "Living Room Renovation: Phasing Your Project"
+  },
+  {
+    "path": "/blog/built-in-shelving-and-tile-integration",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-12-10",
+    "imagePath": "/images/blog/built-in-shelving-and-tile-integration.jpg",
+    "imageTitle": "Built-In Shelving and Tile Integration"
+  },
+  {
+    "path": "/blog/living-room-color-palettes-with-tile",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-12-06",
+    "imagePath": "/images/blog/living-room-color-palettes-with-tile.jpg",
+    "imageTitle": "Living Room Color Palettes with Tile"
+  },
+  {
+    "path": "/blog/natural-stone-vs-porcelain-in-living-spaces",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-12-02",
+    "imagePath": "/images/blog/natural-stone-vs-porcelain-in-living-spaces.jpg",
+    "imageTitle": "Natural Stone vs Porcelain in Living Spaces"
+  },
+  {
+    "path": "/blog/living-room-rug-layering-over-tile-floors",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-28",
+    "imagePath": "/images/blog/living-room-rug-layering-over-tile-floors.jpg",
+    "imageTitle": "Living Room Rug Layering Over Tile Floors"
+  },
+  {
+    "path": "/blog/durable-tile-for-high-traffic-living-areas",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-24",
+    "imagePath": "/images/blog/durable-tile-for-high-traffic-living-areas.jpg",
+    "imageTitle": "Durable Tile for High-Traffic Living Areas"
+  },
+  {
+    "path": "/blog/transitioning-tile-from-kitchen-to-living-room",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-20",
+    "imagePath": "/images/blog/transitioning-tile-from-kitchen-to-living-room.jpg",
+    "imageTitle": "Transitioning Tile from Kitchen to Living Room"
+  },
+  {
+    "path": "/blog/tile-around-living-room-fireplaces",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-16",
+    "imagePath": "/images/blog/tile-around-living-room-fireplaces.jpg",
+    "imageTitle": "Tile Around Living Room Fireplaces"
+  },
+  {
+    "path": "/blog/living-room-feature-wall-tile-designs",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-12",
+    "imagePath": "/images/blog/living-room-feature-wall-tile-designs.jpg",
+    "imageTitle": "Living Room Feature Wall Tile Designs"
+  },
+  {
+    "path": "/blog/open-concept-living-room-tile-flooring",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-08",
+    "imagePath": "/images/blog/open-concept-living-room-tile-flooring.jpg",
+    "imageTitle": "Open-Concept Living Room Tile Flooring"
+  },
+  {
+    "path": "/blog/bedroom-renovation-timeline-and-budget-tips",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-11-04",
+    "imagePath": "/images/blog/bedroom-renovation-timeline-and-budget-tips.jpg",
+    "imageTitle": "Bedroom Renovation Timeline and Budget Tips"
+  },
+  {
+    "path": "/blog/minimalist-bedroom-design-with-large-format-tile",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-31",
+    "imagePath": "/images/blog/minimalist-bedroom-design-with-large-format-tile.jpg",
+    "imageTitle": "Minimalist Bedroom Design with Large-Format Tile"
+  },
+  {
+    "path": "/blog/warm-underfoot-radiant-heat-in-bedrooms",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-27",
+    "imagePath": "/images/blog/warm-underfoot-radiant-heat-in-bedrooms.jpg",
+    "imageTitle": "Warm Underfoot: Radiant Heat in Bedrooms"
+  },
+  {
+    "path": "/blog/soundproofing-considerations-with-tile-floors",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-23",
+    "imagePath": "/images/blog/soundproofing-considerations-with-tile-floors.jpg",
+    "imageTitle": "Soundproofing Considerations with Tile Floors"
+  },
+  {
+    "path": "/blog/bedroom-closet-floor-tile-solutions",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-19",
+    "imagePath": "/images/blog/bedroom-closet-floor-tile-solutions.jpg",
+    "imageTitle": "Bedroom Closet Floor Tile Solutions"
+  },
+  {
+    "path": "/blog/tile-fireplace-surrounds-in-master-bedrooms",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-15",
+    "imagePath": "/images/blog/tile-fireplace-surrounds-in-master-bedrooms.jpg",
+    "imageTitle": "Tile Fireplace Surrounds in Master Bedrooms"
+  },
+  {
+    "path": "/blog/en-suite-bedroom-bathroom-coordination",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-11",
+    "imagePath": "/images/blog/en-suite-bedroom-bathroom-coordination.jpg",
+    "imageTitle": "En-Suite Bedroom Bathroom Coordination"
+  },
+  {
+    "path": "/blog/bedroom-accent-wall-tile-ideas",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-07",
+    "imagePath": "/images/blog/bedroom-accent-wall-tile-ideas.jpg",
+    "imageTitle": "Bedroom Accent Wall Tile Ideas"
+  },
+  {
+    "path": "/blog/creating-a-calm-bedroom-with-neutral-tile-accents",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-10-03",
+    "imagePath": "/images/blog/creating-a-calm-bedroom-with-neutral-tile-accents.jpg",
+    "imageTitle": "Creating a Calm Bedroom with Neutral Tile Accents"
+  },
+  {
+    "path": "/blog/bedroom-flooring-tile-vs-hardwood-vs-carpet",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-29",
+    "imagePath": "/images/blog/bedroom-flooring-tile-vs-hardwood-vs-carpet.jpg",
+    "imageTitle": "Bedroom Flooring: Tile vs Hardwood vs Carpet"
+  },
+  {
+    "path": "/blog/ada-compliant-bathroom-tile-layout",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-25",
+    "imagePath": "/images/blog/ada-compliant-bathroom-tile-layout.jpg",
+    "imageTitle": "ADA-Compliant Bathroom Tile Layout"
+  },
+  {
+    "path": "/blog/guest-bathroom-refresh-on-a-budget",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-21",
+    "imagePath": "/images/blog/guest-bathroom-refresh-on-a-budget.jpg",
+    "imageTitle": "Guest Bathroom Refresh on a Budget"
+  },
+  {
+    "path": "/blog/bathroom-lighting-and-tile-color-coordination",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-17",
+    "imagePath": "/images/blog/bathroom-lighting-and-tile-color-coordination.jpg",
+    "imageTitle": "Bathroom Lighting and Tile Color Coordination"
+  },
+  {
+    "path": "/blog/niche-and-bench-ideas-for-shower-tile",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-13",
+    "imagePath": "/images/blog/niche-and-bench-ideas-for-shower-tile.jpg",
+    "imageTitle": "Niche and Bench Ideas for Shower Tile"
+  },
+  {
+    "path": "/blog/bathroom-floor-tile-slip-resistance-matters",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-09",
+    "imagePath": "/images/blog/bathroom-floor-tile-slip-resistance-matters.jpg",
+    "imageTitle": "Bathroom Floor Tile: Slip Resistance Matters"
+  },
+  {
+    "path": "/blog/tub-to-shower-conversion-what-to-know",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-05",
+    "imagePath": "/images/blog/tub-to-shower-conversion-what-to-know.jpg",
+    "imageTitle": "Tub-to-Shower Conversion: What to Know"
+  },
+  {
+    "path": "/blog/bathroom-vanity-backsplash-ideas",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-09-01",
+    "imagePath": "/images/blog/bathroom-vanity-backsplash-ideas.jpg",
+    "imageTitle": "Bathroom Vanity Backsplash Ideas"
+  },
+  {
+    "path": "/blog/small-bathroom-tile-tricks-to-maximize-space",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-28",
+    "imagePath": "/images/blog/small-bathroom-tile-tricks-to-maximize-space.jpg",
+    "imageTitle": "Small Bathroom Tile Tricks to Maximize Space"
+  },
+  {
+    "path": "/blog/walk-in-shower-design-ideas",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-24",
+    "imagePath": "/images/blog/walk-in-shower-design-ideas.jpg",
+    "imageTitle": "Walk-In Shower Design Ideas"
+  },
+  {
+    "path": "/blog/master-bathroom-renovation-planning-guide",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-20",
+    "imagePath": "/images/blog/master-bathroom-renovation-planning-guide.jpg",
+    "imageTitle": "Master Bathroom Renovation Planning Guide"
+  },
+  {
+    "path": "/blog/ceramic-tile-trends-for-2026",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-16",
+    "imagePath": "/images/blog/ceramic-tile-trends-for-2026.jpg",
+    "imageTitle": "Ceramic Tile Trends for 2026"
+  },
+  {
+    "path": "/blog/repairing-cracked-ceramic-tile",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-12",
+    "imagePath": "/images/blog/repairing-cracked-ceramic-tile.jpg",
+    "imageTitle": "Repairing Cracked Ceramic Tile"
+  },
+  {
+    "path": "/blog/ceramic-tile-for-fireplace-surrounds",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-08",
+    "imagePath": "/images/blog/ceramic-tile-for-fireplace-surrounds.jpg",
+    "imageTitle": "Ceramic Tile for Fireplace Surrounds"
+  },
+  {
+    "path": "/blog/eco-friendly-ceramic-tile-options",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-08-04",
+    "imagePath": "/images/blog/eco-friendly-ceramic-tile-options.jpg",
+    "imageTitle": "Eco-Friendly Ceramic Tile Options"
+  },
+  {
+    "path": "/blog/ceramic-tile-grout-and-sealant-best-practices",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-31",
+    "imagePath": "/images/blog/ceramic-tile-grout-and-sealant-best-practices.jpg",
+    "imageTitle": "Ceramic Tile Grout and Sealant Best Practices"
+  },
+  {
+    "path": "/blog/handcrafted-ceramic-tile-artisan-options",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-27",
+    "imagePath": "/images/blog/handcrafted-ceramic-tile-artisan-options.jpg",
+    "imageTitle": "Handcrafted Ceramic Tile: Artisan Options"
+  },
+  {
+    "path": "/blog/ceramic-tile-in-high-moisture-areas",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-23",
+    "imagePath": "/images/blog/ceramic-tile-in-high-moisture-areas.jpg",
+    "imageTitle": "Ceramic Tile in High-Moisture Areas"
+  },
+  {
+    "path": "/blog/best-ceramic-tile-for-kitchen-backsplashes",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-19",
+    "imagePath": "/images/blog/best-ceramic-tile-for-kitchen-backsplashes.jpg",
+    "imageTitle": "Best Ceramic Tile for Kitchen Backsplashes"
+  },
+  {
+    "path": "/blog/glazed-vs-unglazed-ceramic-tile-explained",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-15",
+    "imagePath": "/images/blog/glazed-vs-unglazed-ceramic-tile-explained.jpg",
+    "imageTitle": "Glazed vs Unglazed Ceramic Tile Explained"
+  },
+  {
+    "path": "/blog/ceramic-vs-porcelain-which-is-right-for-you",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-11",
+    "imagePath": "/images/blog/ceramic-vs-porcelain-which-is-right-for-you.jpg",
+    "imageTitle": "Ceramic vs Porcelain: Which Is Right for You?"
+  },
+  {
+    "path": "/blog/maintaining-tile-floors-daily-care-tips",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-07",
+    "imagePath": "/images/blog/maintaining-tile-floors-daily-care-tips.jpg",
+    "imageTitle": "Maintaining Tile Floors: Daily Care Tips"
+  },
+  {
+    "path": "/blog/heated-floor-systems-under-tile",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-07-03",
+    "imagePath": "/images/blog/heated-floor-systems-under-tile.jpg",
+    "imageTitle": "Heated Floor Systems Under Tile"
+  },
+  {
+    "path": "/blog/tile-transition-strips-when-and-how-to-use-them",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-29",
+    "imagePath": "/images/blog/tile-transition-strips-when-and-how-to-use-them.jpg",
+    "imageTitle": "Tile Transition Strips: When and How to Use Them"
+  },
+  {
+    "path": "/blog/grout-color-selection-a-complete-guide",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-25",
+    "imagePath": "/images/blog/grout-color-selection-a-complete-guide.jpg",
+    "imageTitle": "Grout Color Selection: A Complete Guide"
+  },
+  {
+    "path": "/blog/schluter-vs-traditional-waterproofing-for-tile-projects",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-21",
+    "imagePath": "/images/blog/schluter-vs-traditional-waterproofing-for-tile-projects.jpg",
+    "imageTitle": "Schluter vs Traditional Waterproofing for Tile Projects"
+  },
+  {
+    "path": "/blog/how-to-calculate-tile-quantity-for-your-project",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-17",
+    "imagePath": "/images/blog/how-to-calculate-tile-quantity-for-your-project.jpg",
+    "imageTitle": "How to Calculate Tile Quantity for Your Project"
+  },
+  {
+    "path": "/blog/understanding-tile-pei-ratings-for-floor-durability",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-13",
+    "imagePath": "/images/blog/understanding-tile-pei-ratings-for-floor-durability.jpg",
+    "imageTitle": "Understanding Tile PEI Ratings for Floor Durability"
+  },
+  {
+    "path": "/blog/tile-layout-patterns-that-elevate-any-room",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-09",
+    "imagePath": "/images/blog/tile-layout-patterns-that-elevate-any-room.jpg",
+    "imageTitle": "Tile Layout Patterns That Elevate Any Room"
+  },
+  {
+    "path": "/blog/large-format-tile-pros-and-cons-for-modern-homes",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-05",
+    "imagePath": "/images/blog/large-format-tile-pros-and-cons-for-modern-homes.jpg",
+    "imageTitle": "Large-Format Tile: Pros and Cons for Modern Homes"
+  },
+  {
+    "path": "/blog/how-to-choose-the-right-tile-size-for-your-space",
+    "changefreq": "monthly",
+    "priority": "0.6",
+    "lastmod": "2025-06-01",
+    "imagePath": "/images/blog/how-to-choose-the-right-tile-size-for-your-space.jpg",
+    "imageTitle": "How to Choose the Right Tile Size for Your Space"
+  }
+]
