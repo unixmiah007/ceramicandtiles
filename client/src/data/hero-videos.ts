@@ -4,7 +4,7 @@ export const SERVICE_AREA_HERO_VIDEO = {
   title: 'Professional interior tile and shower installation timelapse',
 } as const;
 
-export function buildHeroVideoEmbedUrl(youtubeId: string): string {
+export function buildHeroVideoEmbedUrl(youtubeId: string, origin?: string): string {
   const params = new URLSearchParams({
     autoplay: '1',
     mute: '1',
@@ -18,5 +18,8 @@ export function buildHeroVideoEmbedUrl(youtubeId: string): string {
     disablekb: '1',
     fs: '0',
   });
-  return `https://www.youtube-nocookie.com/embed/${youtubeId}?${params.toString()}`;
+  if (origin) {
+    params.set('origin', origin);
+  }
+  return `https://www.youtube.com/embed/${youtubeId}?${params.toString()}`;
 }

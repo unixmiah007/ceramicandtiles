@@ -15,7 +15,7 @@ export default function YourSpaceVideo({ isVisible }: YourSpaceVideoProps) {
 
   const handlePlay = useCallback(() => setIsPlaying(true), []);
 
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
+  const embedSrc = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
 
   return (
     <div
@@ -66,6 +66,7 @@ export default function YourSpaceVideo({ isVisible }: YourSpaceVideoProps) {
               src={embedSrc}
               title={t.home.yourSpaceVideoTitle}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           )}

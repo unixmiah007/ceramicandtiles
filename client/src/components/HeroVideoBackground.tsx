@@ -31,9 +31,10 @@ export default function HeroVideoBackground({ youtubeId, posterSrc, title }: Her
   return (
     <div className="page-hero-video" aria-hidden="true">
       <iframe
-        src={buildHeroVideoEmbedUrl(youtubeId)}
+        src={buildHeroVideoEmbedUrl(youtubeId, window.location.origin)}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        referrerPolicy="strict-origin-when-cross-origin"
         tabIndex={-1}
       />
     </div>
