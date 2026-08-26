@@ -1,0 +1,216 @@
+import { imagePath } from '../utils/slugify';
+
+export interface StockImage {
+  src: string;
+  alt: string;
+}
+
+export interface HeroSlide {
+  id: string;
+  image: StockImage;
+  headline: string;
+  subtitle: string;
+}
+
+export interface DetailImages {
+  hero: StockImage;
+  featured: StockImage;
+  gallery: StockImage[];
+}
+
+export const FALLBACK_IMAGE: StockImage = {
+  src: imagePath('fallback', 'default-tile-installation'),
+  alt: 'Family owned business badge with construction workers',
+};
+
+function image(category: string, heading: string, alt = heading): StockImage {
+  return {
+    src: imagePath(category, heading),
+    alt,
+  };
+}
+
+function nestedImage(
+  category: 'services' | 'values',
+  parentId: string,
+  heading: string,
+  alt = heading
+): StockImage {
+  return {
+    src: imagePath(category, parentId, heading),
+    alt,
+  };
+}
+
+export function getServiceImage(serviceId: string, title: string): StockImage {
+  return nestedImage('services', serviceId, title, title);
+}
+
+export function getServiceSectionImage(serviceId: string, heading: string): StockImage {
+  return nestedImage('services', serviceId, heading, heading);
+}
+
+export const FAMILY_OWNED_IMAGE: StockImage = {
+  src: '/images/values/family-owned/family-owned.jpg',
+  alt: 'Family owned business badge with construction workers',
+};
+
+export const ATTENTION_TO_DETAIL_IMAGE: StockImage = {
+  src: '/images/values/attention-to-detail/attention-to-detail.jpg',
+  alt: 'Construction worker using a level to mark precise tile layout lines',
+};
+
+export const valueImages: Record<string, StockImage> = {
+  'family-owned': FAMILY_OWNED_IMAGE,
+  'attention-to-detail': ATTENTION_TO_DETAIL_IMAGE,
+};
+
+export function getValueImage(valueId: string, title: string): StockImage {
+  return valueImages[valueId] ?? nestedImage('values', valueId, title, title);
+}
+
+export function getValueSectionImage(valueId: string, heading: string): StockImage {
+  return nestedImage('values', valueId, heading, heading);
+}
+
+export function getServiceDetailImages(
+  serviceId: string,
+  title: string,
+  sectionHeadings: string[]
+): DetailImages {
+  return {
+    hero: getServiceImage(serviceId, title),
+    featured: getServiceImage(serviceId, title),
+    gallery: sectionHeadings.map((heading) => getServiceSectionImage(serviceId, heading)),
+  };
+}
+
+export function getValueDetailImages(
+  valueId: string,
+  title: string,
+  sectionHeadings: string[]
+): DetailImages {
+  return {
+    hero: getValueImage(valueId, title),
+    featured: getValueImage(valueId, title),
+    gallery: sectionHeadings.map((heading) => getValueSectionImage(valueId, heading)),
+  };
+}
+
+export const heroSlides: HeroSlide[] = [
+  {
+    id: 'transforming-spaces',
+    image: image('hero', 'Transforming Spaces', 'Modern bathroom renovation with elegant tile installation'),
+    headline: 'Transforming Spaces.',
+    subtitle: 'Beautiful tile work that elevates every room.',
+  },
+  {
+    id: 'creating-quality',
+    image: image('hero', 'Creating Quality', 'Luxury shower with precision ceramic tile and glass enclosure'),
+    headline: 'Creating Quality.',
+    subtitle: 'Precision installation from waterproofing to finishing.',
+  },
+  {
+    id: 'building-trust',
+    image: image('hero', 'Building Trust', 'Professional commercial interior with quality tile flooring'),
+    headline: 'Building Trust.',
+    subtitle: 'Trusted by homeowners and professional facilities alike.',
+  },
+];
+
+export const processStepImages: Record<string, StockImage> = {
+  demolition: image('process', 'Demolition and Preparation', 'Construction worker using a jackhammer for demolition and site preparation'),
+  waterproofing: image(
+    'process',
+    'Waterproofing',
+    'Construction worker applying waterproofing material with a spray gun'
+  ),
+  installation: image('process', 'Installation', 'Construction worker installing ceramic floor tile with spacers'),
+  finishing: image('process', 'Grout and Finishing', 'Construction grout being applied during finishing work'),
+};
+
+export const galleryImages: StockImage[] = [
+  image('gallery', 'Spa-like bathroom with floor-to-ceiling tile'),
+  image('gallery', 'Kitchen with ceramic tile backsplash'),
+  image('gallery', 'Designer shower with geometric tile pattern', 'Architect reviewing floor plans beside a home renovation in progress'),
+  image('gallery', 'Large-format floor tile in open living space', 'Designers reviewing material samples during a renovation project'),
+  image('gallery', 'Walk-in shower with marble-look porcelain tile'),
+  image('gallery', 'Detailed mosaic tile accent wall', 'Construction worker using a power drill during a sustainable renovation project'),
+];
+
+export const pageHeroImages: Record<string, StockImage> = {
+  experience: image('pages', 'Experience You Can Trust', 'Commercial interior showcasing professional tile installation'),
+  services: image('pages', 'Our Services', 'Ceramic tile materials for professional installation'),
+  'why-portillo': image('pages', 'Why Portillo', 'Skilled craftsman working on a tile installation project'),
+  contact: image('pages', 'Request a Quote Today', 'Beautiful tiled bathroom ready for a new project consultation'),
+};
+
+export const sectionImages = {
+  craftsmanship: image('sections', 'Craftsmanship You Can See', 'Tile craftsman measuring and cutting ceramic tile'),
+  residential: image('sections', 'Residential Projects', 'Residential bathroom renovation with new tile'),
+  commercial: image('sections', 'Commercial Projects', 'Construction team reviewing plans at a commercial building site'),
+  contactSide: image('sections', 'Contact Abel Portillo', 'Finished tile bathroom showcasing quality craftsmanship'),
+  ctaBackground: image('sections', 'Your Vision. Our Craftsmanship.', 'Elegant tiled shower as inspiration for your project'),
+  whyPortillo: image('sections', 'Precision Shower Tile', 'Close-up of precision shower tile installation'),
+  yourSpaceDeservesTheBest: image('sections', 'Your Space Deserves the Best', 'Tile contractor installing large-format floor tile with precision'),
+};
+
+export const projectImages: Record<string, StockImage> = {
+  'washington-capitals': image(
+    'projects',
+    'Washington Capitals – Capital One Arena',
+    'Professional sports facility locker room with tile finishes'
+  ),
+  'the-pentagon': image('projects', 'The Pentagon', 'Government building interior with commercial tile restrooms'),
+  'orangetheory-fitness': image(
+    'projects',
+    'Orangetheory Fitness',
+    'Fitness facility locker room with high-traffic tile flooring'
+  ),
+};
+
+export const whyPortilloShowcaseImages: StockImage[] = [
+  sectionImages.whyPortillo,
+  sectionImages.craftsmanship,
+  sectionImages.residential,
+  sectionImages.commercial,
+  ...galleryImages,
+  ...Object.values(processStepImages),
+  ...Object.values(projectImages),
+];
+
+export const caseStudyGalleries: Record<string, StockImage[]> = {
+  'washington-capitals': [
+    projectImages['washington-capitals'],
+    getServiceImage('locker-rooms', 'Locker Rooms'),
+    getServiceSectionImage('locker-rooms', 'Moisture-Resistant Surfaces'),
+    getServiceSectionImage('commercial-tile', 'Commercial Tile Installation'),
+    processStepImages.waterproofing,
+    processStepImages.installation,
+    processStepImages.finishing,
+    galleryImages[4],
+    sectionImages.commercial,
+  ],
+  'the-pentagon': [
+    projectImages['the-pentagon'],
+    getServiceImage('commercial-tile', 'Commercial Tile Installation'),
+    getServiceSectionImage('commercial-tile', 'Built for High-Traffic Use'),
+    getServiceSectionImage('commercial-tile', 'Professional Facility Experience'),
+    processStepImages.installation,
+    processStepImages.finishing,
+    galleryImages[2],
+    sectionImages.craftsmanship,
+    sectionImages.commercial,
+  ],
+  'orangetheory-fitness': [
+    projectImages['orangetheory-fitness'],
+    getServiceImage('locker-rooms', 'Locker Rooms'),
+    getServiceSectionImage('locker-rooms', 'Professional Facility Standards'),
+    getServiceSectionImage('locker-rooms', 'Moisture-Resistant Surfaces'),
+    processStepImages.waterproofing,
+    processStepImages.installation,
+    galleryImages[0],
+    sectionImages.residential,
+    projectImages['washington-capitals'],
+  ],
+};
