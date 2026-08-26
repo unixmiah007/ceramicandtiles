@@ -7,6 +7,10 @@ export interface ServiceAreaCity {
   name: string;
   state: 'DC' | 'MD' | 'VA' | 'WV';
   region: ServiceAreaRegion;
+  county: string;
+  metro: string;
+  lat: number;
+  lng: number;
 }
 
 export const SERVICE_AREA_CITIES = citiesData as ServiceAreaCity[];
@@ -21,6 +25,12 @@ export const FEATURED_CITY_SERVICE_IDS = [
   'floor-wall-tile',
   'backsplashes',
   'commercial-tile',
+] as const;
+
+export const CITY_RELATED_BLOG_SLUGS = [
+  'master-bathroom-renovation-planning-guide',
+  'walk-in-shower-design-ideas',
+  'schluter-vs-traditional-waterproofing-for-tile-projects',
 ] as const;
 
 const citiesBySlug = new Map(SERVICE_AREA_CITIES.map((city) => [city.slug, city]));
@@ -51,7 +61,7 @@ export function formatCityLabel(city: ServiceAreaCity): string {
   return `${city.name}, ${city.state}`;
 }
 
-export function getNearbyCities(city: ServiceAreaCity, limit = 4): ServiceAreaCity[] {
+export function getNearbyCities(city: ServiceAreaCity, limit = 6): ServiceAreaCity[] {
   const regional = citiesByRegion.get(city.region) ?? [];
   const index = regional.findIndex((item) => item.slug === city.slug);
   if (index === -1) {
@@ -77,7 +87,9 @@ export function replaceCityTokens(template: string, city: ServiceAreaCity): stri
     .replaceAll('{city}', city.name)
     .replaceAll('{cityState}', formatCityLabel(city))
     .replaceAll('{state}', city.state)
-    .replaceAll('{region}', city.region);
+    .replaceAll('{region}', city.region)
+    .replaceAll('{county}', city.county)
+    .replaceAll('{metro}', city.metro);
 }
 
 export const SERVICE_AREA_REGION_ORDER: ServiceAreaRegion[] = [

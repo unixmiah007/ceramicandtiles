@@ -160,8 +160,47 @@ export const featuresEn = {
         answer:
           'Bathroom renovations, custom showers, tub-to-shower conversions, floor and wall tile, kitchen backsplashes, tile repair, and commercial restroom or locker room installations.',
       },
+      {
+        question: 'Do you waterproof showers in {county}?',
+        answer:
+          'Yes. We install proper shower waterproofing membranes and prep wet areas before tile goes up — a critical step for homes and businesses in {city} and throughout {county}.',
+      },
+      {
+        question: 'How much does tile installation cost in {city}?',
+        answer:
+          'Pricing depends on room size, tile material, demolition needs, and layout complexity. Use our cost estimator for a ballpark range, then contact us for a detailed quote tailored to your {cityState} project.',
+      },
     ],
     moreFaq: 'Browse all frequently asked questions',
+    seoSectionTitle: 'Tile & Ceramic Contractor Serving {cityState}',
+    seoSectionP1:
+      'Searching for a tile contractor in {city}, {state}? Portillo Ceramic and Tile installs bathroom tile, shower surrounds, kitchen backsplashes, and durable floor tile throughout {county} and the {metro}. Homeowners and businesses choose us for waterproofing done right, precise layouts, and finishes that stand up to daily use.',
+    seoSectionP2:
+      'Whether you need a full bathroom renovation, tub-to-shower conversion, porcelain floor tile, or commercial restroom tile in {cityState}, our team handles demolition, surface prep, installation, grout, and sealing. Request a free quote to discuss materials, timeline, and scope for your project in {county}.',
+    searchTermsTitle: 'Popular tile searches in {city}',
+    searchTerms: [
+      'tile contractor {cityState}',
+      'bathroom tile installation {city}',
+      'shower tile installer {county}',
+      'kitchen backsplash {city}',
+      'ceramic tile {cityState}',
+      'porcelain floor tile {city}',
+      'commercial tile contractor {county}',
+      'tile repair {city}',
+    ],
+    napTitle: 'Contact Our Tile Team',
+    napDescription:
+      'Family-owned tile installation serving {cityState} and {county}. Call for scheduling, quotes, and project questions.',
+    resourcesTitle: 'Helpful resources for {city} projects',
+    resources: [
+      { label: 'Get a project estimate', href: '/estimate' },
+      { label: 'Request a detailed quote', href: '/contact' },
+      { label: 'Use the quote wizard', href: '/quote-wizard' },
+      { label: 'View before & after gallery', href: '/before-after' },
+    ],
+    relatedArticlesTitle: 'Tile tips for {city} homeowners',
+    relatedArticlesDescription:
+      'Planning a bathroom or kitchen project in {county}? Start with these guides.',
     regionLabels: {
       dc: 'Washington, D.C.',
       maryland: 'Maryland',

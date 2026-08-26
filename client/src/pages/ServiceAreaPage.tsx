@@ -12,6 +12,7 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import { getStaticPageSeo } from '../seo/meta';
 import { sectionImages } from '../data/images';
+import { SERVICE_AREA_HERO_VIDEO } from '../data/hero-videos';
 
 export default function ServiceAreaPage() {
   const { locale, f } = useLanguage();
@@ -23,7 +24,11 @@ export default function ServiceAreaPage() {
       <PageHero
         title={f.serviceArea.heroTitle}
         subtitle={f.serviceArea.heroSubtitle}
-        backgroundImage={sectionImages.residential}
+        backgroundVideo={{
+          youtubeId: SERVICE_AREA_HERO_VIDEO.youtubeId,
+          poster: sectionImages.yourSpaceDeservesTheBest,
+          title: SERVICE_AREA_HERO_VIDEO.title,
+        }}
       />
 
       <section className="section">

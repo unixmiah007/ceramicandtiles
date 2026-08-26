@@ -161,8 +161,47 @@ export const featuresEs: FeatureContent = {
         answer:
           'Renovaciones de baño, duchas personalizadas, conversiones de tina a ducha, azulejos de piso y pared, backsplash de cocina, reparación de azulejos e instalaciones comerciales en baños o vestuarios.',
       },
+      {
+        question: '¿Impermeabilizan duchas en {county}?',
+        answer:
+          'Sí. Instalamos membranas de impermeabilización adecuadas y preparamos áreas húmedas antes del azulejo — un paso crítico para hogares y negocios en {city} y en {county}.',
+      },
+      {
+        question: '¿Cuánto cuesta la instalación de azulejos en {city}?',
+        answer:
+          'El precio depende del tamaño, material, demolición y complejidad del diseño. Use nuestra calculadora para un rango estimado y contáctenos para una cotización detallada en {cityState}.',
+      },
     ],
     moreFaq: 'Ver todas las preguntas frecuentes',
+    seoSectionTitle: 'Contratista de Azulejos y Cerámica en {cityState}',
+    seoSectionP1:
+      '¿Busca un contratista de azulejos en {city}, {state}? Portillo Ceramic and Tile instala azulejos de baño, duchas, backsplash de cocina y pisos duraderos en {county} y el {metro}. Propietarios y negocios nos eligen por impermeabilización correcta, diseños precisos y acabados resistentes.',
+    seoSectionP2:
+      'Ya sea que necesite una renovación completa de baño, conversión de tina a ducha, piso de porcelanato o azulejos comerciales en {cityState}, nuestro equipo maneja demolición, preparación, instalación, lechada y sellado. Solicite una cotización gratis para hablar de materiales, plazos y alcance en {county}.',
+    searchTermsTitle: 'Búsquedas populares de azulejos en {city}',
+    searchTerms: [
+      'contratista de azulejos {cityState}',
+      'instalación azulejos baño {city}',
+      'instalador ducha {county}',
+      'backsplash cocina {city}',
+      'azulejo cerámico {cityState}',
+      'piso porcelanato {city}',
+      'azulejos comerciales {county}',
+      'reparación azulejos {city}',
+    ],
+    napTitle: 'Contacte a Nuestro Equipo de Azulejos',
+    napDescription:
+      'Instalación familiar de azulejos en {cityState} y {county}. Llame para programar citas, cotizaciones y consultas.',
+    resourcesTitle: 'Recursos útiles para proyectos en {city}',
+    resources: [
+      { label: 'Calcular costo del proyecto', href: '/estimate' },
+      { label: 'Solicitar cotización detallada', href: '/contact' },
+      { label: 'Usar el asistente de cotización', href: '/quote-wizard' },
+      { label: 'Ver galería antes y después', href: '/before-after' },
+    ],
+    relatedArticlesTitle: 'Consejos de azulejos para propietarios en {city}',
+    relatedArticlesDescription:
+      '¿Planifica un proyecto de baño o cocina en {county}? Comience con estas guías.',
     regionLabels: {
       dc: 'Washington D.C.',
       maryland: 'Maryland',

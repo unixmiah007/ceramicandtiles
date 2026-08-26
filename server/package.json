@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc -p . && mkdir -p dist/data && cp src/data/*.json dist/data/",
+    "build": "tsc -p . && mkdir -p dist/data && cp src/data/*.json dist/data/ && cp ../client/src/data/service-area-cities.json dist/data/service-area-cities.json",
     "start": "node dist/index.js"
   },
   "dependencies": {
