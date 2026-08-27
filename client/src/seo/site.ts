@@ -3,7 +3,7 @@ import { serviceAreaCities } from '../data/service-area-cities';
 
 export const SITE_NAME = 'Portillo Ceramic and Tile';
 export const SITE_URL =
-  import.meta.env.VITE_SITE_URL?.replace(/\/$/, '') || 'https://portilloceramicandtile.com';
+  import.meta.env.VITE_SITE_URL?.replace(/\/$/, '') || 'https://ceramicandtile.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/sections/your-space-deserves-the-best.jpg`;
 
 export const LOCAL_SEO = {
