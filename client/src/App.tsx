@@ -18,6 +18,9 @@ import BeforeAfterPage from './pages/BeforeAfterPage';
 import EstimatePage from './pages/EstimatePage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
+import CostGuidesPage from './pages/CostGuidesPage';
+import CostGuideCityPage from './pages/CostGuideCityPage';
+import MaterialLibraryPage from './pages/MaterialLibraryPage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import ChecklistPage from './pages/ChecklistPage';
 import BackToTop from './components/BackToTop';
@@ -54,6 +57,9 @@ export default function App() {
           <Route path="/blog/category/:category" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/checklist" element={<ChecklistPage />} />
+          <Route path="/cost-guides" element={<CostGuidesPage />} />
+          <Route path="/cost-guides/:citySlug" element={<CostGuideCityPage />} />
+          <Route path="/materials" element={<MaterialLibraryPage />} />
         </Routes>
       </main>
       <Footer />

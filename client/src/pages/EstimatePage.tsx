@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import EstimateCalculator from '../components/EstimateCalculator';
@@ -22,6 +23,11 @@ export default function EstimatePage() {
       <section className="section estimate-page-section">
         <div className="container">
           <EstimateCalculator />
+          <p className="estimate-cost-guides-link">
+            <Link to="/cost-guides">{f.home.costGuidesLink}</Link>
+            {' · '}
+            <Link to="/materials">{f.home.materialsLink}</Link>
+          </p>
         </div>
       </section>
 

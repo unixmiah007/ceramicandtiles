@@ -77,6 +77,11 @@ export default function ServiceAreaPage() {
             <Link to="/contact" className="btn btn-secondary">
               {f.serviceArea.notListedCta}
             </Link>
+            <p className="service-area-cost-link">
+              <Link to="/cost-guides">{f.home.costGuidesLink}</Link>
+              {' · '}
+              <Link to="/materials">{f.home.materialsLink}</Link>
+            </p>
           </div>
         </div>
       </section>

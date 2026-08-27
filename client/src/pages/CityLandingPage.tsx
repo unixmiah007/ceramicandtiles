@@ -13,6 +13,7 @@ import {
   getNearbyCities,
   replaceCityTokens,
 } from '../data/service-area-cities';
+import NeighborhoodMap from '../components/NeighborhoodMap';
 import { buildCityFaqItems, getCitySeo } from '../seo/city';
 import { sectionImages } from '../data/images';
 import { SERVICE_AREA_HERO_VIDEO } from '../data/hero-videos';
@@ -90,7 +91,19 @@ export default function CityLandingPage() {
           </div>
         </section>
 
-        <section className="section section-alt city-landing-seo" aria-labelledby="city-seo-heading">
+        <section className="section section-alt city-landing-map" aria-labelledby="city-map-heading">
+          <div className="container">
+            <NeighborhoodMap
+              city={city}
+              headingId="city-map-heading"
+              title={replaceCityTokens(copy.mapTitle, city)}
+              description={replaceCityTokens(copy.mapDescription, city)}
+              openLabel={replaceCityTokens(copy.mapOpen, city)}
+            />
+          </div>
+        </section>
+
+        <section className="section city-landing-seo" aria-labelledby="city-seo-heading">
           <div className="container">
             <h2 id="city-seo-heading">{replaceCityTokens(copy.seoSectionTitle, city)}</h2>
             <p>{replaceCityTokens(copy.seoSectionP1, city)}</p>
@@ -193,7 +206,9 @@ export default function CityLandingPage() {
             <ul className="city-landing-resources">
               {copy.resources.map((resource) => (
                 <li key={resource.href}>
-                  <Link to={resource.href}>{resource.label}</Link>
+                  <Link to={replaceCityTokens(resource.href, city)}>
+                    {replaceCityTokens(resource.label, city)}
+                  </Link>
                 </li>
               ))}
             </ul>

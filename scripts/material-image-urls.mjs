@@ -1,0 +1,63 @@
+/** Hi-res image URLs for the material library. App always serves local /images/materials/*.jpg. */
+export const MATERIAL_IMAGE_URLS = {
+  'glazed-ceramic-wall-tile':
+    "https://static.prod.cmostores.com/uploads/products/1/l/melrose-stone-gloss-glazed-small-ceramic-wall-tiles.jpg?auto=compress",
+  'unglazed-ceramic-floor-tile':
+    "https://m.media-amazon.com/images/I/81ptg95l41L.jpg",
+  'ceramic-subway-tile':
+    "https://apollotile.com/cdn/shop/files/CRE-OCN-2616.jpg?v=1699337832",
+  'handmade-zellige-ceramic':
+    "https://i.pinimg.com/originals/2b/47/84/2b478417d987d82ca6bba928ee9b9c1f.jpg",
+  'terracotta-saltillo-tile':
+    "http://clayimports.com/cdn/shop/files/San-Felipe-Smooth-Gloss-Sealed-12-Natural-Terracotta-Install-by-BCR-Flooring-Clay-Imports_2.jpg?v=1738619386",
+  'ceramic-mosaic-tile':
+    "https://i.etsystatic.com/15350158/r/il/aafd7a/1345425942/il_1080xN.1345425942_g8a8.jpg",
+  'beveled-metro-ceramic':
+    "https://secure.img2-fg.wfcdn.com/lf/maxsquare/hash/30866/33105619/1/Mulia-Tile-Classic-Beveled-Ceramic-Subway-Tile-in-White.jpg",
+  'kitchen-backsplash-ceramic':
+    "https://wow-kitchens.com/wp-content/uploads/bb-plugin/cache/kitchen-ceramic-tile-backsplash-square-1abb7d05734ddd32ec04b2d7b6ed8f1b-pvb0mg2xnk8r.jpg",
+  'porcelain-floor-tile':
+    "https://www.glazed-porcelaintile.com/photo/ps24849263-durable_24x48_porcelain_tile_carrara_ceramic_floor_tile_wear_resistant.jpg",
+  'large-format-porcelain':
+    "https://cdn11.bigcommerce.com/s-d9noje8vn3/product_images/uploaded_images/large-107915scene.jpg",
+  'rectified-porcelain':
+    "https://totaltiles.co.uk/media/catalog/product/cache/78a49113d15c8ee387511e2635d4c07e/a/p/apuano_marble_effect_gloss_rectified_porcelain_floor_tile_lifestyle.jpg",
+  'marble-look-porcelain':
+    "https://www.lavishceramics.com/wp-content/webp-express/webp-images/uploads/2023/04/Eleganza-Claro-30x120-preview1.jpg-scaled-1.jpg.webp",
+  'wood-look-porcelain-plank':
+    "https://thestripedbarn.com/wp-content/uploads/2021/01/Legacy822x4722PorcelainWoodLookWall26FloorTile.jpg",
+  'cement-look-porcelain':
+    "https://content.iconworldoftile.com/content/tiles/glazed-porcelain-tiles-concrete-look-porcelain-floor-tiles-work-cemento.jpg",
+  'slate-look-porcelain':
+    "https://i8.amplience.net/i/flooranddecor/101073385_shadowstone-slate-porcelain-tile_display?fmt=auto",
+  'hexagon-porcelain':
+    "https://s7d1.scene7.com/is/image/TileShop/681406?$PDPNormal$",
+  'outdoor-porcelain-paver':
+    "https://www.pavingdirect.com/media/catalog/product/d/i/discovery-white-01_1.jpg",
+  'encaustic-look-porcelain':
+    "https://i.pinimg.com/originals/21/0f/b5/210fb589ef3d4405c92bc35800ab6c38.jpg",
+  'travertine-look-porcelain':
+    "http://www.milestonetiles.com/cdn/shop/files/Travertine_Navona_24x48_Matte_Panel.jpg?v=1745432627",
+  'terrazzo-look-porcelain':
+    "http://www.porcelainsuperstore.co.uk/cdn/shop/files/Terrazzo-Beige-01.jpg?v=1726654590",
+  'shower-wall-porcelain':
+    "https://st.hzcdn.com/simgs/pictures/bathrooms/bello-onyx-polished-porcelain-tile-cercan-tile-inc-img~49d1d43f04a81955_14-7788-1-3b86093.jpg",
+  'brick-look-porcelain':
+    "https://images.thdstatic.com/productImages/e164ed5c-2fd9-4793-8b28-cb6389ac1815/svn/red-brown-matte-florida-tile-home-collection-porcelain-tile-chdecc016x24-64_600.jpg",
+  'thin-porcelain-slab':
+    "https://stonica.com/images/fulls/porcelain/slabs/fiandre/elite.jpg",
+  'glass-mosaic-tile':
+    "http://luxurytiles.co.uk/cdn/shop/files/emerald-feather-green-glass-mosaic.jpg?v=1723076209",
+  'pebble-mosaic-tile':
+    "https://i1a.adis.ws/i/flooranddecor/100132307_round-mixed-high-polished-pebble-mosaic_main?$parade230$?fmt=jpg",
+  'penny-round-mosaic':
+    "https://m.media-amazon.com/images/I/91RvMjBzU2L.jpg",
+  'fish-scale-mosaic':
+    "https://www.moorishtiles.com/1215-tm_thickbox_default/green-fish-scales-tile.jpg",
+  'quarry-tile':
+    "https://derbyshire.tiledoctor.biz/wp-content/uploads/sites/43/2018/07/Red-Black-Quarry-Tiled-Floor-Before-Cleaning-Buxton-103741.jpg",
+};
+
+export const MATERIAL_IMAGE_PATHS = Object.fromEntries(
+  Object.entries(MATERIAL_IMAGE_URLS).map(([name, url]) => [`materials/${name}`, url])
+);

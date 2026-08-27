@@ -13,6 +13,7 @@ import estimateRoutes from './routes/estimate.js';
 import commentRoutes from './routes/comments.js';
 import seoRoutes from './routes/seo.js';
 import { injectCityHtmlMeta } from './seo/inject-city-meta.js';
+import { injectCostGuideHtmlMeta } from './seo/inject-cost-guide-meta.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -60,7 +61,7 @@ app.get('*', (req, res) => {
     return;
   }
 
-  const enriched = injectCityHtmlMeta(html, req.path);
+  const enriched = injectCityHtmlMeta(html, req.path) ?? injectCostGuideHtmlMeta(html, req.path);
   if (enriched) {
     res.type('html').send(enriched);
     return;

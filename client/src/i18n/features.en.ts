@@ -9,6 +9,8 @@ export const featuresEn = {
     estimate: 'Cost Estimator',
     blog: 'Tips & Blog',
     checklist: 'Project Checklist',
+    costGuides: 'Cost Guides',
+    materials: 'Material Library',
   },
   seasonal: {
     message: 'Spring renovation special: mention this banner when requesting a quote for priority scheduling.',
@@ -142,6 +144,10 @@ export const featuresEn = {
     ],
     nearbyTitle: 'Nearby Service Areas',
     nearbyDescription: 'We also serve communities near {cityState}.',
+    mapTitle: '{cityState} and surrounding neighborhoods',
+    mapDescription:
+      'This map shows {city} and nearby communities in {county}. Zoom the larger map to see streets, parks, and neighboring towns.',
+    mapOpen: 'Open a larger map of {city}',
     viewAllAreas: 'View all service areas',
     faqTitle: 'Common Questions in {cityState}',
     faqItems: [
@@ -168,7 +174,7 @@ export const featuresEn = {
       {
         question: 'How much does tile installation cost in {city}?',
         answer:
-          'Pricing depends on room size, tile material, demolition needs, and layout complexity. Use our cost estimator for a ballpark range, then contact us for a detailed quote tailored to your {cityState} project.',
+          'Bathroom tile in {cityState} typically costs in a local range based on size and material. See our {city} cost guide for typical bathroom, shower, and floor numbers, then use the estimator or contact us for a detailed quote.',
       },
     ],
     moreFaq: 'Browse all frequently asked questions',
@@ -193,10 +199,12 @@ export const featuresEn = {
       'Family-owned tile installation serving {cityState} and {county}. Call for scheduling, quotes, and project questions.',
     resourcesTitle: 'Helpful resources for {city} projects',
     resources: [
+      { label: 'See tile costs in {city}', href: '/cost-guides/{slug}' },
       { label: 'Get a project estimate', href: '/estimate' },
       { label: 'Request a detailed quote', href: '/contact' },
       { label: 'Use the quote wizard', href: '/quote-wizard' },
       { label: 'View before & after gallery', href: '/before-after' },
+      { label: 'Browse the material library', href: '/materials' },
     ],
     relatedArticlesTitle: 'Tile tips for {city} homeowners',
     relatedArticlesDescription:
@@ -479,6 +487,277 @@ export const featuresEn = {
     resourcesTitle: 'Helpful Resources',
     estimateLink: 'Estimate Your Project',
     faqLink: 'Browse FAQ',
+    costGuidesLink: 'See local tile costs',
+    materialsLink: 'Compare porcelain, ceramic, mosaics, and sizes',
+  },
+  costGuides: {
+    hubTitle: 'Tile Cost Guides by City',
+    hubSubtitle:
+      'Typical installed ranges for bathrooms, showers, backsplashes, floors, and commercial tile across the communities we serve.',
+    hubIntro:
+      'Homeowners search for numbers like “bathroom tile cost in Northern Virginia.” These guides show typical installed ranges for a standard porcelain project in each city. Final quotes depend on size, demolition, waterproofing, and material.',
+    hubDisclaimer:
+      'Ranges are planning estimates for 2026, not a bid. Use the cost estimator for a project-specific ballpark, then request a quote from Abel Portillo.',
+    bathroomLabel: 'Typical bathroom tile',
+    cityTitle: 'Tile costs in {cityState}',
+    citySubtitle: 'Typical bathroom, shower, backsplash, and floor tile ranges for {county}.',
+    cityIntro:
+      'Labor, parking, and finish expectations in {city} differ from neighboring towns. The numbers below apply a local factor to our standard installed ranges so you can compare {cityState} with the rest of the {metro}.',
+    disclaimer:
+      'These figures are typical installed costs for a standard porcelain layout. Custom mosaics, natural stone, heated floors, and full demolition raise the range. Quotes are free.',
+    highlightTitle: 'Bathroom tile in {city}',
+    highlightNote: 'Typical full bathroom tile renovation, installed.',
+    estimateCta: 'Get a project estimate',
+    cityPageCta: 'Tile services in {city}',
+    tableTitle: 'Typical tile project costs in {cityState}',
+    tableDescription: 'Standard porcelain installation in {county}. Click a service to see what is included.',
+    colProject: 'Project',
+    colRange: 'Typical installed cost',
+    colService: 'Learn more',
+    projects: {
+      bathroom: 'Bathroom tile renovation',
+      shower: 'Custom shower tile',
+      backsplash: 'Kitchen backsplash',
+      floor: 'Floor tile',
+      repair: 'Tile repair',
+      commercial: 'Commercial restroom tile',
+    },
+    sqftTitle: 'Installed tile cost per square foot in {city}',
+    sqftDescription: 'Material plus professional installation for a straightforward layout in {cityState}.',
+    sqftCeramic: 'Ceramic',
+    sqftPorcelain: 'Porcelain',
+    sqftStone: 'Natural stone',
+    perSqft: '/sq ft',
+    factorsTitle: 'What changes the price',
+    factors: [
+      'Room size and layout complexity in {city} homes',
+      'Demolition of existing tile, tub, or substrate',
+      'Shower waterproofing and custom niches or benches',
+      'Large-format, mosaic, or natural stone materials',
+      'Parking, access, and after-hours work in {county}',
+    ],
+    faqTitle: 'Cost questions in {city}',
+    faqItems: [
+      {
+        question: 'How much does bathroom tile cost in {city}?',
+        answer:
+          'Bathroom tile in {cityState} typically costs {bathroomRange} installed for a standard porcelain renovation. Larger master baths, heated floors, and custom showers land higher. Request a free quote for an exact number.',
+      },
+      {
+        question: 'How much does a tiled shower cost in {cityState}?',
+        answer:
+          'A custom tiled shower in {city} typically costs {showerRange}, including waterproofing. Tub-to-shower conversions and bench or niche details add to the range.',
+      },
+      {
+        question: 'Are these prices a quote?',
+        answer:
+          'No. They are typical 2026 planning ranges for {county}. Use the cost estimator, then contact Portillo Ceramic and Tile for a written quote after we see photos or visit the site.',
+      },
+    ],
+    callCta: 'Call for a quote',
+    nearbyTitle: 'Tile costs in nearby communities',
+    viewAllGuides: 'View all city cost guides',
+    regionLabels: {
+      dc: 'Washington D.C.',
+      maryland: 'Maryland',
+      virginia: 'Northern Virginia',
+      'west-virginia': 'West Virginia',
+    },
+  },
+  materials: {
+    title: 'Material Library',
+    subtitle: 'Porcelain vs ceramic, mosaics, stone looks, and the sizes we install every week.',
+    intro:
+      'Browse the tile and ceramic types we specify for bathrooms, showers, kitchens, floors, and commercial spaces. Photos are local high-resolution images. Tap a card for typical sizes and where each material performs best.',
+    ceramicKicker: 'Walls & backsplashes',
+    ceramicTitle: 'Ceramic tile',
+    ceramicBody:
+      'Ceramic is fired clay with a glazed or unglazed surface. It is lighter, easier to cut, and excellent on walls, backsplashes, and light-traffic floors that stay mostly dry.',
+    ceramicPoints: [
+      'Best for walls, backsplashes, and decorative work',
+      'Wide color and handmade options, including zellige',
+      'Typically more affordable than porcelain',
+      'Not the first choice for wet floors or freeze-thaw exteriors',
+    ],
+    porcelainKicker: 'Floors, showers & outdoors',
+    porcelainTitle: 'Porcelain tile',
+    porcelainBody:
+      'Porcelain is denser, less porous, and rated for heavy use. It is the workhorse for showers, high-traffic floors, marble looks, wood looks, and outdoor pavers.',
+    porcelainPoints: [
+      'Low absorption — ideal for showers and wet rooms',
+      'Holds up in kitchens, entries, and commercial floors',
+      'Available in large-format, rectified, and 20mm pavers',
+      'Stone, wood, cement, and terrazzo looks without stone upkeep',
+    ],
+    galleryTitle: 'Tile & ceramic gallery',
+    galleryDescription: 'Filter by material family or size, then open a photo for uses and typical dimensions.',
+    familyLabel: 'Material type',
+    sizeLabel: 'Typical size',
+    allFamilies: 'All types',
+    allSizes: 'All sizes',
+    families: {
+      ceramic: 'Ceramic',
+      porcelain: 'Porcelain',
+      mosaic: 'Mosaic',
+      'stone-look': 'Stone look',
+    },
+    sizeClasses: {
+      mosaic: 'Mosaic / sheet',
+      subway: 'Subway / brick',
+      standard: '12x12 – 18x18',
+      'large-format': '24x24 and larger',
+      hexagon: 'Hexagon',
+      plank: 'Wood-look plank',
+    },
+    count: '{count} materials',
+    empty: 'No materials match those filters. Try another type or size.',
+    viewDetails: 'View sizes and uses',
+    sizesHeading: 'Typical sizes',
+    usesHeading: 'Where we install it',
+    quoteCta: 'Request a quote',
+    close: 'Close',
+    items: {
+      'glazed-ceramic-wall-tile': {
+        name: 'Glazed ceramic wall tile',
+        summary: 'A glassy fired surface that wipes clean — the classic choice for bathroom walls and tub surrounds.',
+        uses: ['Bathroom walls', 'Tub surrounds', 'Powder rooms'],
+      },
+      'unglazed-ceramic-floor-tile': {
+        name: 'Unglazed ceramic floor tile',
+        summary: 'Matte, through-body ceramic with more traction than a glossy wall glaze. Best on interior floors that stay mostly dry.',
+        uses: ['Mudrooms', 'Laundry rooms', 'Light-traffic interiors'],
+      },
+      'ceramic-subway-tile': {
+        name: 'Ceramic subway tile',
+        summary: 'The 3x6 workhorse. Offset, stacked, herringbone, or vertical layouts for kitchens and baths.',
+        uses: ['Kitchen backsplashes', 'Shower walls', 'Bathroom wainscot'],
+      },
+      'handmade-zellige-ceramic': {
+        name: 'Handmade zellige ceramic',
+        summary: 'Artisan clay tiles with irregular edges and a living glaze. Needs a setter who can plane and grout variation.',
+        uses: ['Feature walls', 'Kitchen backsplashes', 'Powder rooms'],
+      },
+      'terracotta-saltillo-tile': {
+        name: 'Terracotta & Saltillo',
+        summary: 'Warm, earthy clay floors with a rustic look. Interior use unless a frost-rated porcelain look-alike is specified.',
+        uses: ['Sunrooms', 'Kitchens', 'Mediterranean-style interiors'],
+      },
+      'ceramic-mosaic-tile': {
+        name: 'Ceramic mosaic',
+        summary: 'Small ceramic chips on mesh sheets — useful for curves, niches, and floors that need extra grout grip.',
+        uses: ['Shower floors', 'Niches', 'Decorative borders'],
+      },
+      'beveled-metro-ceramic': {
+        name: 'Beveled metro ceramic',
+        summary: 'Subway tile with a chamfered edge that catches light. A traditional kitchen and bath profile.',
+        uses: ['Kitchen backsplashes', 'Bathroom walls', 'Fireplace surrounds'],
+      },
+      'kitchen-backsplash-ceramic': {
+        name: 'Kitchen backsplash ceramic',
+        summary: 'Glazed ceramic in subway, picket, or elongated formats that stand up to cooking splatter and wipe down easily.',
+        uses: ['Kitchen backsplashes', 'Range walls', 'Open shelves'],
+      },
+      'porcelain-floor-tile': {
+        name: 'Porcelain floor tile',
+        summary: 'Dense, low-absorption tile for kitchens, entries, and commercial corridors. Specify PEI and DCOF for the room.',
+        uses: ['Kitchens', 'Foyers', 'Retail and facility floors'],
+      },
+      'large-format-porcelain': {
+        name: 'Large-format porcelain',
+        summary: '24x24 and larger with fewer grout lines. Requires a flat substrate, proper mortar coverage, and lippage control.',
+        uses: ['Open living floors', 'Master baths', 'Feature walls'],
+      },
+      'rectified-porcelain': {
+        name: 'Rectified porcelain',
+        summary: 'Machine-cut edges for tight 1/16" grout joints and a nearly seamless field — especially with large formats.',
+        uses: ['Modern floors', 'Shower walls', 'Minimalist interiors'],
+      },
+      'marble-look-porcelain': {
+        name: 'Marble-look porcelain',
+        summary: 'Calacatta, Carrara, and book-match looks without sealing marble. Excellent in wet showers.',
+        uses: ['Walk-in showers', 'Bathroom floors', 'Vanity walls'],
+      },
+      'wood-look-porcelain-plank': {
+        name: 'Wood-look porcelain plank',
+        summary: 'Plank formats that read as oak, walnut, or weathered wood — with none of the swelling of hardwood in wet rooms.',
+        uses: ['Bathrooms', 'Kitchens', 'Open-concept floors'],
+      },
+      'cement-look-porcelain': {
+        name: 'Cement-look porcelain',
+        summary: 'Soft concrete visuals in large slabs. Popular for modern homes and commercial interiors.',
+        uses: ['Living rooms', 'Retail floors', 'Spa baths'],
+      },
+      'slate-look-porcelain': {
+        name: 'Slate-look porcelain',
+        summary: 'Cleft-stone texture and color variation without the maintenance of real slate.',
+        uses: ['Entries', 'Fireplaces', 'Outdoor-adjacent rooms'],
+      },
+      'hexagon-porcelain': {
+        name: 'Hexagon porcelain',
+        summary: '2-inch mosaics on shower floors or 8-inch hex fields on baths and kitchens. Geometry that hides cuts well.',
+        uses: ['Shower floors', 'Bathroom floors', 'Kitchen accents'],
+      },
+      'outdoor-porcelain-paver': {
+        name: 'Outdoor porcelain paver',
+        summary: 'Thick 20mm porcelain for patios and roof decks. Frost-resistant and coordinated with interior floors.',
+        uses: ['Patios', 'Pool surrounds', 'Indoor-outdoor transitions'],
+      },
+      'encaustic-look-porcelain': {
+        name: 'Encaustic-look porcelain',
+        summary: 'Patterned cement-tile looks in a denser porcelain body — durable enough for kitchens and entries.',
+        uses: ['Foyers', 'Kitchen floors', 'Feature rugs in tile'],
+      },
+      'travertine-look-porcelain': {
+        name: 'Travertine-look porcelain',
+        summary: 'Warm stone movement without pitting, filling, or sealing real travertine.',
+        uses: ['Bathrooms', 'Fireplace walls', 'Mediterranean interiors'],
+      },
+      'terrazzo-look-porcelain': {
+        name: 'Terrazzo-look porcelain',
+        summary: 'Speckled large-format porcelain that reads as poured terrazzo with far simpler installation and care.',
+        uses: ['Lobbies', 'Kitchens', 'Open living floors'],
+      },
+      'shower-wall-porcelain': {
+        name: 'Shower-wall porcelain',
+        summary: 'Large, low-absorption panels for floor-to-ceiling showers. Pair with a mosaic or hex floor for slope and traction.',
+        uses: ['Walk-in showers', 'Steam rooms', 'Tub-to-shower conversions'],
+      },
+      'brick-look-porcelain': {
+        name: 'Brick-look porcelain',
+        summary: 'Thin brick and thin-set “exposed brick” looks that can go on interiors without a masonry wall.',
+        uses: ['Accent walls', 'Kitchens', 'Commercial interiors'],
+      },
+      'thin-porcelain-slab': {
+        name: 'Thin porcelain slab',
+        summary: 'Large, thin panels for walls, showers, and counters. Fewer joints, more handling skill, and specialty cutting.',
+        uses: ['Shower walls', 'Vanity tops', 'Feature walls'],
+      },
+      'glass-mosaic-tile': {
+        name: 'Glass mosaic',
+        summary: 'Translucent chips that bounce light in showers and kitchens. Needs the right white mortar so color stays true.',
+        uses: ['Shower niches', 'Kitchen backsplashes', 'Decorative bands'],
+      },
+      'pebble-mosaic-tile': {
+        name: 'Pebble mosaic',
+        summary: 'River-stone mesh sheets for organic shower floors. Extra grout and sealing keep the field comfortable underfoot.',
+        uses: ['Shower floors', 'Spa benches', 'Outdoor showers'],
+      },
+      'penny-round-mosaic': {
+        name: 'Penny-round mosaic',
+        summary: 'Classic ¾-inch dots on mesh — vintage bathrooms, curbs, and floors that need extra grout for traction.',
+        uses: ['Shower floors', 'Vintage baths', 'Curved surfaces'],
+      },
+      'fish-scale-mosaic': {
+        name: 'Fish-scale mosaic',
+        summary: 'Fan or mermaid-scale sheets for playful powder rooms and feature niches.',
+        uses: ['Powder rooms', 'Shower niches', 'Backsplash accents'],
+      },
+      'quarry-tile': {
+        name: 'Quarry tile',
+        summary: 'Unglazed, heavy-duty ceramic used in commercial kitchens and utility floors that see water, grease, and traffic.',
+        uses: ['Commercial kitchens', 'Service corridors', 'Utility rooms'],
+      },
+    },
   },
 };
 

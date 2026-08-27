@@ -10,6 +10,8 @@ export const featuresEs: FeatureContent = {
     estimate: 'Calculadora de Costos',
     blog: 'Consejos y Blog',
     checklist: 'Lista de Preparación',
+    costGuides: 'Guías de Costo',
+    materials: 'Biblioteca de Materiales',
   },
   seasonal: {
     message: 'Promoción de renovación de primavera: mencione este banner al solicitar una cotización para programación prioritaria.',
@@ -143,6 +145,10 @@ export const featuresEs: FeatureContent = {
     ],
     nearbyTitle: 'Áreas de Servicio Cercanas',
     nearbyDescription: 'También atendemos comunidades cerca de {cityState}.',
+    mapTitle: '{cityState} y vecindarios cercanos',
+    mapDescription:
+      'Este mapa muestra {city} y comunidades cercanas en {county}. Abra el mapa grande para ver calles, parques y pueblos vecinos.',
+    mapOpen: 'Abrir un mapa más grande de {city}',
     viewAllAreas: 'Ver todas las áreas de servicio',
     faqTitle: 'Preguntas Frecuentes en {cityState}',
     faqItems: [
@@ -169,7 +175,7 @@ export const featuresEs: FeatureContent = {
       {
         question: '¿Cuánto cuesta la instalación de azulejos en {city}?',
         answer:
-          'El precio depende del tamaño, material, demolición y complejidad del diseño. Use nuestra calculadora para un rango estimado y contáctenos para una cotización detallada en {cityState}.',
+          'El azulejo de baño en {cityState} tiene un rango local según tamaño y material. Vea nuestra guía de costos de {city} para baños, duchas y pisos, luego use la calculadora o pida una cotización detallada.',
       },
     ],
     moreFaq: 'Ver todas las preguntas frecuentes',
@@ -194,10 +200,12 @@ export const featuresEs: FeatureContent = {
       'Instalación familiar de azulejos en {cityState} y {county}. Llame para programar citas, cotizaciones y consultas.',
     resourcesTitle: 'Recursos útiles para proyectos en {city}',
     resources: [
+      { label: 'Ver costos de azulejo en {city}', href: '/cost-guides/{slug}' },
       { label: 'Calcular costo del proyecto', href: '/estimate' },
       { label: 'Solicitar cotización detallada', href: '/contact' },
       { label: 'Usar el asistente de cotización', href: '/quote-wizard' },
       { label: 'Ver galería antes y después', href: '/before-after' },
+      { label: 'Ver biblioteca de materiales', href: '/materials' },
     ],
     relatedArticlesTitle: 'Consejos de azulejos para propietarios en {city}',
     relatedArticlesDescription:
@@ -480,5 +488,276 @@ export const featuresEs: FeatureContent = {
     resourcesTitle: 'Recursos Útiles',
     estimateLink: 'Estime Su Proyecto',
     faqLink: 'Ver Preguntas Frecuentes',
+    costGuidesLink: 'Ver costos de azulejo por ciudad',
+    materialsLink: 'Compare porcelanato, cerámica, mosaicos y tamaños',
+  },
+  costGuides: {
+    hubTitle: 'Guías de Costo de Azulejos por Ciudad',
+    hubSubtitle:
+      'Rangos típicos instalados para baños, duchas, backsplashes, pisos y azulejo comercial en las comunidades que servimos.',
+    hubIntro:
+      'Quienes buscan “cuánto cuesta el azulejo de baño en Northern Virginia” encuentran aquí rangos típicos para un proyecto estándar de porcelanato en cada ciudad. La cotización final depende del tamaño, demolición, impermeabilización y material.',
+    hubDisclaimer:
+      'Los rangos son estimaciones de planificación para 2026, no una oferta. Use la calculadora y luego solicite una cotización a Abel Portillo.',
+    bathroomLabel: 'Azulejo de baño típico',
+    cityTitle: 'Costos de azulejo en {cityState}',
+    citySubtitle: 'Rangos típicos de baño, ducha, backsplash y piso en {county}.',
+    cityIntro:
+      'La mano de obra, el estacionamiento y el nivel de acabado en {city} difieren de pueblos vecinos. Estos números aplican un factor local a nuestros rangos instalados estándar para comparar {cityState} con el resto del {metro}.',
+    disclaimer:
+      'Cifras típicas instaladas para un diseño estándar de porcelanato. Mosaicos, piedra natural, piso radiante y demolición completa aumentan el rango. Las cotizaciones son gratis.',
+    highlightTitle: 'Azulejo de baño en {city}',
+    highlightNote: 'Renovación típica de azulejo de baño, instalada.',
+    estimateCta: 'Calcular costo del proyecto',
+    cityPageCta: 'Servicios de azulejo en {city}',
+    tableTitle: 'Costos típicos de proyectos de azulejo en {cityState}',
+    tableDescription: 'Instalación estándar de porcelanato en {county}. Vea qué incluye cada servicio.',
+    colProject: 'Proyecto',
+    colRange: 'Costo típico instalado',
+    colService: 'Más información',
+    projects: {
+      bathroom: 'Renovación de azulejo de baño',
+      shower: 'Ducha de azulejo a medida',
+      backsplash: 'Backsplash de cocina',
+      floor: 'Azulejo de piso',
+      repair: 'Reparación de azulejo',
+      commercial: 'Azulejo de baño comercial',
+    },
+    sqftTitle: 'Costo de azulejo instalado por pie cuadrado en {city}',
+    sqftDescription: 'Material más instalación profesional para un diseño sencillo en {cityState}.',
+    sqftCeramic: 'Cerámica',
+    sqftPorcelain: 'Porcelanato',
+    sqftStone: 'Piedra natural',
+    perSqft: '/pie²',
+    factorsTitle: 'Qué cambia el precio',
+    factors: [
+      'Tamaño de la habitación y complejidad del diseño en {city}',
+      'Demolición de azulejo, tina o sustrato existente',
+      'Impermeabilización de ducha y nichos o bancas a medida',
+      'Formatos grandes, mosaico o piedra natural',
+      'Estacionamiento, acceso y trabajo fuera de horario en {county}',
+    ],
+    faqTitle: 'Preguntas de costo en {city}',
+    faqItems: [
+      {
+        question: '¿Cuánto cuesta el azulejo de baño en {city}?',
+        answer:
+          'El azulejo de baño en {cityState} cuesta típicamente {bathroomRange} instalado para una renovación estándar de porcelanato. Baños principales más grandes, piso radiante y duchas a medida suben el rango. Solicite una cotización gratis.',
+      },
+      {
+        question: '¿Cuánto cuesta una ducha de azulejo en {cityState}?',
+        answer:
+          'Una ducha de azulejo a medida en {city} cuesta típicamente {showerRange}, incluyendo impermeabilización. Conversiones de tina a ducha y bancas o nichos aumentan el rango.',
+      },
+      {
+        question: '¿Estos precios son una cotización?',
+        answer:
+          'No. Son rangos típicos de planificación 2026 para {county}. Use la calculadora y luego contacte a Portillo Ceramic and Tile para una cotización escrita.',
+      },
+    ],
+    callCta: 'Llame para una cotización',
+    nearbyTitle: 'Costos de azulejo en comunidades cercanas',
+    viewAllGuides: 'Ver todas las guías de costo',
+    regionLabels: {
+      dc: 'Washington D.C.',
+      maryland: 'Maryland',
+      virginia: 'Norte de Virginia',
+      'west-virginia': 'Virginia Occidental',
+    },
+  },
+  materials: {
+    title: 'Biblioteca de Materiales',
+    subtitle: 'Porcelanato vs cerámica, mosaicos, looks de piedra y los tamaños que instalamos cada semana.',
+    intro:
+      'Vea los tipos de azulejo y cerámica que especificamos para baños, duchas, cocinas, pisos y espacios comerciales. Las fotos son imágenes locales de alta resolución. Toque una tarjeta para ver tamaños típicos y dónde rinde mejor cada material.',
+    ceramicKicker: 'Paredes y backsplashes',
+    ceramicTitle: 'Azulejo cerámico',
+    ceramicBody:
+      'La cerámica es arcilla cocida con superficie esmaltada o sin esmaltar. Es más ligera, más fácil de cortar y excelente en paredes, backsplashes y pisos de tráfico ligero que permanecen secos.',
+    ceramicPoints: [
+      'Ideal para paredes, backsplashes y trabajo decorativo',
+      'Amplia gama de color y opciones artesanales, incluido zellige',
+      'Suele costar menos que el porcelanato',
+      'No es la primera opción para pisos mojados ni exteriores con hielo',
+    ],
+    porcelainKicker: 'Pisos, duchas y exteriores',
+    porcelainTitle: 'Porcelanato',
+    porcelainBody:
+      'El porcelanato es más denso, menos poroso y está clasificado para uso intenso. Es el material de trabajo para duchas, pisos de alto tráfico, looks de mármol o madera y pavimentos exteriores.',
+    porcelainPoints: [
+      'Baja absorción — ideal para duchas y zonas húmedas',
+      'Resiste cocinas, entradas y pisos comerciales',
+      'Disponible en gran formato, rectificado y pavers de 20 mm',
+      'Looks de piedra, madera, cemento y terrazo sin el mantenimiento de la piedra',
+    ],
+    galleryTitle: 'Galería de azulejos y cerámica',
+    galleryDescription: 'Filtre por familia o tamaño y abra una foto para usos y dimensiones típicas.',
+    familyLabel: 'Tipo de material',
+    sizeLabel: 'Tamaño típico',
+    allFamilies: 'Todos los tipos',
+    allSizes: 'Todos los tamaños',
+    families: {
+      ceramic: 'Cerámica',
+      porcelain: 'Porcelanato',
+      mosaic: 'Mosaico',
+      'stone-look': 'Look de piedra',
+    },
+    sizeClasses: {
+      mosaic: 'Mosaico / lámina',
+      subway: 'Subway / ladrillo',
+      standard: '12x12 – 18x18',
+      'large-format': '24x24 y mayor',
+      hexagon: 'Hexágono',
+      plank: 'Tabla look madera',
+    },
+    count: '{count} materiales',
+    empty: 'Ningún material coincide con esos filtros. Pruebe otro tipo o tamaño.',
+    viewDetails: 'Ver tamaños y usos',
+    sizesHeading: 'Tamaños típicos',
+    usesHeading: 'Dónde lo instalamos',
+    quoteCta: 'Solicitar cotización',
+    close: 'Cerrar',
+    items: {
+      'glazed-ceramic-wall-tile': {
+        name: 'Cerámica esmaltada de pared',
+        summary: 'Superficie vítrea que se limpia fácil — la opción clásica para paredes de baño y tinas.',
+        uses: ['Paredes de baño', 'Rodeos de tina', 'Medios baños'],
+      },
+      'unglazed-ceramic-floor-tile': {
+        name: 'Cerámica de piso sin esmaltar',
+        summary: 'Cerámica mate de cuerpo entero con más tracción que un esmalte brillante. Mejor en interiores que se mantienen secos.',
+        uses: ['Mudrooms', 'Lavaderos', 'Interiores de tráfico ligero'],
+      },
+      'ceramic-subway-tile': {
+        name: 'Subway de cerámica',
+        summary: 'El formato 3x6 de siempre. Juntas offset, apiladas, espiga o verticales para cocinas y baños.',
+        uses: ['Backsplashes de cocina', 'Paredes de ducha', 'Zócalos de baño'],
+      },
+      'handmade-zellige-ceramic': {
+        name: 'Zellige artesanal',
+        summary: 'Azulejos de arcilla con bordes irregulares y esmalte vivo. Requiere un instalador que nivele y junta la variación.',
+        uses: ['Paredes de acento', 'Backsplashes de cocina', 'Medios baños'],
+      },
+      'terracotta-saltillo-tile': {
+        name: 'Terracota y Saltillo',
+        summary: 'Pisos de arcilla cálidos y rústicos. Uso interior, salvo un porcelanato con clasificación para heladas.',
+        uses: ['Sunrooms', 'Cocinas', 'Interiores de estilo mediterráneo'],
+      },
+      'ceramic-mosaic-tile': {
+        name: 'Mosaico cerámico',
+        summary: 'Piezas pequeñas en malla — útiles en curvas, nichos y pisos que necesitan más lechada para agarre.',
+        uses: ['Pisos de ducha', 'Nichos', 'Cenefas decorativas'],
+      },
+      'beveled-metro-ceramic': {
+        name: 'Metro biselado de cerámica',
+        summary: 'Subway con borde chaflanado que capta la luz. Perfil tradicional de cocina y baño.',
+        uses: ['Backsplashes de cocina', 'Paredes de baño', 'Chimeneas'],
+      },
+      'kitchen-backsplash-ceramic': {
+        name: 'Cerámica para backsplash',
+        summary: 'Cerámica esmaltada en subway, picket o formatos alargados que resiste salpicaduras y se limpia fácil.',
+        uses: ['Backsplashes de cocina', 'Paredes de estufa', 'Estantes abiertos'],
+      },
+      'porcelain-floor-tile': {
+        name: 'Porcelanato de piso',
+        summary: 'Azulejo denso de baja absorción para cocinas, entradas y pasillos comerciales. Especifique PEI y DCOF según el espacio.',
+        uses: ['Cocinas', 'Vestíbulos', 'Pisos comerciales'],
+      },
+      'large-format-porcelain': {
+        name: 'Porcelanato de gran formato',
+        summary: '24x24 y mayor, con menos juntas. Requiere sustrato plano, cobertura de mortero y control de desnivel.',
+        uses: ['Pisos abiertos', 'Baños principales', 'Paredes de acento'],
+      },
+      'rectified-porcelain': {
+        name: 'Porcelanato rectificado',
+        summary: 'Bordes cortados a máquina para juntas de 1/16" y un campo casi continuo, sobre todo en gran formato.',
+        uses: ['Pisos modernos', 'Paredes de ducha', 'Interiores minimalistas'],
+      },
+      'marble-look-porcelain': {
+        name: 'Porcelanato look mármol',
+        summary: 'Looks Calacatta, Carrara y book-match sin sellar mármol. Excelente en duchas húmedas.',
+        uses: ['Duchas walk-in', 'Pisos de baño', 'Paredes de vanity'],
+      },
+      'wood-look-porcelain-plank': {
+        name: 'Porcelanato look madera',
+        summary: 'Tablas que se leen como roble, nogal o madera envejecida — sin el hinchamiento de la madera en zonas húmedas.',
+        uses: ['Baños', 'Cocinas', 'Pisos de concepto abierto'],
+      },
+      'cement-look-porcelain': {
+        name: 'Porcelanato look cemento',
+        summary: 'Visual de concreto suave en losas grandes. Popular en casas modernas e interiores comerciales.',
+        uses: ['Salas', 'Pisos comerciales', 'Baños tipo spa'],
+      },
+      'slate-look-porcelain': {
+        name: 'Porcelanato look pizarra',
+        summary: 'Textura y variación de piedra sin el mantenimiento de la pizarra natural.',
+        uses: ['Entradas', 'Chimeneas', 'Habitaciones junto al exterior'],
+      },
+      'hexagon-porcelain': {
+        name: 'Porcelanato hexagonal',
+        summary: 'Mosaicos de 2" en pisos de ducha o hexágonos de 8" en baños y cocinas. Geometría que oculta cortes.',
+        uses: ['Pisos de ducha', 'Pisos de baño', 'Acentos de cocina'],
+      },
+      'outdoor-porcelain-paver': {
+        name: 'Paver de porcelanato exterior',
+        summary: 'Porcelanato de 20 mm para patios y terrazas. Resistente a heladas y coordinable con el piso interior.',
+        uses: ['Patios', 'Bordes de piscina', 'Transiciones interior-exterior'],
+      },
+      'encaustic-look-porcelain': {
+        name: 'Porcelanato look encausto',
+        summary: 'Looks de baldosa hidráulica en un cuerpo de porcelanato más denso — duradero en cocinas y entradas.',
+        uses: ['Vestíbulos', 'Pisos de cocina', 'Alfombras de azulejo'],
+      },
+      'travertine-look-porcelain': {
+        name: 'Porcelanato look travertino',
+        summary: 'Movimiento de piedra cálida sin poros, relleno ni sellado del travertino real.',
+        uses: ['Baños', 'Paredes de chimenea', 'Interiores mediterráneos'],
+      },
+      'terrazzo-look-porcelain': {
+        name: 'Porcelanato look terrazo',
+        summary: 'Porcelanato moteado de gran formato que se lee como terrazo vertido, con instalación y cuidado más simples.',
+        uses: ['Lobbies', 'Cocinas', 'Pisos de estar abiertos'],
+      },
+      'shower-wall-porcelain': {
+        name: 'Porcelanato para paredes de ducha',
+        summary: 'Paneles grandes de baja absorción de piso a techo. Combínelo con mosaico o hexágono en el piso para pendiente y tracción.',
+        uses: ['Duchas walk-in', 'Cuartos de vapor', 'Conversiones de tina a ducha'],
+      },
+      'brick-look-porcelain': {
+        name: 'Porcelanato look ladrillo',
+        summary: 'Looks de ladrillo delgado para interiores sin necesidad de un muro de mampostería.',
+        uses: ['Paredes de acento', 'Cocinas', 'Interiores comerciales'],
+      },
+      'thin-porcelain-slab': {
+        name: 'Losa delgada de porcelanato',
+        summary: 'Paneles grandes y delgados para paredes, duchas y cubiertas. Menos juntas, más habilidad de manejo y corte especial.',
+        uses: ['Paredes de ducha', 'Cubiertas de vanity', 'Paredes de acento'],
+      },
+      'glass-mosaic-tile': {
+        name: 'Mosaico de vidrio',
+        summary: 'Trozos translúcidos que rebotan la luz en duchas y cocinas. Requiere el mortero blanco correcto para el color.',
+        uses: ['Nichos de ducha', 'Backsplashes de cocina', 'Bandas decorativas'],
+      },
+      'pebble-mosaic-tile': {
+        name: 'Mosaico de canto rodado',
+        summary: 'Piedras de río en malla para pisos de ducha orgánicos. Más lechada y sellado para un campo cómodo.',
+        uses: ['Pisos de ducha', 'Bancas de spa', 'Duchas exteriores'],
+      },
+      'penny-round-mosaic': {
+        name: 'Mosaico penny round',
+        summary: 'Puntos clásicos de ¾" en malla — baños vintage, bordes y pisos que necesitan más lechada para tracción.',
+        uses: ['Pisos de ducha', 'Baños vintage', 'Superficies curvas'],
+      },
+      'fish-scale-mosaic': {
+        name: 'Mosaico escamas',
+        summary: 'Láminas en abanico o escamas para medios baños y nichos de acento.',
+        uses: ['Medios baños', 'Nichos de ducha', 'Acentos de backsplash'],
+      },
+      'quarry-tile': {
+        name: 'Quarry tile',
+        summary: 'Cerámica pesada sin esmaltar usada en cocinas comerciales y pisos de servicio con agua, grasa y tráfico.',
+        uses: ['Cocinas comerciales', 'Pasillos de servicio', 'Cuartos de utilidad'],
+      },
+    },
   },
 };

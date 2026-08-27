@@ -95,6 +95,14 @@ export default function HomePage() {
               <h3>{f.nav.checklist}</h3>
               <span>{f.checklist.download}</span>
             </Link>
+            <Link to="/cost-guides" className="resource-card">
+              <h3>{f.nav.costGuides}</h3>
+              <span>{f.home.costGuidesLink}</span>
+            </Link>
+            <Link to="/materials" className="resource-card">
+              <h3>{f.nav.materials}</h3>
+              <span>{f.home.materialsLink}</span>
+            </Link>
             <Link to="/service-area" className="resource-card">
               <h3>{f.nav.serviceArea}</h3>
               <span>{f.serviceArea.notListedCta}</span>

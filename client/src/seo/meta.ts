@@ -295,6 +295,45 @@ export function getStaticPageSeo(page: string, locale: Locale): SeoConfig | null
           : `Prepare your ${area} home or business before, during, and after tile installation.`,
       path: '/checklist',
     },
+    'cost-guides': {
+      title:
+        locale === 'es'
+          ? `Guías de Costo de Azulejos por Ciudad — ${area}`
+          : `Tile Cost Guides by City — ${area}`,
+      description:
+        locale === 'es'
+          ? `Rangos típicos de azulejo de baño, ducha y piso en Washington D.C., Maryland, Virginia y Virginia Occidental.`
+          : `Typical bathroom, shower, and floor tile costs in Washington D.C., Maryland, Virginia, and West Virginia.`,
+      path: '/cost-guides',
+      keywords: [
+        'bathroom tile cost Northern Virginia',
+        'tile installation cost Bethesda',
+        'shower tile cost Arlington',
+      ],
+    },
+    materials: {
+      title:
+        locale === 'es'
+          ? `Biblioteca de Materiales de Azulejo — ${area}`
+          : `Tile Material Library — ${area}`,
+      description:
+        locale === 'es'
+          ? `Galería de porcelanato, cerámica, mosaicos y looks de piedra con tamaños y fotos de alta resolución. Instalación en ${area}.`
+          : `Gallery of porcelain, ceramic, mosaics, and stone-look tile with sizes and high-resolution photos. Installed throughout ${area}.`,
+      path: '/materials',
+      ogImage: '/images/materials/large-format-porcelain.jpg',
+      keywords: [
+        'porcelain vs ceramic tile',
+        'subway tile sizes',
+        'large format porcelain',
+        'mosaic tile gallery',
+        'zellige tile',
+      ],
+      jsonLd: buildBreadcrumbSchema([
+        { name: 'Home', path: '/' },
+        { name: locale === 'es' ? 'Biblioteca de materiales' : 'Material library', path: '/materials' },
+      ]),
+    },
     'quote-wizard': {
       title:
         locale === 'es'

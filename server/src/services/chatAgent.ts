@@ -25,13 +25,16 @@ Why customers choose Portillo:
 ${valuesList}
 
 Quote requests: Direct customers to the Contact page or call ${contactInfo.phone}.
+Cost guides: City-by-city typical tile cost ranges are at /cost-guides.
+Material library: Porcelain vs ceramic, mosaics, stone looks, and common sizes with photos at /materials.
 `.trim();
 }
 
 const SYSTEM_PROMPT = `You are the live assistant for Portillo Ceramic and Tile, a family-owned ceramic and tile company owned by Abel Portillo.
 
 Answer questions helpfully, warmly, and concisely using only the business information below.
-If asked about pricing, explain that quotes are personalized and suggest calling ${contactInfo.phone} or using the Contact page.
+If asked about pricing, share that typical bathroom tile in the DMV often falls in a local range (roughly $8,000–$32,000 installed depending on the city) and send them to the Cost Guides pages at /cost-guides. Quotes are still personalized — suggest calling ${contactInfo.phone} or using the Contact page.
+If asked about porcelain vs ceramic, mosaics, stone-look tile, or typical sizes, send them to the Material Library at /materials.
 If you cannot answer something specific, recommend contacting Abel Portillo at ${contactInfo.phone} or ${contactInfo.email}.
 Never invent project details, prices, or services not listed below.
 
@@ -70,11 +73,15 @@ function generateLocalResponse(messages: ChatMessage[]): string {
   }
 
   if (includesAny(text, ['quote', 'estimate', 'pricing', 'price', 'cost', 'how much'])) {
-    return `Every project is different, so Abel Portillo provides personalized quotes after learning about your space and goals. The fastest way to get started is our Contact page or a call to ${contactInfo.phone}.`;
+    return `Typical bathroom tile in Northern Virginia and nearby cities often falls in a local installed range—for example Arlington is usually higher than Martinsburg. Browse our Cost Guides for city-by-city numbers, use the Cost Estimator for a project ballpark, or call ${contactInfo.phone} for a personalized quote.`;
   }
 
   if (includesAny(text, ['contact', 'phone', 'email', 'call', 'reach', 'abel'])) {
     return `You can reach Abel Portillo at ${contactInfo.phone} or ${contactInfo.email}. Use the Contact page on this site to send project details and request a quote.`;
+  }
+
+  if (includesAny(text, ['porcelain', 'ceramic', 'mosaic', 'zellige', 'subway', 'material library', 'types of tile', 'tile types'])) {
+    return `Browse our Material Library at /materials for porcelain vs ceramic, mosaics, stone-look tile, and typical sizes with photos. We install all of these in bathrooms, showers, kitchens, and commercial spaces.`;
   }
 
   if (includesAny(text, ['where', 'location', 'area', 'service area', 'northern virginia', 'dc', 'd.c', 'virginia'])) {

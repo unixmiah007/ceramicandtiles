@@ -3,6 +3,7 @@
  * Filenames are derived from page headings, service titles, and section headings.
  */
 import { BLOG_IMAGE_URL_MAP } from './blog-image-urls.mjs';
+import { MATERIAL_IMAGE_PATHS } from './material-image-urls.mjs';
 
 export const IMAGE_URL_MAP = {
   // Homepage hero carousel
@@ -148,5 +149,6 @@ export const IMAGE_URL_MAP = {
 
   'fallback/default-tile-installation': 'https://pmcconstructionco.com/wp-content/uploads/sites/1576/2025/09/badge-3.png',
 
+  ...MATERIAL_IMAGE_PATHS,
   ...BLOG_IMAGE_URL_MAP,
 };

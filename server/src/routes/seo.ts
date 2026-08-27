@@ -22,6 +22,11 @@ interface CityManifestEntry {
   path: string;
 }
 
+interface SitemapImage {
+  loc: string;
+  title?: string;
+}
+
 interface SitemapPage {
   path: string;
   changefreq: string;
@@ -29,6 +34,7 @@ interface SitemapPage {
   lastmod?: string;
   imagePath?: string;
   imageTitle?: string;
+  images?: SitemapImage[];
 }
 
 function loadJson<T>(relativePath: string, fallback: T): T {
@@ -83,6 +89,8 @@ const STATIC_PAGES: SitemapPage[] = [
   { path: '/before-after', changefreq: 'monthly', priority: '0.7' },
   { path: '/estimate', changefreq: 'monthly', priority: '0.8' },
   { path: '/checklist', changefreq: 'monthly', priority: '0.6' },
+  { path: '/cost-guides', changefreq: 'monthly', priority: '0.85' },
+  { path: '/materials', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.8' },
   { path: '/blog/category/tile', changefreq: 'weekly', priority: '0.7' },
   { path: '/blog/category/ceramic', changefreq: 'weekly', priority: '0.7' },
@@ -100,12 +108,18 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function resolvePages(): SitemapPage[] {
-  const generated = loadSitemapPages();
-  if (generated.length > 0) {
-    return generated;
-  }
+function uniquePages(pages: SitemapPage[]): SitemapPage[] {
+  const seen = new Set<string>();
+  return pages.filter((page) => {
+    if (seen.has(page.path)) {
+      return false;
+    }
+    seen.add(page.path);
+    return true;
+  });
+}
 
+function deriveAllPages(): SitemapPage[] {
   const posts = loadBlogManifest();
   const cities = loadCityManifest();
   return [
@@ -114,6 +128,11 @@ function resolvePages(): SitemapPage[] {
       path: city.path,
       changefreq: 'monthly',
       priority: '0.75',
+    })),
+    ...cities.map((city) => ({
+      path: `/cost-guides/${city.slug}`,
+      changefreq: 'monthly',
+      priority: '0.7',
     })),
     ...posts.map((post) => ({
       path: `/blog/${post.slug}`,
@@ -124,6 +143,11 @@ function resolvePages(): SitemapPage[] {
       imageTitle: post.title,
     })),
   ];
+}
+
+function resolvePages(): SitemapPage[] {
+  const generated = loadSitemapPages();
+  return uniquePages([...generated, ...deriveAllPages()]);
 }
 
 function buildSitemap(pages: SitemapPage[]): string {
@@ -139,14 +163,23 @@ function buildSitemap(pages: SitemapPage[]): string {
       }
       parts.push(`    <changefreq>${page.changefreq}</changefreq>`);
       parts.push(`    <priority>${page.priority}</priority>`);
-      if (page.imagePath) {
+      const images =
+        page.images && page.images.length > 0
+          ? page.images
+          : page.imagePath
+            ? [{ loc: page.imagePath, title: page.imageTitle }]
+            : [];
+      images.forEach((image) => {
+        if (!image?.loc) {
+          return;
+        }
         parts.push('    <image:image>');
-        parts.push(`      <image:loc>${escapeXml(`${SITE_URL}${page.imagePath}`)}</image:loc>`);
-        if (page.imageTitle) {
-          parts.push(`      <image:title>${escapeXml(page.imageTitle)}</image:title>`);
+        parts.push(`      <image:loc>${escapeXml(`${SITE_URL}${image.loc}`)}</image:loc>`);
+        if (image.title) {
+          parts.push(`      <image:title>${escapeXml(image.title)}</image:title>`);
         }
         parts.push('    </image:image>');
-      }
+      });
       parts.push('  </url>');
       return parts.join('\n');
     })

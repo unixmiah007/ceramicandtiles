@@ -37,6 +37,8 @@ export default function Footer() {
             <li><Link to="/estimate">{f.nav.estimate}</Link></li>
             <li><Link to="/blog">{f.nav.blog}</Link></li>
             <li><Link to="/checklist">{f.nav.checklist}</Link></li>
+            <li><Link to="/cost-guides">{f.nav.costGuides}</Link></li>
+            <li><Link to="/materials">{f.nav.materials}</Link></li>
           </ul>
         </div>
 

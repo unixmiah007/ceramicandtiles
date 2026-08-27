@@ -90,6 +90,16 @@ export function useBreadcrumbs(): BreadcrumbItem[] | null {
       }
     }
 
+    const costGuideMatch = matchPath({ path: '/cost-guides/:citySlug', end: true }, pathname);
+    if (costGuideMatch?.params.citySlug) {
+      const city = getCityBySlug(costGuideMatch.params.citySlug);
+      if (city) {
+        crumbs.push({ label: f.nav.costGuides, path: '/cost-guides' });
+        crumbs.push({ label: formatCityLabel(city) });
+        return crumbs;
+      }
+    }
+
     const staticLabels: Record<string, string> = {
       '/experience': t.nav.experience,
       '/services': t.nav.services,
@@ -102,6 +112,8 @@ export function useBreadcrumbs(): BreadcrumbItem[] | null {
       '/estimate': f.nav.estimate,
       '/blog': f.nav.blog,
       '/checklist': f.nav.checklist,
+      '/cost-guides': f.nav.costGuides,
+      '/materials': f.nav.materials,
     };
 
     const label = staticLabels[pathname];
